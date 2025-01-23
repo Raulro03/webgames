@@ -23,4 +23,9 @@ class Platform extends Model
             'release_date' => 'date',
         ];
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(Game::class);
+    }
 }

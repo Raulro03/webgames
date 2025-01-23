@@ -14,4 +14,8 @@ class Developer extends Model
         'country',
         'description',
     ];
+
+    public function games(){
+        return $this->hasMany(Game::class);
+    }
 }

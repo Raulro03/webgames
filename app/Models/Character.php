@@ -13,4 +13,8 @@ class Character extends Model
         'name',
         'description',
     ];
+
+    public function games(){
+        return $this->belongsToMany(Game::class);
+    }
 }

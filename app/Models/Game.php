@@ -22,4 +22,20 @@ class Game extends Model
             'release_date' => 'date',
         ];
     }
+
+    public function developer()
+    {
+        return $this->belongsTo(Developer::class);
+    }
+
+    public function characters()
+    {
+        return $this->belongsToMany(Character::class);
+    }
+
+    public function platforms()
+    {
+        return $this->belongsToMany(Platform::class);
+    }
+
 }
