@@ -7,19 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('consoles', function (Blueprint $table) {
+        Schema::create('developers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description',100)->nullable();
-            $table->date('release_date');
-            $table->integer('price')->default(1000)->nullable();
-            $table->decimal('average_rating', 3,2)->nullable();
+            $table->string('country');
+            $table->string('description', 100);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('consoles');
+        Schema::dropIfExists('developers');
     }
 };

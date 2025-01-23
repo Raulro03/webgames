@@ -31,7 +31,7 @@ it('displays login link if not logged in', function () {
 
 it('displays logout link if logged in', function () {
     // Act & Assert
-    loginAsUser();  // Asegúrate de tener un método para autenticar un usuario
+    loginAsUser();  // Metodo para autenticicar al usuario
     get(route('welcome'))
         ->assertOk()
         ->assertSeeText('Log out')  // Verifica que el enlace de logout esté presente

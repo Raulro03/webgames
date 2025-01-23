@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Console;
+use App\Models\Platform;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-class ConsoleFactory extends Factory
+class PlatformFactory extends Factory
 {
-    protected $model = Console::class;
+    protected $model = Platform::class;
 
     public function definition(): array
     {

@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('age')->nullable();
             $table->string('description',100)->nullable();
             $table->timestamps();
         });
