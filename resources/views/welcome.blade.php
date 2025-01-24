@@ -8,28 +8,10 @@
         @vite('resources/js/app.js')
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <!-- Barra de Navegación -->
-    <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20"> <!-- Aumenté la altura a h-20 -->
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="{{ asset('images/webgames.png') }}" alt="WebGames Logo" class="h-[70px] mr-2 rounded-2xl"> <!-- Ajusta el tamaño de la imagen aquí -->
-                    <a href="/" class="text-white text-lg font-bold">
-                        WebGames
-                    </a>
-                </div>
-                <!-- Links de navegación -->
-                <div class="hidden md:flex space-x-4">
-                    <a href="#home" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                    <a href="#console" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Consolas</a>
-                    <a href="#games" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Juegos</a>
-                    <a href="#characters" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Personajes</a>
-                    <a href="#forum" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Foro</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar -->
+    <x-nav-bar>
+
+    </x-nav-bar>
 
     <!-- Contenido Principal -->
     <div class="max-w-7xl mx-auto mt-10 p-4 text-center">
@@ -40,6 +22,8 @@
             Descubre y comparte tu pasión por los videojuegos.
         </p>
     </div>
+
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

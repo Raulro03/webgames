@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\PageWelcomeController;
+use App\Http\Controllers\Pages\PageGamesController;
+use App\Http\Controllers\Pages\PageWelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PageWelcomeController::class, 'index'])->name('welcome');
+Route::get('/', PageWelcomeController::class)->name('welcome');
+Route::get('/games', PageGamesController::class)->name('games');
 
 Route::middleware([
     'auth:sanctum',
