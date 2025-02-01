@@ -12,11 +12,11 @@
             <!-- Links de navegación (centrados) -->
             <div class="hidden md:flex space-x-4 justify-center flex-grow">
                 <a href="/" class="{{ request()->is('/') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                <a href="#console" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Consolas</a>
                 <a href="{{route("games")}}" class="{{ request()->is('games') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Juegos</a>
-                <a href="#characters" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Personajes</a>
-                <a href="#forum" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Foro</a>
-                <a href="#versus" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Versus</a>
+                <a href="{{route("characters")}}" class="{{ request()->is('characters') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Personajes</a>
+                <a href="{{route("platforms")}}" class="{{ request()->is('platforms') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Plataformas</a>
+                <a href="{{route("forum")}}" class="{{ request()->is('forum') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Foro</a>
+                <a href="{{route("versus")}}" class="{{ request()->is('versus') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Versus</a>
             </div>
             <!-- Botones de Login y Register -->
             <div class="hidden md:flex space-x-4">
