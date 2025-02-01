@@ -15,6 +15,6 @@ class Character extends Model
     ];
 
     public function games(){
-        return $this->belongsToMany(Game::class);
+        return $this->belongsToMany(Game::class, 'character_game');
     }
 }

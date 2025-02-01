@@ -15,7 +15,7 @@ class DeveloperFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'country' => $this->faker->country(),
-            'description' => $this->faker->text(),
+            'description' => $this->faker->text(100),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

@@ -30,12 +30,12 @@ class Game extends Model
 
     public function characters()
     {
-        return $this->belongsToMany(Character::class);
+        return $this->belongsToMany(Character::class, 'character_game');
     }
 
     public function platforms()
     {
-        return $this->belongsToMany(Platform::class);
+        return $this->belongsToMany(Platform::class, 'platform_game');
     }
 
 }

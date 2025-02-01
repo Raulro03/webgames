@@ -14,7 +14,7 @@ class CharacterFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'description' => $this->faker->text(),
+            'description' => $this->faker->text(100),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
