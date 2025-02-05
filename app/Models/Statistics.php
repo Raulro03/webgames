@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Statistics extends Model
 {
@@ -17,4 +18,9 @@ class Statistics extends Model
         'intelligence',
         'charisma',
     ];
+
+    public function character(): BelongsTo
+    {
+        return $this->belongsTo(Character::class);
+    }
 }
