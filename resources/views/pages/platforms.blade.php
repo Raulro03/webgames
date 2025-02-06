@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <link rel="icon" href="{{ asset('images/webgames.png') }}" type="image/png">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebGames</title>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-</head>
-<body>
-<!-- Navbar -->
-<x-nav-bar>
+@extends('layouts.webgames')
 
-</x-nav-bar>
+@section('content')
 
-<!-- Consolas -->
+<!-- Platforms -->
 
 <div class="max-w-7xl mx-auto mt-10 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">º
     <!-- Bloque de Consolas -->
@@ -30,10 +18,4 @@
     </div>
     <!-- Repite el bloque de juego para cada juego -->
 </div>
-
-<!-- Footer -->
-<x-footer>
-
-</x-footer>
-
-</body>
+@endsection
