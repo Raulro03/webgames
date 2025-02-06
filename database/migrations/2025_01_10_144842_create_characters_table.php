@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->string('name');
             $table->integer('age')->nullable();
             $table->string('description',100)->nullable();
-            $table->foreignIdFor(\App\Models\Statistics::class);
             $table->timestamps();
         });
     }

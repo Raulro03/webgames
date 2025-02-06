@@ -14,11 +14,11 @@ class StatisticsFactory extends Factory
     {
         return [
             'character_id' => $this->faker->randomNumber(),
-            'constitution' => $this->faker->randomNumber(),
-            'strength' => $this->faker->randomNumber(),
-            'agility' => $this->faker->randomNumber(),
-            'intelligence' => $this->faker->randomNumber(),
-            'charisma' => $this->faker->randomNumber(),
+            'constitution' => $this->faker->numberBetween(1, 10),
+            'strength' => $this->faker->numberBetween(1, 10),
+            'agility' => $this->faker->numberBetween(1, 10),
+            'intelligence' => $this->faker->numberBetween(1, 10),
+            'charisma' => $this->faker->numberBetween(1, 10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
