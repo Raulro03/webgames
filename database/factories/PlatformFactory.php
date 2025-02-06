@@ -18,6 +18,11 @@ class PlatformFactory extends Factory
             'release_date' => Carbon::now(),
             'price' => $this->faker->randomNumber(),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
+            'image_url' => 'images/platforms/' . $this->faker->randomElement([
+                    'nintendo.jpg',
+                    'ps4.png',
+                    'xbox.png',
+                ]),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

@@ -18,6 +18,7 @@ class Game extends Model
         'release_date',
         'average_rating',
         'price',
+        'image_url',
         'developer_id',
     ];
 

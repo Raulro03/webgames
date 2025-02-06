@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('name');
             $table->integer('age')->nullable();
             $table->string('description',100)->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

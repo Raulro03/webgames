@@ -14,6 +14,7 @@ class Character extends Model
     protected $fillable = [
         'name',
         'description',
+        'image_url',
     ];
 
     public function games(): BelongsToMany

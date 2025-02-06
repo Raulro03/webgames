@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->date('release_date');
             $table->decimal('average_rating', 3,2)->nullable();
             $table->integer('price')->nullable();
+            $table->string('image_url')->nullable();
             $table->foreignIdFor(\App\Models\Developer::class);
             $table->timestamps();
         });

@@ -16,6 +16,7 @@ class Platform extends Model
         'release_date',
         'price',
         'average_rating',
+        'image_url',
     ];
 
     protected function casts(): array

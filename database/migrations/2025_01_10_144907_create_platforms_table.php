@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->date('release_date');
             $table->integer('price')->default(1000)->nullable();
             $table->decimal('average_rating', 3,2)->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
