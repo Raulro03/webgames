@@ -17,6 +17,7 @@ class GameFactory extends Factory
             'description' => $this->faker->text(100),
             'release_date' => Carbon::now(),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
+            'price' => $this->faker->randomNumber(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

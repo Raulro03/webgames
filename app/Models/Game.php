@@ -17,6 +17,8 @@ class Game extends Model
         'description',
         'release_date',
         'average_rating',
+        'price',
+        'developer_id',
     ];
 
     protected function casts(): array
@@ -39,6 +41,11 @@ class Game extends Model
     public function platforms(): BelongsToMany
     {
         return $this->belongsToMany(Platform::class, 'platform_game');
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'category_game');
     }
 
 }
