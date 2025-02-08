@@ -14,13 +14,25 @@ Route::get('/games', [PageGamesController::class, 'index'])->name('games');
 Route::get('/characters', [PageCharactersController::class, 'index'])->name('characters');
 Route::get('/platforms', [PagePlatformsController::class, 'index'])->name('platforms');
 Route::get('/forum', [PageForumController::class, 'index'])->name('forum');
-Route::get('/versus', [PageVersusController::class, 'index'])->name('versus');
+
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    Route::get('/versus', [PageVersusController::class, 'index'])->name('versus');
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
