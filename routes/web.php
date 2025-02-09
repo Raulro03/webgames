@@ -10,9 +10,16 @@ use App\Http\Controllers\Pages\PageWelcomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', PageWelcomeController::class)->name('welcome');
+
 Route::get('/games', [PageGamesController::class, 'index'])->name('games');
+Route::get('/games/{game}', [PageGamesController::class, 'show'])->name('games.show');
+
 Route::get('/characters', [PageCharactersController::class, 'index'])->name('characters');
+Route::get('/characters/{character}', [PageCharactersController::class, 'show'])->name('characters.show');
+
 Route::get('/platforms', [PagePlatformsController::class, 'index'])->name('platforms');
+Route::get('/platforms/{platform}', [PagePlatformsController::class, 'show'])->name('platforms.show');
+
 Route::get('/forum', [PageForumController::class, 'index'])->name('forum');
 
 
