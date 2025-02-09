@@ -14,7 +14,7 @@ class GameFactory extends Factory
     {
         return [
             'title' => $this->faker->word(),
-            'description' => $this->faker->text(100),
+            'description' => $this->faker->text(200),
             'release_date' => Carbon::now(),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
             'price' => $this->faker->randomNumber(),
