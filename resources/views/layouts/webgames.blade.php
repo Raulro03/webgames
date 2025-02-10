@@ -7,6 +7,7 @@
     <title>WebGames</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @livewireScripts
 </head>
 <body>
 <!-- Navbar -->
