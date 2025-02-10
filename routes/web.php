@@ -7,6 +7,7 @@ use App\Http\Controllers\Pages\PageGamesController;
 use App\Http\Controllers\Pages\PagePlatformsController;
 use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
+use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', PageWelcomeController::class)->name('welcome');
@@ -43,6 +44,8 @@ Route::middleware([
     Route::get('/characters/{character}', [PageCharactersController::class, 'show'])->name('characters.show');
     Route::get('/platforms/{platform}', [PagePlatformsController::class, 'show'])->name('platforms.show');
     Route::get('/versus', [PageVersusController::class, 'index'])->name('versus');
+    Route::get('/top-games', TopGames::class)->name('top-games');
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
