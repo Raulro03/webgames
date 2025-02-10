@@ -28,9 +28,12 @@
                              alt="{{ $character->name }}"
                              class="w-20 h-20 object-cover rounded-md border-2 border-white">
                         <h3 class="mt-2 font-bold">{{ $character->name }}</h3>
-                        <p class="text-sm">🔥 Fuerza: {{ $character->strength }}</p>
-                        <p class="text-sm">⚡ Velocidad: {{ $character->speed }}</p>
-                        <p class="text-sm">🧠 Inteligencia: {{ $character->intelligence }}</p>
+                        <p class="text-sm">💪 Constitución: {{ $character->statistics->constitution }}</p>
+                        <p class="text-sm">🔥 Fuerza: {{ $character->statistics->strength }}</p>
+                        <p class="text-sm">⚡ Velocidad: {{ $character->statistics->agility }}</p>
+                        <p class="text-sm">🧠 Inteligencia: {{ $character->statistics->intelligence }}</p>
+                        <p class="text-sm">✨ Carisma: {{ $character->statistics->charisma }}</p>
+
                     </div>
                 @endforeach
             </div>

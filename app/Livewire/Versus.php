@@ -13,7 +13,7 @@ class Versus extends Component
 
     public function mount()
     {
-        $this->characters = Character::all(); // Cargar todos los personajes
+        $this->characters = Character::all();
     }
 
     public function selectCharacter($characterId)
@@ -31,10 +31,16 @@ class Versus extends Component
     {
         [$char1, $char2] = $this->selectedCharacters;
 
-        $char1Score = $char1->strength + $char1->speed + $char1->intelligence;
-        $char2Score = $char2->strength + $char2->speed + $char2->intelligence;
+        $char1Score = $char1->statistics->constitution + $char1->statistics->strength + $char1->statistics->agility + $char1->statistics->intelligence + $char1->statistics->charisma;
+        $char2Score = $char2->statistics->constitution + $char2->statistics->strength + $char2->statistics->agility + $char2->statistics->intelligence + $char2->statistics->charisma;
 
-        $this->winner = $char1Score > $char2Score ? $char1 : $char2;
+        if ($char1Score > $char2Score) {
+            $this->winner = $char1;
+        } elseif ($char1Score < $char2Score) {
+            $this->winner = $char2;
+        } else {
+            $this->winner = 'draw';
+        }
     }
 
     public function resetSelection()
