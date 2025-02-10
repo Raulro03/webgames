@@ -2,6 +2,12 @@
 
 @section('content')
 
+    <!--<div class="flex justify-end mt-4">
+        <a href=" route('top-platforms') }}" class=" mr-2 bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-purple-700">
+            Ver Plataformas Más Populares
+        </a>
+    </div>-->
+
     <div class="max-w-7xl mx-auto mt-10 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- PLatformas -->
         @foreach($platforms as $platform)
