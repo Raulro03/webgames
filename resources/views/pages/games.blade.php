@@ -21,4 +21,8 @@
 
     @endforeach
     </div>
+
+    <div class="d-flex m-3 px-6 justify-content-center">
+        {{ $games->links() }}
+    </div>
 @endsection

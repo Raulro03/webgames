@@ -9,7 +9,7 @@ class PagePlatformsController extends Controller
 {
     public function index()
     {
-        $platforms = Platform::all();
+        $platforms = Platform::query()->paginate(9);
         return view('pages.platforms', compact('platforms'));
     }
 

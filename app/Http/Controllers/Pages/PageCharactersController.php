@@ -9,7 +9,7 @@ class PageCharactersController extends Controller
 {
     public function index()
     {
-        $characters = Character::all();
+        $characters = Character::query()->paginate(9);
         return view('pages.characters', compact('characters'));
     }
 
