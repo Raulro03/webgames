@@ -14,7 +14,7 @@
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{$platform->name}}</h2>
                         <p class="mt-2 text-gray-600 dark:text-gray-400">{{Str::limit($platform->description, 50)}}</p>
                         <div class="mt-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">{{$platform->price / 100}}€</span>
+                            <span class="text-lg font-semibold text-gray-900 dark:text-white">{{number_format($platform->price / 100, 2, ',', '.')}}€</span>
                         </div>
                     </div>
                 </div>

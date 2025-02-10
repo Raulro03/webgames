@@ -20,7 +20,7 @@ class PlatformFactory extends Factory
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
             'image_url' => 'images/platforms/' . $this->faker->randomElement([
                     'nintendo.jpg',
-                    'ps4.png',
+                    'ps4.jpg',
                     'xbox.png',
                 ]),
             'created_at' => Carbon::now(),

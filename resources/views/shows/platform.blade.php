@@ -11,7 +11,7 @@
                 <img src="{{ asset($platform->image_url) }}" alt="{{ $platform->name }}" class="w-64 h-64 object-cover rounded-lg shadow-md border border-gray-300">
                 <div class="md:ml-6 mt-4 md:mt-0 text-gray-700 dark:text-gray-300">
                     <p><strong>Descripción:</strong> {{ $platform->description }}</p>
-                    <p><strong>Precio:</strong> {{ $platform->price / 100 }}€</p>
+                    <p><strong>Precio:</strong> {{ number_format($platform->price / 100, 2, ',', '.') }}€</p>
                     <p><strong>Calificaion promedio:</strong> {{ $platform->average_rating }}</p>
                     <p><strong>Fecha de lanzamiento:</strong> {{ $platform->release_date->format('d/m/Y') }}</p>
                 </div>

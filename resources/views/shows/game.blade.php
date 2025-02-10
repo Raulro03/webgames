@@ -15,7 +15,7 @@
                     <p><strong>Plataformas:</strong> {{ $game->platforms->pluck('name')->join(', ') }}</p>
                     <p><strong>Categorías:</strong> {{ $game->categories->pluck('name')->join(', ') }}</p>
                     <p><strong>Descripción:</strong> {{ $game->description }}</p>
-                    <p><strong>Precio:</strong> {{ $game->price / 100 }}€</p>
+                    <p><strong>Precio:</strong> {{ number_format($game->price / 100, 2, ',', '.') }}€</p>
                     <p><strong>Calificaion promedio:</strong> {{ $game->average_rating }}</p>
                     <p><strong>Fecha de lanzamiento:</strong> {{ $game->release_date->format('d/m/Y') }}</p>
                 </div>
