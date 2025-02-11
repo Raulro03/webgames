@@ -2,5 +2,4 @@
 
 @section('content')
     <livewire:versus />
-
 @endsection

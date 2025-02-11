@@ -28,6 +28,7 @@ class Platform extends Model
 
     public function games(): BelongsToMany
     {
-        return $this->belongsToMany(Game::class, 'platform_game');
+        return $this->belongsToMany(Game::class, 'platform_game')
+            ->withPivot('sales')->withTimestamps();
     }
 }
