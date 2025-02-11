@@ -36,7 +36,8 @@ class Game extends Model
 
     public function characters(): BelongsToMany
     {
-        return $this->belongsToMany(Character::class, 'character_game');
+        return $this->belongsToMany(Character::class, 'character_game')
+            ->withPivot('appearance')->withTimestamps();
     }
 
     public function platforms(): BelongsToMany

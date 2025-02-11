@@ -12,6 +12,12 @@
                 <div class="md:ml-6 mt-4 md:mt-0 text-gray-700 dark:text-gray-300">
                     <p><strong>Descripción:</strong> {{ $character->description }}</p>
                     <p><strong>Edad:</strong> {{ $character->age }} años</p>
+                    @foreach($character->games as $game)
+                        <div class="mt-4 p-4 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-md">
+                            <a href="{{ route('games.show', $game->id) }}" class="text-lg font-semibold text-gray-800 dark:text-gray-200"><strong>Juego:</strong> {{ $game->title }}</a>
+                            <p class="text-lg text-gray-600 dark:text-gray-400"><strong>Aparecio en:</strong> {{ $game->pivot->appearance ?? 'No aparece' }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 

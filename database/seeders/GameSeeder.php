@@ -26,10 +26,12 @@ class GameSeeder extends Seeder
 
             $games->each(function ($game) use ($platforms, $characters, $categories) {
                 // Asignar 2 plataformas al juego
-                $game->platforms()->attach($platforms->random(2)->pluck('id'), [ 'sales' => fake()->numberBetween(10000, 1000000) ]);
+                $game->platforms()->attach($platforms->random(2)->pluck('id'),
+                    [ 'sales' => fake()->numberBetween(10000, 1000000) ]);
 
                 // Asignar 2 personajes al juego
-                $game->characters()->attach($characters->random(2)->pluck('id'));
+                $game->characters()->attach($characters->random(2)->pluck('id'),
+                    [ 'appearance' => now()->subDays(rand(100, 1000)) ]);
 
                 // Asignar 1 o 2 categorías al juego
                 $game->categories()->attach($categories->random(rand(1, 2))->pluck('id'));
