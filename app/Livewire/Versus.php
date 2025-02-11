@@ -39,7 +39,7 @@ class Versus extends Component
         } elseif ($char1Score < $char2Score) {
             $this->winner = $char2;
         } else {
-            $this->winner = 'draw';
+            $this->winner = 'Empate';
         }
     }
 

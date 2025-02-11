@@ -39,7 +39,7 @@
             </div>
 
             <div class="mt-6">
-                <h3 class="text-2xl font-bold text-yellow-400 animate-pulse">🏆 Ganador: {{ $winner->name }}</h3>
+                <h3 class="text-2xl font-bold text-yellow-400 animate-pulse">🏆 Ganador: {{ is_object($winner) ? $winner->name : $winner }}</h3>
             </div>
 
             <button wire:click="resetSelection"
