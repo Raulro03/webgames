@@ -10,11 +10,11 @@ class ForumCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'category_type', 'related_id'];
+    protected $fillable = [ 'category_type', 'related_id'];
 
     public function posts(): HasMany
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class, 'category_id');
     }
 
     public function related()

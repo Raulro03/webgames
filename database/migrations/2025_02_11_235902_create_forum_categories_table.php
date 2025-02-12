@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('forum_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('category_type'); // 'Game', 'platform', 'character' o 'general'
             $table->unsignedBigInteger('related_id')->nullable(); // ID de juego/plataforma/personaje si aplica
             $table->timestamps();

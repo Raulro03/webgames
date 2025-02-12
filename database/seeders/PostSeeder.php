@@ -11,7 +11,7 @@ class PostSeeder extends Seeder
 {
     public function run(): void
     {
-        Post::factory(10)->state(function () {
+        Post::factory(20)->state(function () {
             return [
                 'user_id' => User::inRandomOrder()->first()->id,
                 'category_id' => ForumCategory::inRandomOrder()->first()->id,
