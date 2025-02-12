@@ -21,16 +21,21 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
         ]);
+
+        User::factory(4)->create();
 
         $this->call([
             PlatformsSeeder::class,
             DeveloperSeeder::class,
             CategorySeeder::class,
             CharacterSeeder::class,
-            GameSeeder::class,  // El seeder de GameSeeder al final porque depende de los otros seeders
+            GameSeeder::class,
+            ForumCategorySeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
         ]);
 
 
