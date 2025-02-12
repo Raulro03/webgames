@@ -22,10 +22,13 @@ class ForumController extends Controller
         return view('forum.category', compact('posts'));
     }
 
-    public function showPost(Post $post)
+    public function showPost($category , Post $post)
     {
 
-        return view('forum.show', compact('post'));
+        $comments = $post->comments()->with('replies.user')->latest()->get();
+
+
+        return view('forum.show', compact('post', 'category'));
     }
 
     public function storePost(StorePostRequest $request)

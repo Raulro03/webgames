@@ -11,7 +11,7 @@
                 <div class="bg-purple-900 text-white shadow-lg rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl">
                     <h2 class="text-xl font-semibold text-purple-300 mb-3">{{ $post->title }}</h2>
                     <p class="text-sm text-purple-200">{{ Str::limit($post->body, 100) }}</p>
-                    <a href="{{ route('forum.show', $post->id) }}" class="block mt-4 text-purple-400 font-medium hover:text-purple-200">
+                    <a href="{{ route('forum.show', ['category' => $post->forum_category->category_type , 'post' => $post])}}" class="block mt-4 text-purple-400 font-medium hover:text-purple-200">
                         Leer más →
                     </a>
                 </div>

@@ -22,7 +22,7 @@ Route::get('/platforms', [PagePlatformsController::class, 'index'])->name('platf
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/forum/{category}', [ForumController::class, 'showPostsOfCategory'])->name('forum.category');
-Route::get('/forum/{post}', [ForumController::class, 'showPost'])->name('forum.show');
+Route::get('/forum/{category}/post/{post}', [ForumController::class, 'showPost'])->name('forum.show');
 
 Route::get('/about', function () {
     return view('about');
