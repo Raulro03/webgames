@@ -25,7 +25,6 @@ class ForumController extends Controller
     public function showPost(Post $post)
     {
 
-
         return view('forum.show', compact('post'));
     }
 
