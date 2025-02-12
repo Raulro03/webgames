@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('category_id')->constrained('forum_categories')->onDelete('cascade');
+            $table->foreignId('category_id')->after('user_id')->constrained('forum_categories')->onDelete('cascade');
         });
     }
 
