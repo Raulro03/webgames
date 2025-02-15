@@ -51,7 +51,7 @@ class IGDBService {
             'Client-ID' => $this->clientId,
             'Authorization' => 'Bearer ' . $this->accessToken,
         ])->withBody("
-            fields name, cover.url, rating;
+            fields name, cover.url, rating, url;
             where id = $gameId;
         ", 'text/plain')->post('https://api.igdb.com/v4/games');
 
