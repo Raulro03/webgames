@@ -11,8 +11,16 @@
 |
 */
 
-pest()->extend(Tests\TestCase::class)
-    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+use App\Models\User;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Spatie\Permission\Models\Role;
+use Tests\TestCase;
+use function Pest\Laravel\actingAs;
+
+uses(TestCase::class, LazilyRefreshDatabase::class)
+    ->beforeEach(function (){
+        ConfirmRolesExist();
+    })
     ->in('Feature');
 
 /*
@@ -25,6 +33,30 @@ pest()->extend(Tests\TestCase::class)
 | to assert different things. Of course, you may extend the Expectation API at any time.
 |
 */
+
+function loginAsUser(?User $user = null)
+{
+    $user = $user ?? User::factory()->create();
+
+    actingAs($user);
+
+    return $user;
+}
+
+function ConfirmRolesExist(): void
+{
+    if (!Role::where('name', 'user')->exists()) {
+        Role::create(['name' => 'user']);
+    }
+
+    if (!Role::where('name', 'admin')->exists()) {
+        Role::create(['name' => 'admin']);
+    }
+
+    if (!Role::where('name', 'author')->exists()) {
+        Role::create(['name' => 'author']);
+    }
+}
 
 expect()->extend('toBeOne', function () {
     return $this->toBe(1);
