@@ -33,6 +33,7 @@ it('displays login link if not logged in', function () {
 
 it('displays logout link if logged in', function () {
     // Act & Assert
+    ConfirmRolesExist();
     loginAsUser();
     get(route('welcome'))
         ->assertOk()

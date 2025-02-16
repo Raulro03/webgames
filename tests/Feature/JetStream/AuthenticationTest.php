@@ -10,6 +10,7 @@ test('login screen can be rendered', function () {
 });
 
 test('users can authenticate using the login screen', function () {
+    ConfirmRolesExist();
 
     $user = User::factory()->create();
 
@@ -25,6 +26,7 @@ test('users can authenticate using the login screen', function () {
 });
 
 test('users cannot authenticate with invalid password', function () {
+    ConfirmRolesExist();
     $user = User::factory()->create();
 
     $this->post('/login', [

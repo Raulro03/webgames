@@ -3,6 +3,10 @@
 use App\Models\User;
 use Laravel\Jetstream\Features;
 
+beforeEach(function () {
+    ConfirmRolesExist();
+});
+
 test('confirm password screen can be rendered', function () {
     $user = Features::hasTeamFeatures()
                     ? User::factory()->withPersonalTeam()->create()

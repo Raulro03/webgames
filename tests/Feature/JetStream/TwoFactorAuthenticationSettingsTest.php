@@ -5,6 +5,10 @@ use Laravel\Fortify\Features;
 use Laravel\Jetstream\Http\Livewire\TwoFactorAuthenticationForm;
 use Livewire\Livewire;
 
+beforeEach(function () {
+    ConfirmRolesExist();
+});
+
 test('two factor authentication can be enabled', function () {
     $this->actingAs($user = User::factory()->create()->fresh());
 

@@ -5,6 +5,10 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
 use Laravel\Fortify\Features;
 
+beforeEach(function () {
+    ConfirmRolesExist();
+});
+
 test('reset password link screen can be rendered', function () {
     $response = $this->get('/forgot-password');
 

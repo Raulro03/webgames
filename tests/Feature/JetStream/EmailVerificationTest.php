@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\URL;
 use Laravel\Fortify\Features;
 
 test('email verification screen can be rendered', function () {
+    ConfirmRolesExist();
     $user = User::factory()->withPersonalTeam()->create([
         'email_verified_at' => null,
     ]);
@@ -20,7 +21,7 @@ test('email verification screen can be rendered', function () {
 
 test('email can be verified', function () {
     Event::fake();
-
+    ConfirmRolesExist();
     $user = User::factory()->create([
         'email_verified_at' => null,
     ]);
@@ -42,6 +43,7 @@ test('email can be verified', function () {
 }, 'Email verification not enabled.');
 
 test('email can not verified with invalid hash', function () {
+    ConfirmRolesExist();
     $user = User::factory()->create([
         'email_verified_at' => null,
     ]);

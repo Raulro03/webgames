@@ -17,11 +17,7 @@ use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 use function Pest\Laravel\actingAs;
 
-uses(TestCase::class, LazilyRefreshDatabase::class)
-    ->beforeEach(function (){
-        ConfirmRolesExist();
-    })
-    ->in('Feature');
+uses(TestCase::class, LazilyRefreshDatabase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
