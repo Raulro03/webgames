@@ -43,8 +43,9 @@ class UserFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (User $user) {
-
-            $user->assignRole('user');
+            if (!$user->hasRole('admin') || !$user->hasRole('author')) {
+                $user->assignRole('user');
+            }
         });
     }
 

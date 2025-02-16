@@ -9,7 +9,6 @@ use App\Http\Controllers\Pages\PagePlatformsController;
 use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
 use App\Livewire\TopGames;
-use App\Livewire\TopPlatforms;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', PageWelcomeController::class)->name('welcome');
@@ -22,7 +21,6 @@ Route::get('/platforms', [PagePlatformsController::class, 'index'])->name('platf
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/forum/{category}', [ForumController::class, 'showPostsOfCategory'])->name('forum.category');
-Route::get('/forum/{category}/post/{post}', [ForumController::class, 'showPost'])->name('forum.show');
 
 Route::get('/about', function () {
     return view('about');
@@ -48,11 +46,9 @@ Route::middleware([
     Route::get('/versus', [PageVersusController::class, 'index'])->name('versus');
     Route::get('/top-games', TopGames::class)->name('top-games');
 
-    Route::post('/forum/{category}/{post}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
-    Route::post('/forum/{category}/store', [ForumController::class, 'storePost'])->name('forum.post.store');
-    Route::patch('/forum/{category}/{post}/update', [ForumController::class, 'updatePost'])->name('forum.post.update');
-    Route::delete('/forum/{category}/{post}/destroy', [ForumController::class, 'destroyPost'])->name('forum.post.destroy');
-    //Route::get('/top-platforms', TopPlatforms::class)->name('top-platforms');
+    Route::post('/forum/{post}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
+    Route::resource('forum/post', ForumController::class)
+        ->only(['show','create', 'store', 'edit', 'update', 'destroy']);
 
     Route::get('/dashboard', function () {
         return view('dashboard');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\ForumCategory;
 use App\Models\Post;
 
@@ -12,6 +13,7 @@ class ForumController extends Controller
     {
         return view('pages.forum');
     }
+
 
     public function showPostsOfCategory($categoryType)
     {
@@ -23,30 +25,53 @@ class ForumController extends Controller
         return view('forum.category', compact('posts'));
     }
 
-    public function showPost($category , Post $post)
+    public function show(Post $post)
     {
 
-        $comments = $post->comments()->with('replies.user')->latest()->get();
-
-
-        return view('forum.show', compact('post', 'category'));
+        return view('forum.show', compact('post'));
     }
 
-    public function storePost(StorePostRequest $request)
+    public function create()
     {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'category_id' => 'required|exists:categories,id'
-        ]);
 
-        Post::create([
-            'user_id' => auth()->id(),
-            'title' => $request->title,
-            'body' => $request->body,
-            'category_id' => $request->category_id
-        ]);
+        return view('forum.create', ['post' => new Post()]);
+    }
 
-        return redirect()->route('forum.index');
+    public function store(StorePostRequest $request){
+
+        auth()->user()->posts()->create($request->validated());
+
+        event(new PostCreated(auth()->user()));
+
+        return to_route('forum')
+            ->with('status', 'Post creates succesfully!');
+    }
+
+    public function edit(Post $post){
+
+        return view('forum.edit', compact('post'));
+    }
+
+    public function update(UpdatePostRequest $request, Post $post)
+    {
+
+        $post->update($request->validated());
+
+        return to_route('posts.show', $post)
+            ->with('status', 'Post updates succesfully!');
+    }
+
+    public function destroy(Post $post){
+        $post->delete();
+
+        return to_route('forum')
+            ->with('status', 'Post deletes succesfully!');
+    }
+
+    public function myPosts()
+    {
+        $posts = auth()->user()->posts()->paginate(6);
+
+        return view('forum.my-posts', compact('posts'));
     }
 }
