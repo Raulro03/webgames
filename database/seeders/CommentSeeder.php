@@ -16,13 +16,13 @@ class CommentSeeder extends Seeder
         foreach ($posts as $post) {
             $parentComment = Comment::factory()->state([
                 'post_id' => $post->id,
-                'user_id' => User::inRandomOrder()->first()->id,
+                'user_id' => User::where('id', '!=', 2)->inRandomOrder()->first()->id,
                 'parent_id' => null,
             ])->create();
 
             Comment::factory(2)->state([
                 'post_id' => $post->id,
-                'user_id' => User::inRandomOrder()->first()->id,
+                'user_id' => User::where('id', '!=', 2)->inRandomOrder()->first()->id,
                 'parent_id' => $parentComment->id,
             ])->create();
         }

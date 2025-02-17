@@ -13,7 +13,7 @@ class PostSeeder extends Seeder
     {
         Post::factory(50)->state(function () {
             return [
-                'user_id' => User::inRandomOrder()->first()->id,
+                'user_id' => User::where('id', '!=', 2)->inRandomOrder()->first()->id,
                 'category_id' => ForumCategory::inRandomOrder()->first()->id,
             ];
         })->create();
