@@ -13,7 +13,20 @@
                 <div class="bg-purple-900 text-white shadow-lg rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl">
                     <h2 class="text-xl font-semibold text-purple-300 mb-3">{{ $post->title }}</h2>
                     <p class="text-sm text-purple-200">{{ Str::limit($post->body, 100) }}</p>
-                    <p class="text-xs text-purple-400 mt-2">📅 Publicado el: <span class="font-medium">{{ $post->published_at->format('d/m/Y') }}</span></p>
+                    <div class="flex items-center mt-4">
+                        <img class="h-10 w-10 rounded-full border-2 border-purple-500 object-cover shadow-lg"
+                             src="https://ui-avatars.com/api?name={{ urlencode($post->user->name) }}"
+                             alt="{{ $post->user->name }}"/>
+
+                        <div class="ml-3">
+                            <p class="text-xs text-purple-400">
+                                📅 Publicado el: <span class="font-medium">{{ $post->published_at->format('d/m/Y') }}</span>
+                            </p>
+                            <p class="text-sm font-medium text-purple-300">
+                                By {{ $post->user->name }}
+                            </p>
+                        </div>
+                    </div>
                     <a href="{{ route('post.show', $post)}}" class="block mt-4 text-purple-400 font-medium hover:text-purple-200">
                         Leer más →
                     </a>

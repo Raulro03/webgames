@@ -17,7 +17,9 @@
                 <a href="{{route("platforms")}}" class="{{ request()->is('platforms') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Plataformas</a>
                 <a href="{{route("forum")}}" class="{{ request()->is('forum') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Foro</a>
                 <a href="{{route("versus")}}" class="{{ request()->is('versus') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Versus</a>
-                <a href="{{route("forum.my-posts")}}" class="{{ request()->is('forum.my-posts') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Mis Posts</a>
+               @auth()
+                    <a href="{{route("forum.my-posts")}}" class="{{ request()->is('forum.my-posts') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Mis Posts</a>
+                @endauth
             </div>
             <!-- Botones de Login y Register o Dropdown-->
             <div class="hidden md:flex space-x-4">
