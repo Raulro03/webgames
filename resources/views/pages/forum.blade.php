@@ -1,6 +1,15 @@
 @extends('layouts.webgames')
 
 @section('content')
+    @if (session('status'))
+        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
+             class="container mx-auto p-4">
+            <div class="bg-green-600 text-white p-4 rounded-lg shadow-md text-center transition-opacity duration-500 ease-in-out animate-fade-in">
+                <p>{{ session('status') }}</p>
+            </div>
+        </div>
+    @endif
+
     <div class="container mx-auto py-12 px-6">
         <h1 class="text-4xl font-extrabold text-purple-300 text-center mb-8">🎮 Foro de Videojuegos</h1>
 

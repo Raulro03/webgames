@@ -2,14 +2,16 @@
 
 @section('content')
     <div class="container mx-auto py-12 px-6">
-        @dd(auth()->user()->getRoleNames())
-        @if(Auth::user()->roles == 'admin' || Auth::user()->id == $post->user_id && Auth::user()->roles() == 'author')
+
+        @if(Auth::user()->hasRole('admin') || Auth::user()->id == $post->user_id && Auth::user()->assignRole('author'))
             <div
-                class="flex items-center justify-center space-x-10"
+                class="flex items-center justify-center space-x-10 mb-3"
             >
                 <a
-                    class="rounded-full bg-sky-600 p-4 text-sky-100 shadow-lg hover:bg-sky-700 active:bg-sky-800"
-                    href="{{ route('posts.edit', $post) }}"
+                    class="flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700
+                        text-white font-semibold shadow-md transition duration-300 hover:scale-105 hover:from-blue-600
+                        hover:to-blue-800 focus:ring-4 focus:ring-blue-300"
+                    href="{{ route('post.edit', $post) }}"
                 >
                     <svg
                         class="h-6 w-6"
@@ -28,12 +30,14 @@
                         ></path>
                     </svg>
                 </a>
-                <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                <form action="{{ route('post.destroy', $post) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button
                         type="submit"
-                        class="rounded-full bg-red-600 p-4 text-red-100 shadow-lg hover:bg-red-700 active:bg-red-800"
+                        class="flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-700
+                            text-white font-semibold shadow-md transition duration-300 hover:scale-105 hover:from-red-600
+                            hover:to-red-800 focus:ring-4 focus:ring-red-300"
                     >
                         <svg
                             class="h-6 w-6"

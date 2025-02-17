@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreatedEvent;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\ForumCategory;
@@ -33,18 +34,18 @@ class ForumController extends Controller
 
     public function create()
     {
-
-        return view('forum.create', ['post' => new Post()]);
+        $forumCategories = ForumCategory::all();
+        return view('forum.create', ['post' => new Post() ], compact('forumCategories'));
     }
 
     public function store(StorePostRequest $request){
 
         auth()->user()->posts()->create($request->validated());
 
-        event(new PostCreated(auth()->user()));
+        event(new PostCreatedEvent(auth()->user()));
 
         return to_route('forum')
-            ->with('status', 'Post creates succesfully!');
+            ->with('status', 'Post creates successfully!');
     }
 
     public function edit(Post $post){
@@ -58,14 +59,14 @@ class ForumController extends Controller
         $post->update($request->validated());
 
         return to_route('posts.show', $post)
-            ->with('status', 'Post updates succesfully!');
+            ->with('status', 'Post updates successfully!');
     }
 
     public function destroy(Post $post){
         $post->delete();
 
         return to_route('forum')
-            ->with('status', 'Post deletes succesfully!');
+            ->with('status', 'Post deletes successfully!');
     }
 
     public function myPosts()
