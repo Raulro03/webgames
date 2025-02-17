@@ -75,6 +75,10 @@
             <div class="p-6 text-gray-800 leading-relaxed">
                 <p>{{ $post->body }}</p>
             </div>
+            <div class="p-4 text-gray-800 leading-relaxed">
+                <p><strong>Categoría:</strong> {{ $post->forum_category->category_type." , ".$post->forum_category->related_id }}</p>
+            </div>
+
         </div>
 
         <!-- Sección de Comentarios -->
