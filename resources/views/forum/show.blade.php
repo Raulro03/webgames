@@ -11,7 +11,7 @@
     @endif
     <div class="container mx-auto py-12 px-6">
 
-        @if(Auth::user()->hasRole('admin') || Auth::user()->id == $post->user_id && Auth::user()->assignRole('author'))
+        @if(Auth::user()->hasRole('admin') || Auth::user()->id == $post->user_id && Auth::user()->hasRole('author'))
             <div
                 class="flex items-center justify-center space-x-10 mb-3"
             >
