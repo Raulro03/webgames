@@ -20,6 +20,8 @@ Route::get('/characters', [PageCharactersController::class, 'index'])->name('cha
 Route::get('/platforms', [PagePlatformsController::class, 'index'])->name('platforms');
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+Route::get('/forum/my-posts', [ForumController::class, 'myPosts'])->name('forum.my-posts')
+    ->middleware('auth');
 Route::get('/forum/{category}', [ForumController::class, 'showPostsOfCategory'])->name('forum.category');
 
 Route::get('/about', function () {
@@ -47,7 +49,6 @@ Route::middleware([
     Route::get('/top-games', TopGames::class)->name('top-games');
 
     Route::post('/forum/{post}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
-    Route::get('/forum/my-posts', [ForumController::class, 'myPosts'])->name('forum.my-posts');
     Route::resource('forum/post', ForumController::class)
         ->only(['show','create', 'store', 'edit', 'update', 'destroy']);
 

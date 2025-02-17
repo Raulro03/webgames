@@ -75,8 +75,6 @@ class ForumController extends Controller
     {
         $posts = auth()->user()->posts()->paginate(6);
 
-        dd($posts);
-
         return view('forum.my-posts', compact('posts'));
     }
 }
