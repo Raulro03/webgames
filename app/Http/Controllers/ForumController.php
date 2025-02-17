@@ -40,7 +40,7 @@ class ForumController extends Controller
 
     public function store(StorePostRequest $request){
 
-        auth()->user()->posts()->create($request->validated());
+        auth()->user()->posts()->create(array_merge($request->validated(), ['user_id' => auth()->id()]));
 
         event(new PostCreatedEvent(auth()->user()));
 

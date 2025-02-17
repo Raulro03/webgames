@@ -20,7 +20,7 @@ class Post extends Model
 
     public function forum_category(): BelongsTo
     {
-        return $this->belongsTo(ForumCategory::class, 'category_id');
+        return $this->belongsTo(ForumCategory::class);
     }
 
     public function comments(): HasMany

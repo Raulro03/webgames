@@ -9,11 +9,10 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'exists:users'],
             'title' => ['required'],
             'body' => ['required'],
             'published_at' => ['required', 'date'],
-            'category_id' => ['required', 'exists:forum_categories'],
+            'category_id' => ['required'],
         ];
     }
 

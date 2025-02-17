@@ -25,13 +25,14 @@
                   class="block w-full mt-1"
     />
     <x-input-error :messages="$errors->get('published_at')" class="mt-2" />
-    <!--<input type="hidden" name="user_id" value=" auth()->id() "> Mal uso ya que los clientes pueden ver nuestra id-->
 </div>
 <div>
     <x-input-label for="category_id" :value="__('Category_Id')" />
     <select name="category_id" id="category_id" class="block w-full mt-1">
-        @foreach($categories as $category)
-            <option value="{{$category->id}}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+
+        @foreach($forumCategories as $category)
+
+            <option value="{{$category->id}}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>{{$category->category_type ." , ". $category->related_id}}</option>
         @endforeach
     </select>
 
