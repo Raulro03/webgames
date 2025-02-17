@@ -6,7 +6,7 @@
                   value="{{ old('title', $post->title) }}"
                   class="block w-full mt-1"
     />
-    <x-input-error :messages="$errors->get('title')" class="mt-2" />
+    <x-input-error-form :messages="$errors->get('title')" class="mt-2" />
 </div>
 <div>
     <x-input-label for="body" :value="__('Body')" />
@@ -14,7 +14,7 @@
                 name="body"
                 class="block w-full mt-1"
     >{{ old('body', $post->body) }}</x-textarea>
-    <x-input-error :messages="$errors->get('body')" class="mt-2" />
+    <x-input-error-form :messages="$errors->get('body')" class="mt-2" />
 </div>
 <div>
     <x-input-label for="published_at" :value="__('Published_At')" />
@@ -24,7 +24,7 @@
                   value="{{ old('published_at', $post->published_at) }}"
                   class="block w-full mt-1"
     />
-    <x-input-error :messages="$errors->get('published_at')" class="mt-2" />
+    <x-input-error-form :messages="$errors->get('published_at')" class="mt-2" />
 </div>
 <div>
     <x-input-label for="category_id" :value="__('Category_Id')" />
@@ -36,5 +36,5 @@
         @endforeach
     </select>
 
-    <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+    <x-input-error-form :messages="$errors->get('category_id')" class="mt-2" />
 </div>
