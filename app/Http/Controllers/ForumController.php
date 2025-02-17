@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\ForumCategory;
 use App\Models\Post;
+use JetBrains\PhpStorm\NoReturn;
 
 class ForumController extends Controller
 {
@@ -49,8 +50,9 @@ class ForumController extends Controller
     }
 
     public function edit(Post $post){
+        $forumCategories = ForumCategory::all();
 
-        return view('forum.edit', compact('post'));
+        return view('forum.edit', compact('post'), compact('forumCategories'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
@@ -58,7 +60,7 @@ class ForumController extends Controller
 
         $post->update($request->validated());
 
-        return to_route('posts.show', $post)
+        return to_route('post.show', $post)
             ->with('status', 'Post updates successfully!');
     }
 
@@ -72,6 +74,8 @@ class ForumController extends Controller
     public function myPosts()
     {
         $posts = auth()->user()->posts()->paginate(6);
+
+        dd($posts);
 
         return view('forum.my-posts', compact('posts'));
     }

@@ -47,8 +47,10 @@ Route::middleware([
     Route::get('/top-games', TopGames::class)->name('top-games');
 
     Route::post('/forum/{post}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
+    Route::get('/forum/my-posts', [ForumController::class, 'myPosts'])->name('forum.my-posts');
     Route::resource('forum/post', ForumController::class)
         ->only(['show','create', 'store', 'edit', 'update', 'destroy']);
+
 
     Route::get('/dashboard', function () {
         return view('dashboard');
