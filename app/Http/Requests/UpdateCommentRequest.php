@@ -9,11 +9,9 @@ class UpdateCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'post_id' => ['required', 'exists:posts'],
-            'user_id' => ['required', 'exists:users'],
+            'post_id' => ['required'],
             'body' => ['required'],
-            'published_at' => ['required', 'date'],
-            'parent_id' => ['nullable', 'exists:comments'],
+            'parent_id' => ['nullable'],
         ];
     }
 

@@ -70,64 +70,27 @@
         <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
             <div class="bg-purple-600 text-white text-center py-6">
                 <h1 class="text-3xl font-bold">{{ $post->title }}</h1>
-                <p class="text-purple-200 text-sm">Publicado por {{ $post->user->name }} - {{ $post->created_at->diffForHumans() }}</p>
+                <p class="text-purple-200 text-sm">Publicado por {{ $post->user->name }} - {{ $post->published_at->diffForHumans() }}</p>
             </div>
             <div class="p-6 text-gray-800 leading-relaxed">
                 <p>{{ $post->body }}</p>
             </div>
             <div class="p-4 text-gray-800 leading-relaxed flex justify-between items-center">
                 <p><strong>Categoría:</strong> {{ $post->forum_category->category_type." , ".$post->forum_category->related_id }}</p>
-                <a href="{{ route('comments.create', $post) }}" class="px-4 py-2 text-purple-600 hover:text-purple-900">Comentar</a>
+                <a href="{{ route('comment.create', $post ) }}" class="px-4 py-2 text-purple-600 hover:text-purple-900">Comentar</a>
             </div>
         </div>
 
-        <!-- Sección de Comentarios -->
         <div class="max-w-3xl mx-auto mt-10">
             <h2 class="text-2xl font-bold text-purple-600 mb-4">Comentarios</h2>
             <div class="space-y-4">
-                @foreach ($post->comments as $comment)
-
-                    <div class="bg-purple-100 p-4 rounded-lg shadow-md">
-                        <div class="flex justify-between items-center">
-                            <p class="text-sm text-purple-700">{{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}</p>
-                            <div class="flex space-x-2">
-                                <a href="{{ route('comments.create', $post) }}" class="text-purple-600 hover:text-purple-900">Comentar</a>
-                                <a href="{{ route('comments.edit', $comment) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
-                                <form action="{{ route('comments.destroy', $comment) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-700">Eliminar</button>
-                                </form>
-                            </div>
-                        </div>
-                        <p class="mt-2 text-gray-800">{{ $comment->body }}</p>
-
-                        <!-- Respuestas -->
-                        @if ($comment->replies->count())
-
-                            <div class="mt-4 ml-6 border-l-2 border-purple-400 pl-4 space-y-2">
-                                @foreach ($comment->replies as $reply)
-                                    <div class="bg-purple-200 p-3 rounded-md">
-                                        <div class="flex justify-between items-center">
-                                            <p class="text-sm text-purple-700">{{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}</p>
-                                            <div class="flex space-x-2">
-                                                <a href="{{ route('comments.create', $post) }}" class="text-purple-600 hover:text-purple-900">Comentar</a>
-                                                <a href="{{ route('comments.edit', $comment) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
-                                                <form action="{{ route('comments.destroy', $comment) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="text-red-500 hover:text-red-700">Eliminar</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <p class="mt-2 text-gray-800">{{ $comment->body }}</p>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
+                    <div class="space-y-4">
+                        @foreach ($post->comments as $comment)
+                            @include('components.comment-item', ['comment' => $comment, 'post' => $post])
+                        @endforeach
                     </div>
-                @endforeach
             </div>
         </div>
     </div>
+
 @endsection

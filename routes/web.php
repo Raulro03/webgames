@@ -52,9 +52,10 @@ Route::middleware([
     Route::resource('forum/post', ForumController::class)
         ->only(['show','create', 'store', 'edit', 'update', 'destroy']);
 
-    Route::resource('comments', CommentController::class)->except(['index', 'show']);
+    Route::resource('/comments/{post}/comment', CommentController::class)->except(['index', 'show']);
     Route::get('/my-comments', [CommentController::class, 'myComments'])->name('comments.my-comments');
-    Route::post('/comments/{comment}/reply', [CommentController::class, 'store'])->name('comments.reply');
+    Route::get('/comments/{post}/{comment?}/reply', [CommentController::class, 'create'])->name('replies.create');
+    Route::post('/comments/{post}/{comment?}/reply', [CommentController::class, 'store'])->name('replies.store');
 
     Route::get('/dashboard', function () {
         return view('dashboard');

@@ -13,6 +13,10 @@ class Comment extends Model
 
     protected $fillable = ['post_id', 'user_id', 'body', 'published_at' ,'parent_id'];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

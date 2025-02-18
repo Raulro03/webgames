@@ -9,11 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('comments.store') }}"
+                    <form method="POST" action="{{ route('comment.store', $post) }}"
                           class="space-y-4 max-w-xl">
 
                         @include('comment.form-fields')
-                        <x-primary-button type="submit" class="mt-4">{{ __('Save') }}</x-primary-button>
+                        <div class="flex justify-end mt-4">
+                            <a href="{{ route('post.show', $post) }}"
+                               class="bg-gray-400 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-500">
+                                Cancelar
+                            </a>
+                            <button type="submit"
+                                    class="ml-3 bg-purple-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-purple-700">
+                                Publicar
+                            </button>
+                        </div>
                         @csrf
                     </form>
                 </div>
