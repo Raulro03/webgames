@@ -44,7 +44,7 @@ class UserFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
 
-            if (!$user->hasRole('admin') || !$user->hasRole('user')) {
+            if (!$user->hasRole('admin') && !$user->hasRole('user') && !$user->hasRole('author')) {
                 $user->assignRole('user');
             }
         });

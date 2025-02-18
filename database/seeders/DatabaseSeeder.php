@@ -28,10 +28,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
         ])->assignRole('admin')->save();
 
-        User::factory()->create([
-            'name' => 'Normal User',
-            'email' => 'normal@example.com',
-        ])->assignRole('user');
+        User::factory()->make([
+            'name' => 'Author User',
+            'email' => 'author@example.com',
+        ])->assignRole('author')->save();
 
         User::factory(4)->create()->each(function ($user) {
             $user->assignRole('user');
