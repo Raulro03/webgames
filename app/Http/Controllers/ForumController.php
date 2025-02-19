@@ -60,7 +60,8 @@ class ForumController extends Controller
     }
 
     public function edit(Post $post){
-        $this->authorize('delete', [auth()->user(), $post]);
+
+        $this->authorize('update', $post);
 
         $forumCategories = ForumCategory::all();
 
@@ -69,11 +70,11 @@ class ForumController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $this->authorize('delete', [auth()->user(), $post]);
+        $this->authorize('update', $post);
 
         $post->update($request->validated());
 
-        Artisan::call('posts:update-status');
+        Artisan::call('post:update-status');
 
         return to_route('post.show', $post)
             ->with('status', 'Post updates successfully!');
@@ -81,7 +82,7 @@ class ForumController extends Controller
 
     public function destroy(Post $post){
 
-        $this->authorize('delete', [auth()->user(), $post]);
+        $this->authorize('delete', $post);
 
         $post->delete();
 

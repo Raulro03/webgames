@@ -12,13 +12,13 @@ class CommentPolicy
 
     public function update(User $user, Comment $comment)
     {
-        return $user->hasPermissionTo('edit your comments') && $user->id === $comment->user_id
-            || $user->hasPermissionTo('edit any comment');
+        return ($user->hasRole('author') && $user->id === $comment->user_id)
+            || $user->hasRole('admin');
     }
 
     public function delete(User $user, Comment $comment)
     {
-        return $user->hasPermissionTo('delete your comments') && $user->id === $comment->user_id
-            || $user->hasPermissionTo('delete any comment');
+        return ($user->hasRole('author') && $user->id === $comment->user_id)
+            || $user->hasRole('admin');
     }
 }

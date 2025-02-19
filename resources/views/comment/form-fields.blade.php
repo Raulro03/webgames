@@ -7,14 +7,14 @@
         <p class="text-sm text-gray-600">{{ $parent_comment->user->name }} - {{ $parent_comment->created_at->diffForHumans() }}</p>
         <p class="mt-2 text-gray-800">{{ $parent_comment->body }}</p>
     </div>
-
+    <input type="hidden" name="parent_id" value="{{ $parent_comment->id}}">
 @else
     <div class="mt-4">
         <h4 class="text-md font-semibold">Comentario principal</h4>
     </div>
 @endif
 
-<input type="hidden" name="parent_id" value="{{ $parent_comment->id}}">
+
 
 <input type="hidden" name="post_id" value="{{ $post->id }}">
 

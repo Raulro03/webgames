@@ -27,14 +27,15 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::policy(Post::class, PostPolicy::class);
+        Gate::policy(Comment::class, CommentPolicy::class);
+
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
         Vite::prefetch(concurrency: 3);
 
-        Gate::policy(Post::class, PostPolicy::class);
-        Gate::policy(Comment::class, CommentPolicy::class);
     }
 
     /**
