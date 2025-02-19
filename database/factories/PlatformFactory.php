@@ -15,7 +15,7 @@ class PlatformFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(100),
-            'release_date' => Carbon::now(),
+            'release_date' => Carbon::now()->subYears(rand(0, 10)),
             'price' => $this->faker->randomNumber(),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
             'image_url' => 'images/platforms/' . $this->faker->randomElement([
