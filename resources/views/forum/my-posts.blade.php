@@ -1,6 +1,7 @@
 @extends('layouts.webgames')
 
 @section('content')
+
     <div class="mx-auto mt-8 max-w-6xl">
 
         <h1 class="text-center font-serif text-4xl md:text-5xl font-extrabold text-purple-400">
