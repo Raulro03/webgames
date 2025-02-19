@@ -33,9 +33,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'normal@example.com',
         ])->assignRole('user')->save();
 
-        User::factory(4)->create()->each(function ($user) {
-            $user->assignRole('author');
+        User::factory(4)->make()->each(function ($user) {
+            $user->assignRole('author')->save();
         });
+
 
         $this->call([
             PlatformsSeeder::class,
