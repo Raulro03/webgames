@@ -19,6 +19,7 @@
                 <a href="{{route("versus")}}" class="{{ request()->is('versus') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Versus</a>
                @auth()
                     <a href="{{route("forum.my-posts")}}" class="{{ request()->is('forum.my-posts') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Mis Posts</a>
+                    <a href="{{route("comments.my-comments")}}" class="{{ request()->is('comments.my-comments') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Mis Comentarios</a>
                 @endauth
             </div>
             <!-- Botones de Login y Register o Dropdown-->

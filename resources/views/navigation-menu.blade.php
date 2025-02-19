@@ -18,6 +18,12 @@
                     <x-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
                         {{ __('Home') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('forum.my-posts') }}" :active="request()->routeIs('forum.my-posts')">
+                        {{ __('My Posts') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('comments.my-comments') }}" :active="request()->routeIs('comments.my-comments')">
+                        {{ __('My Comments') }}
+                    </x-nav-link>
                 </div>
             </div>
 
