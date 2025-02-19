@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FirstPostCreatedEvent;
 use App\Events\PostCreatedEvent;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -46,13 +47,14 @@ class ForumController extends Controller
 
     public function store(StorePostRequest $request){
 
-        auth()->user()->posts()->create(array_merge($request->validated(),
+        $post = auth()->user()->posts()->create(array_merge($request->validated(),
             [
                 'user_id' => auth()->id(),
                 'status' => 'published',
             ]
         ));
 
+        event(new FirstPostCreatedEvent($post));
         event(new PostCreatedEvent(auth()->user()));
 
         return to_route('forum')
