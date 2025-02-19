@@ -2,8 +2,10 @@
 
 namespace App\Actions\Fortify;
 
+use App\Mail\CorreoRegistro;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
@@ -33,6 +35,8 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->assignRole('user');
+
+        Mail::to($user->email)->send(new CorreoRegistro($user));
 
         return $user;
     }
