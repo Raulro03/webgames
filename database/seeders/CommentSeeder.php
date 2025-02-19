@@ -20,7 +20,7 @@ class CommentSeeder extends Seeder
                 'parent_id' => null,
             ])->create();
 
-            Comment::factory(2)->state([
+            Comment::factory(1)->state([
                 'post_id' => $post->id,
                 'user_id' => User::where('id', '!=', 2)->inRandomOrder()->first()->id,
                 'parent_id' => $parentComment->id,

@@ -7,10 +7,14 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\ForumCategory;
 use App\Models\Post;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use JetBrains\PhpStorm\NoReturn;
 
 class ForumController extends Controller
 {
+
+    use AuthorizesRequests;
+
     public function index()
     {
         return view('pages.forum');
@@ -50,6 +54,8 @@ class ForumController extends Controller
     }
 
     public function edit(Post $post){
+        $this->authorize('delete', [auth()->user(), $post]);
+
         $forumCategories = ForumCategory::all();
 
         return view('forum.edit', compact('post'), compact('forumCategories'));
@@ -57,6 +63,7 @@ class ForumController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
+        $this->authorize('delete', [auth()->user(), $post]);
 
         $post->update($request->validated());
 
@@ -65,6 +72,9 @@ class ForumController extends Controller
     }
 
     public function destroy(Post $post){
+
+        $this->authorize('delete', [auth()->user(), $post]);
+
         $post->delete();
 
         return to_route('forum')
