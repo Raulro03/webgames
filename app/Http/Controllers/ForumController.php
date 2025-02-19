@@ -28,7 +28,10 @@ class ForumController extends Controller
 
         $categories = ForumCategory::where('category_type', $categoryType)->pluck('id');
 
-        $posts = Post::whereIn('category_id', $categories)->latest('published_at')->paginate(9);
+        $posts = Post::whereIn('category_id', $categories)
+            ->published()
+            ->orderByPublished()
+            ->paginate(9);
 
         return view('forum.category', compact('posts'));
     }
