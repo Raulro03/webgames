@@ -3,8 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\PostCreatedEvent;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Artisan;
 
-class ChangeRoleUserToAuthorListener
+class RunUpdatePostStatus
 {
     /**
      * Create the event listener.
@@ -19,11 +22,9 @@ class ChangeRoleUserToAuthorListener
      */
     public function handle(PostCreatedEvent $event)
     {
-        $user = $event->user;
-        if ($user->hasRole('user')) {
-            $user->removeRole('user');
-            $user->assignRole('author');
-            $user->save();
-        }
+
+        Artisan::call('post:update-status');
+
+        \Log::info("Command ejecutado para actualizar status de posts");
     }
 }

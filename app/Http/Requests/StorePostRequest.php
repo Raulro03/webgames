@@ -13,6 +13,7 @@ class StorePostRequest extends FormRequest
             'body' => ['required'],
             'published_at' => ['required', 'date'],
             'category_id' => ['required'],
+            'status' => ['required', 'in:archived,published,not_published'],
         ];
     }
 

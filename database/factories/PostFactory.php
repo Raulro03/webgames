@@ -15,7 +15,8 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->word(),
             'body' => $this->faker->paragraph(),
-            'published_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'published_at' => $published_at = $this->faker->dateTimeBetween('-1 year', '+1 year'),
+            'status' => $published_at > Carbon::now() ? 'not_published' : ($published_at > Carbon::now()->subYear() ? 'published' : 'archived'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

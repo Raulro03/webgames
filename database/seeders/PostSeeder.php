@@ -17,5 +17,14 @@ class PostSeeder extends Seeder
                 'category_id' => ForumCategory::inRandomOrder()->first()->id,
             ];
         })->create();
+
+        Post::factory(3)->state(function () {
+            return [
+                'user_id' => User::where('id', '!=', 2)->inRandomOrder()->first()->id,
+                'category_id' => ForumCategory::inRandomOrder()->first()->id,
+                'status' => 'published',
+                'published_at' => now()->addYear(),
+            ];
+        })->create();
     }
 }

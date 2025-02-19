@@ -29,12 +29,12 @@ class DatabaseSeeder extends Seeder
         ])->assignRole('admin')->save();
 
         User::factory()->make([
-            'name' => 'Author User',
-            'email' => 'author@example.com',
-        ])->assignRole('author')->save();
+            'name' => 'Normal User',
+            'email' => 'normal@example.com',
+        ])->assignRole('user')->save();
 
         User::factory(4)->create()->each(function ($user) {
-            $user->assignRole('user');
+            $user->assignRole('author');
         });
 
         $this->call([

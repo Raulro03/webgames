@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\ForumCategory;
 use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Artisan;
 use JetBrains\PhpStorm\NoReturn;
 
 class ForumController extends Controller
@@ -45,7 +46,12 @@ class ForumController extends Controller
 
     public function store(StorePostRequest $request){
 
-        auth()->user()->posts()->create(array_merge($request->validated(), ['user_id' => auth()->id()]));
+        auth()->user()->posts()->create(array_merge($request->validated(),
+            [
+                'user_id' => auth()->id(),
+                'status' => 'published',
+            ]
+        ));
 
         event(new PostCreatedEvent(auth()->user()));
 
@@ -66,6 +72,8 @@ class ForumController extends Controller
         $this->authorize('delete', [auth()->user(), $post]);
 
         $post->update($request->validated());
+
+        Artisan::call('posts:update-status');
 
         return to_route('post.show', $post)
             ->with('status', 'Post updates successfully!');
