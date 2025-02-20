@@ -8,6 +8,7 @@ use App\Http\Controllers\Pages\PageGamesController;
 use App\Http\Controllers\Pages\PagePlatformsController;
 use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
+use App\Http\Controllers\PDFController;
 use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,9 @@ Route::middleware([
     Route::get('/games/{game}', [PageGamesController::class, 'show'])->name('games.show');
     Route::get('/characters/{character}', [PageCharactersController::class, 'show'])->name('characters.show');
     Route::get('/platforms/{platform}', [PagePlatformsController::class, 'show'])->name('platforms.show');
+
+    Route::get('/game/{id}/pdf', [PDFController::class, 'gamePDF'])->name('game.pdf');
+    Route::get('/platform/{id}/pdf', [PDFController::class, 'platformPDF'])->name('platform.pdf');
 
     Route::get('/versus', [PageVersusController::class, 'index'])->name('versus');
     Route::get('/top-games', TopGames::class)->name('top-games');

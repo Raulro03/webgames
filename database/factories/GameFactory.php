@@ -19,9 +19,9 @@ class GameFactory extends Factory
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
             'price' => $this->faker->randomNumber(),
             'image_url' => 'images/games/' . $this->faker->randomElement([
-                    'ds1.jpg',
-                    'uncharted.jpg',
-                    'wars.jpg',
+                    'ds1.png',
+                    'uncharted.png',
+                    'wars.png',
                 ]),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

@@ -20,6 +20,8 @@
             <div class="mt-6 text-center">
                 <a href="{{ route('platforms') }}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">Volver a la lista</a>
             </div>
+
+            <x-download-pdf-button route="platform.pdf" :id="$platform->id" />
         </div>
     </div>
 @endsection
