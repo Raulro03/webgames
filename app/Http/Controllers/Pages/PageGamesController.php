@@ -9,8 +9,8 @@ class PageGamesController extends Controller
 {
     public function index()
     {
-        $games = Game::query()->paginate(9);
-        return view('pages.games', compact('games'));
+
+        return view('pages.games');
     }
 
 
