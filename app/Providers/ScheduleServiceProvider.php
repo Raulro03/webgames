@@ -23,6 +23,7 @@ class ScheduleServiceProvider extends ServiceProvider
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
             $schedule->command('logs:clear')->weekly();
+            $schedule->command('posts:delete-old-archived-posts')->weekly();
         });
     }
 }
