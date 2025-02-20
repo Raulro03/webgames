@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CommentResource;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,7 +14,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return CommentResource::collection(Comment::query()->paginate(10));
     }
 
     /**
@@ -26,9 +28,9 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Comment $comment)
     {
-        //
+        return new CommentResource(Comment::with('parent', 'replies')->find($comment->id));
     }
 
     /**

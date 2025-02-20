@@ -40,16 +40,6 @@ class UserFactory extends Factory
         ];
     }
 
-    public function configure()
-    {
-        return $this->afterCreating(function (User $user) {
-
-            if (!$user->hasRole('admin') && !$user->hasRole('user') && !$user->hasRole('author')) {
-                $user->assignRole('user');
-            }
-        });
-    }
-
     /**
      * Indicate that the model's email address should be unverified.
      */

@@ -24,6 +24,9 @@ class ChangeRoleUserToAuthorListener
             $user->removeRole('user');
             $user->assignRole('author');
             $user->save();
+        } else if ($user->roles->isEmpty()) {
+            $user->assignRole('author');
+            $user->save();
         }
     }
 }

@@ -17,7 +17,6 @@ class RoleSeeder extends Seeder
 
         $admin = Role::create(['name' => 'admin']);
         $author = Role::create(['name' => 'author']);
-        Role::create(['name' => 'user']);
 
         Permission::create(['name' => 'edit your posts']);
         Permission::create(['name' => 'delete your posts']);

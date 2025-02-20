@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -12,7 +14,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //
+        return PostResource::collection(Post::query()->paginate(9));
     }
 
     /**
@@ -26,9 +28,9 @@ class ForumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return new PostResource(Post::with('comments')->findOrFail($post->id));
     }
 
     /**

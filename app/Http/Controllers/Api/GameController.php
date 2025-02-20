@@ -16,7 +16,7 @@ class GameController extends Controller
 
     public function show(string $id)
     {
-        return response()->json(Game::query()->find($id));
+        return response()->json(Game::with('developer')->find($id));
     }
 }
 
