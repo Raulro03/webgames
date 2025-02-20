@@ -13,30 +13,31 @@ class GameSearch extends Component
     public $search = '';
     public $orderBy = 'desc';
 
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'orderBy' => ['except' => '']
+    ];
+
     public function updatingSearch()
     {
-        if (empty(trim($this->search))) {
-            $this->reset(['search']);
-            $this->resetPage();
-        }
+        $this->resetPage();
     }
 
     public function toggleOrder()
     {
         $this->orderBy = $this->orderBy === 'desc' ? 'asc' : 'desc';
+        $this->resetPage();
     }
 
     public function render()
     {
-        $searchTerm = trim($this->search ?? '');
+        $searchTerm = trim($this->search);
 
-        $query = Game::query();
-
-        if (!empty($searchTerm)) {
-            $query->where('title', 'like', '%' . $searchTerm . '%');
-        }
-
-        $games = $query->orderBy('average_rating', $this->orderBy)->paginate(9);
+        $games = Game::when($searchTerm, function ($query, $searchTerm) {
+            return $query->where('title', 'like', '%' . $searchTerm . '%');
+        })
+            ->orderBy('average_rating', $this->orderBy)
+            ->paginate(9);
 
         return view('livewire.game-search', compact('games'));
     }

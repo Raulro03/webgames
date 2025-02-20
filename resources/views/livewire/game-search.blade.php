@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center my-6">
         <input
             type="text"
-            wire:model.live.debounce.500ms="search"
+            wire:model.live.debounce.200ms="search"
             placeholder="Buscar juego..."
             class="px-4 py-2 border rounded-md w-1/2"
         >
@@ -21,7 +21,7 @@
         <div class="max-w-7xl mx-auto mt-10 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($games as $game)
 
-            <a href="{{ route('games.show', $game->id) }}" class="block dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"/>
+            <a href="{{ route('games.show', $game->id) }}" class="block dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105">
                 <!-- Bloque de Juego -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                     <img src="{{$game->image_url}}" alt="Nombre del Juego" class="w-full h-48 object-cover">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-
+            </a>
         @endforeach
             </div>
         @else
