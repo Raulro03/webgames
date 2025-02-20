@@ -2,12 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
-use App\Models\Character;
-use App\Models\Developer;
-use App\Models\Game;
-use App\Models\Platform;
-use App\Models\Statistics;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -32,7 +26,6 @@ class DatabaseSeeder extends Seeder
 
         $token = $user->createToken('developer-access')->plainTextToken;
 
-        echo "{$token}";
 
         User::factory()->create([
             'name' => 'Normal User',
@@ -55,6 +48,6 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
         ]);
 
-
+        echo "{$token}";
     }
 }

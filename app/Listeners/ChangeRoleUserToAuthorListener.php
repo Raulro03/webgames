@@ -20,11 +20,7 @@ class ChangeRoleUserToAuthorListener
     public function handle(PostCreatedEvent $event)
     {
         $user = $event->user;
-        if ($user->hasRole('user')) {
-            $user->removeRole('user');
-            $user->assignRole('author');
-            $user->save();
-        } else if ($user->roles->isEmpty()) {
+        if ($user->roles->isEmpty()) {
             $user->assignRole('author');
             $user->save();
         }
