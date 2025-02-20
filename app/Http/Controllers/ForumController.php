@@ -97,7 +97,7 @@ class ForumController extends Controller
 
     public function myPosts()
     {
-        $posts = auth()->user()->posts()->paginate(6);
+        $posts = auth()->user()->posts()->orderByPublished()->paginate(6);
 
         return view('forum.my-posts', compact('posts'));
     }

@@ -11,7 +11,7 @@ class CommentSeeder extends Seeder
 {
     public function run(): void
     {
-        $posts = Post::all();
+        $posts = Post::published()->get();
 
         foreach ($posts as $post) {
             $parentComment = Comment::factory()->state([
