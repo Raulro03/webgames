@@ -61,7 +61,7 @@
 
     <!-- Imagen con URL absoluta -->
     <div class="image-container">
-        <img src="data:image/png;base64,{{ base64_encode(file_get_contents($platform->image_url)) }}" width="300" alt="{{ $platform->name }}">
+        <img src="{{ $imageData }}" width="300" alt="{{ $platform->name }}">
     </div>
 
     <p><span class="highlight">Fecha de lanzamiento:</span> {{ $platform->release_date->format('d/m/Y') }}</p>

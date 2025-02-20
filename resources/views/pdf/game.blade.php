@@ -61,7 +61,7 @@
 
     <!-- Imagen con URL absoluta -->
     <div class="image-container">
-        <img src="data:image/png;base64,{{ base64_encode(file_get_contents($game->image_url)) }}" width="300" alt="{{ $game->title }}">
+        <img src="{{$imageData}}" width="300" alt="{{ $game->title }}">
     </div>
 
     <p><span class="highlight">Descripción:</span> {{ $game->description }}</p>

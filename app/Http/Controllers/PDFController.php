@@ -12,8 +12,15 @@ class PDFController extends Controller
     {
         $game = Game::findOrFail($id);
 
+        $imagePath = public_path($game->image_url);
+        $imageData = '';
 
-        $pdf = PDF::loadView('pdf.game', compact('game'));
+        // Verificar si el archivo existe antes de intentar leerlo
+        if (file_exists($imagePath)) {
+            $imageData = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($imagePath));
+        }
+
+        $pdf = PDF::loadView('pdf.game', compact('game', 'imageData'));
 
         return $pdf->download('Juego_' . $game->title . '.pdf');
     }
@@ -22,7 +29,15 @@ class PDFController extends Controller
     {
         $platform = Platform::findOrFail($id);
 
-        $pdf = PDF::loadView('pdf.platform', compact('platform'));
+        $imagePath = public_path($platform->image_url);
+        $imageData = '';
+
+        // Verificar si el archivo existe antes de intentar leerlo
+        if (file_exists($imagePath)) {
+            $imageData = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($imagePath));
+        }
+
+        $pdf = PDF::loadView('pdf.platform', compact('platform', 'imageData'));
 
         return $pdf->download('Plataforma_' . $platform->name . '.pdf');
     }
