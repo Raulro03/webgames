@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\ReleaseDateScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Game extends Model
 {
@@ -27,6 +27,11 @@ class Game extends Model
         return [
             'release_date' => 'date',
         ];
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new ReleaseDateScope());
     }
 
     public function developer(): BelongsTo
