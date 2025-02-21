@@ -24,7 +24,11 @@ Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/comments/{comment}', [CommentController::class, 'show']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/games', [GameController::class, 'store']);
-    Route::put('/games/{game}', [GameController::class, 'update']);
-    Route::delete('/games/{game}', [GameController::class, 'destroy']);
+    Route::post('/posts', [ForumController::class, 'store']);
+    Route::patch('/posts/{post}', [ForumController::class, 'update']);
+    Route::delete('/posts/{post}', [ForumController::class, 'destroy']);
+
+    Route::post('/comments', [CommentController::class, 'store']);
+    Route::put('/comments/{comment}', [CommentController::class, 'update']);
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
 });
