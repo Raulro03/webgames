@@ -56,7 +56,7 @@ function ConfirmRolesExist(): void
     }
 }
 
-function CreatePost_ForumCategory(): void
+function CreateUser_ForumCategory(): void
 {
     $user = User::factory()->create();
     $category = ForumCategory::factory()->create();

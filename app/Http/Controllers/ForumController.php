@@ -57,7 +57,7 @@ class ForumController extends Controller
             ]
         ));
 
-        event(new FirstPostCreatedEvent($post));
+        $this->firstPostCreatedEvent($post);
         event(new PostCreatedEvent(auth()->user()));
 
         return to_route('forum')
@@ -100,5 +100,14 @@ class ForumController extends Controller
         $posts = auth()->user()->posts()->orderByPublished()->paginate(6);
 
         return view('forum.my-posts', compact('posts'));
+    }
+
+    private function firstPostCreatedEvent(Post $post)
+    {
+        $user = $post->user;
+
+        if ($user->posts()->count() === 1) {
+            event(new FirstPostCreatedEvent($post));
+        }
     }
 }

@@ -16,6 +16,11 @@ class PlatformController extends Controller
 
     public function show(string $id)
     {
-        return response()->json(Platform::query()->find($id));
+
+        $platform = Platform::query()->find($id);
+        if (!$platform) {
+            return response()->json(['error' => 'Platform not found'], 404);
+        }
+        return response()->json($platform);
     }
 }

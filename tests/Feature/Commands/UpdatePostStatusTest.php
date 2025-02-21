@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use function Pest\Laravel\artisan;
 
 it('updates post statuses correctly', function () {
-    CreatePost_ForumCategory();
+    CreateUser_ForumCategory();
     // 🔹 Crear posts de prueba
     $futurePost = Post::factory()->create([
         'user_id' => 1,

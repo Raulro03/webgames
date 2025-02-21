@@ -8,8 +8,8 @@ use Carbon\Carbon;
 
 it('deletes archived posts older than 5 years', function () {
 
-    CreatePost_ForumCategory();
-    // 🔹 Crear posts de prueba
+    CreateUser_ForumCategory();
+
     $oldPost = Post::factory()->create([
         'user_id' => 1,
         'category_id' => 1,
@@ -31,19 +31,19 @@ it('deletes archived posts older than 5 years', function () {
         'published_at' => Carbon::now()->subYears(7),
     ]);
 
-    // 🔹 Ejecutar el Job manualmente
+
     (new DeleteOldArchivedPosts())->handle();
 
-    // 🔹 Verificar que el post antiguo se eliminó
+
     expect(Post::find($oldPost->id))->toBeNull();
 
-    // 🔹 Verificar que el post reciente y el no archivado no se eliminaron
+
     expect(Post::find($recentPost->id))->not->toBeNull();
     expect(Post::find($unarchivedPost->id))->not->toBeNull();
 });
 
 it('logs deleted posts', function () {
-    CreatePost_ForumCategory();
+    CreateUser_ForumCategory();
 
     Log::spy();
 
