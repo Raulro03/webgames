@@ -51,6 +51,6 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             CommentSeeder::class,
         ]);
-        
+
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
+use App\Models\Developer;
 use App\Models\Game;
 use App\Models\Platform;
 
-beforeEach(function () {
-    $this->seed();
-});
+;
 
 it('loads the games page', function () {
     $response = $this->get(route('games'));
@@ -14,7 +13,8 @@ it('loads the games page', function () {
 });
 
 it('displays a list of games', function () {
-    $game = Game::first();
+    $developer = Developer::factory()->create();
+    $game = Game::factory()->create(['developer_id' => $developer->id]);
     expect($game)->not->toBeNull();
 
     $response = $this->get(route('games'));
@@ -22,6 +22,8 @@ it('displays a list of games', function () {
 });
 
 it('has working pagination', function () {
+    $developer = Developer::factory()->create();
+    $game = Game::factory(15)->create(['developer_id' => $developer->id]);
 
     $response = $this->get(route('games'));
 
@@ -31,9 +33,12 @@ it('has working pagination', function () {
 });
 
 it('has game links leading to game details', function () {
-    $game = Game::first();
+    $developer = Developer::factory()->create();
+    $game = Game::factory()->create(['developer_id' => $developer->id]);
+    expect($game)->not->toBeNull();
 
     $response = $this->get(route('games'));
+
     $response->assertSee(route('games.show', $game->id));
 });
 

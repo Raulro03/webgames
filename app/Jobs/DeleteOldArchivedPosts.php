@@ -22,15 +22,13 @@ class DeleteOldArchivedPosts implements ShouldQueue
 
     public function handle()
     {
-        // Obtener la fecha límite (5 años atrás desde hoy)
+
         $fiveYearsAgo = Carbon::now()->subYears(5);
 
-        // Buscar los posts archivados que son más antiguos que la fecha límite
         $postsToDelete = Post::where('status', 'archived')
             ->where('published_at', '<', $fiveYearsAgo)
             ->get();
 
-        // Eliminar los posts
         foreach ($postsToDelete as $post) {
             Log::info("Eliminando post archivado: " . $post->id . " - " . $post->title);
             $post->delete();

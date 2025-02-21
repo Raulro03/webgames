@@ -13,6 +13,7 @@
 
 
 use App\Models\ForumCategory;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Spatie\Permission\Models\Role;
@@ -62,6 +63,19 @@ function CreateUser_ForumCategory(): void
     $category = ForumCategory::factory()->create();
 
 
+}
+
+function CreateUser_Post(): void
+{
+    $user = User::factory()->create();
+
+    loginAsUser($user);
+
+    $category = ForumCategory::factory()->create();
+    Post::factory()->create([
+        'user_id' => $user->id,
+        'category_id' => $category->id,
+    ]);
 }
 
 expect()->extend('toBeOne', function () {

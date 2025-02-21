@@ -14,8 +14,7 @@ class CommentResource extends JsonResource
         return [
             'id' => $this->id,
             'body' => $this->body,
-            'published_at' => $this->published_at,
-
+            'published_at' => $this->published_at->toISOString(),
             'parent' => new CommentResource($this->whenLoaded('parent')),
             'replies' => CommentResource::collection($this->whenLoaded('replies')),
         ];
