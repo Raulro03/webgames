@@ -20,7 +20,9 @@ test('registration screen cannot be rendered if support is disabled', function (
 }, 'Registration support is enabled.');
 
 test('new users can register', function () {
-    $this->seed();
+
+    ConfirmRolesExist();
+
     $response = $this->post('/register', [
         'name' => 'Test User',
         'email' => 'test@example.com',
@@ -30,6 +32,7 @@ test('new users can register', function () {
     ]);
 
     $this->assertAuthenticated();
+
     $response->assertRedirect(route('dashboard', absolute: false));
 })->skip(function () {
     return ! Features::enabled(Features::registration());

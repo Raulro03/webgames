@@ -13,12 +13,14 @@ class ClearLogsCommand extends Command
     {
         $logPath = storage_path('logs');
 
-        if (!File::exists($logPath)) {
+        $logFiles = File::files($logPath);
+
+        if (empty($logFiles)) {
             $this->info('No hay logs para eliminar.');
             return;
         }
 
-        foreach (File::files($logPath) as $file) {
+        foreach ($logFiles as $file) {
             File::delete($file);
         }
 

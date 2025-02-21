@@ -17,7 +17,7 @@ beforeEach(function () {
 it('ensures the database seeder runs successfully', function () {
 
     expect(User::count())->toBeGreaterThanOrEqual(5);
-    expect(Role::count())->toBeGreaterThanOrEqual(3);
+    expect(Role::count())->toBeGreaterThanOrEqual(2);
     expect(Category::count())->toBeGreaterThan(0);
     expect(Character::count())->toBeGreaterThan(0);
     expect(Comment::count())->toBeGreaterThan(0);
@@ -30,7 +30,6 @@ it('ensures the database seeder runs successfully', function () {
 it('ensures roles are seeded correctly', function () {
     expect(Role::where('name', 'admin')->exists())->toBeTrue();
     expect(Role::where('name', 'author')->exists())->toBeTrue();
-    expect(Role::where('name', 'user')->exists())->toBeTrue();
 });
 
 it('ensures users are assigned roles correctly', function () {

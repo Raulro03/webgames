@@ -11,6 +11,8 @@
 |
 */
 
+
+use App\Models\ForumCategory;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Spatie\Permission\Models\Role;
@@ -52,6 +54,14 @@ function ConfirmRolesExist(): void
     if (!Role::where('name', 'author')->exists()) {
         Role::create(['name' => 'author']);
     }
+}
+
+function CreatePost_ForumCategory(): void
+{
+    $user = User::factory()->create();
+    $category = ForumCategory::factory()->create();
+
+
 }
 
 expect()->extend('toBeOne', function () {
