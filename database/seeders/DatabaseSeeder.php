@@ -17,14 +17,18 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
         ]);
 
-        $user = User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
         ]);
 
-        $user->assignRole('admin');
+        $admin->assignRole('admin');
 
-        $token = $user->createToken('developer-access')->plainTextToken;
+        $token = $admin->createToken('developer-access')->plainTextToken;
+
+        $this->command->info("Admin Token: $token");
+
+        file_put_contents(storage_path('app/tokens.txt'), "Admin Token: $token");
 
 
         User::factory()->create([
@@ -47,7 +51,6 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             CommentSeeder::class,
         ]);
-
-        echo "{$token}";
+        
     }
 }
