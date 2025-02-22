@@ -1,0 +1,778 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "WebGames API",
+        "description": "Documentación de la API para la gestión de WebGames",
+        "contact": {
+            "email": "soporte@webgames.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/comments": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Obtener todos los comentarios paginados",
+                "operationId": "2e2597016871fa5dd2bdfccf912edc41",
+                "responses": {
+                    "200": {
+                        "description": "Lista de comentarios paginados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Comment"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Crear un nuevo comentario",
+                "operationId": "c6ce2c222c8502aadd6a287105e49307",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "post_id",
+                                    "body"
+                                ],
+                                "properties": {
+                                    "post_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Este es un comentario de prueba"
+                                    },
+                                    "parent_id": {
+                                        "type": "integer",
+                                        "example": null,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Comentario creado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "422": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/comments/{comment}": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Obtener un comentario específico con sus respuestas",
+                "operationId": "884e61ac3f4a0c4eb6d52f68929b4fc9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comentario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Comentario obtenido con éxito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Comentario no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Actualizar un comentario",
+                "operationId": "2b73d856972689aa0e0d9223d46011ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comentario a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "body"
+                                ],
+                                "properties": {
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Comentario actualizado"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Comentario actualizado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "No autorizado para actualizar este comentario"
+                    },
+                    "404": {
+                        "description": "Comentario no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Eliminar un comentario",
+                "operationId": "3d590dba6524ead27a250d196bc2729b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comentario a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Comentario eliminado correctamente"
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "403": {
+                        "description": "No autorizado para eliminar este comentario"
+                    },
+                    "404": {
+                        "description": "Comentario no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Obtener todos los posts paginados",
+                "operationId": "9ac9f835fc35f62d38be7939047fe8cb",
+                "responses": {
+                    "200": {
+                        "description": "Lista de posts paginados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Post"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Crear un nuevo post",
+                "operationId": "29a433f17ceffdb5b7ae5b1268d85a5e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Post creado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Obtener un post por su ID",
+                "operationId": "6271279520c31d506d9e051fd4e8e7ad",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del post",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles del post",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Post no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Actualizar un post existente",
+                "operationId": "d6040854a2219203d3e8cf4eeafcdfa6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del post a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Post actualizado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Post"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "404": {
+                        "description": "Post no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Eliminar un post por su ID",
+                "operationId": "99ebdc70261b374312883380361c1237",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del post a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Post eliminado correctamente"
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "404": {
+                        "description": "Post no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/games": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Obtener todas los juegos",
+                "operationId": "e333e2e46e6c7bd4c254fe379b7389dd",
+                "responses": {
+                    "200": {
+                        "description": "Lista de juegos paginada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Games"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/games/{gameId}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Obtener todos los juegos",
+                "operationId": "a4c94437dbb9fc9516a8da2d7605f624",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del juego",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de juegos paginada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Games"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Juego no encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Games"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/platforms": {
+            "get": {
+                "tags": [
+                    "Platforms"
+                ],
+                "summary": "Obtener todas las plataformas",
+                "operationId": "b79ea4224ff39ae923cc8756fa1bf671",
+                "responses": {
+                    "200": {
+                        "description": "Lista de plataformas paginada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Platform"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/platforms/{platformId}": {
+            "get": {
+                "tags": [
+                    "Platforms"
+                ],
+                "summary": "Obtener una plataforma específica",
+                "operationId": "9d59ac06a341bbc01791abb9cfabe5e6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la plataforma",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles de la plataforma",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Platform"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Plataforma no encontrada"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Comment": {
+                "title": "Comment",
+                "description": "Estructura del comentario en la API",
+                "required": [
+                    "id",
+                    "body",
+                    "published_at",
+                    "post_id",
+                    "user_id",
+                    "category_id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID único del comentario",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "body": {
+                        "description": "Contenido del comentario",
+                        "type": "string",
+                        "example": "Este es un comentario de prueba"
+                    },
+                    "published_at": {
+                        "description": "Fecha y hora en que se publicó el comentario",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-02-21T13:00:20.000000Z"
+                    },
+                    "parent": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Comment"
+                            }
+                        ],
+                        "nullable": true,
+                        "description": "Comentario padre si es una respuesta"
+                    },
+                    "replies": {
+                        "description": "Lista de respuestas a este comentario",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Comment"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Post": {
+                "title": "Post",
+                "description": "Estructura de un post en la API",
+                "required": [
+                    "id",
+                    "title",
+                    "body",
+                    "status",
+                    "published_at"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID del post",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Título del post",
+                        "type": "string",
+                        "example": "Título del post"
+                    },
+                    "body": {
+                        "description": "Cuerpo del post",
+                        "type": "string",
+                        "example": "Contenido del post"
+                    },
+                    "status": {
+                        "description": "Estado del post",
+                        "type": "string",
+                        "example": "published"
+                    },
+                    "published_at": {
+                        "description": "Fecha y hora de publicación",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-02-22T14:30:00Z"
+                    },
+                    "comments": {
+                        "description": "Lista de comentarios asociados al post",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Comment"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Games": {
+                "required": [
+                    "id",
+                    "title",
+                    "developer_id",
+                    "release_date"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "The Legend of Zelda: Breath of the Wild"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "The Legend of Zelda: Breath of the Wild es un videojuego de acción-aventura de 2017 desarrollado y publicado por Nintendo para la consola Nintendo Switch y Wii U."
+                    },
+                    "release_date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2017-03-03"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 59.99
+                    },
+                    "average_rating": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 4.9
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "example": "https://example.com/image.jpg"
+                    },
+                    "developer_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Platform": {
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "PlayStation 5"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "La PlayStation 5 es una consola de videojuegos de sobremesa desarrollada por Sony Interactive Entertainment. Anunciada en 2019 como la sucesora de la PlayStation 4, se lanzó el 12 de noviembre de 2020 en Australia, Japón, Nueva Zelanda, América del Norte y Corea del Sur, y el 19 de noviembre de 2020 en el resto del mundo."
+                    },
+                    "release_date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2020-11-12"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 499.99
+                    },
+                    "average_rating": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 4.5
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "example": "https://example.com/image.jpg"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Comments",
+            "description": "Endpoints para gestionar los comentarios"
+        },
+        {
+            "name": "Posts",
+            "description": "Endpoints para la gestión de posts en el foro"
+        },
+        {
+            "name": "Games",
+            "description": "Endpoints para mostrar los juegos"
+        },
+        {
+            "name": "Platforms",
+            "description": "Endpoints para la gestión de plataformas"
+        }
+    ]
+}

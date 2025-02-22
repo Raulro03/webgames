@@ -7,12 +7,31 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
-use Illuminate\Http\Request;
 
+/**
+ * @OA\Tag(
+ *     name="Comments",
+ *     description="Endpoints para gestionar los comentarios"
+ * )
+ */
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/comments",
+     *     summary="Obtener todos los comentarios paginados",
+     *     tags={"Comments"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de comentarios paginados",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="data", type="array", @OA\Items(ref="#/components/schemas/Comment")),
+     *             @OA\Property(property="links", type="object"),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     )
+     * )
      */
     public function index()
     {
@@ -20,13 +39,32 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/api/comments",
+     *     summary="Crear un nuevo comentario",
+     *     tags={"Comments"},
+     *     security={{ "sanctum": {} }},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"post_id", "body"},
+     *             @OA\Property(property="post_id", type="integer", example=1),
+     *             @OA\Property(property="body", type="string", example="Este es un comentario de prueba"),
+     *             @OA\Property(property="parent_id", type="integer", nullable=true, example=null)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Comentario creado correctamente",
+     *         @OA\JsonContent(ref="#/components/schemas/Comment")
+     *     ),
+     *     @OA\Response(response=401, description="No autenticado"),
+     *     @OA\Response(response=422, description="Error de validación")
+     * )
      */
     public function store(StoreCommentRequest $request)
     {
-        $data = $request->all();
-
-        $data = array_merge($data, [
+        $data = array_merge($request->validated(), [
             'user_id' => auth()->id(),
             'published_at' => now()
         ]);
@@ -37,7 +75,24 @@ class CommentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/api/comments/{comment}",
+     *     summary="Obtener un comentario específico con sus respuestas",
+     *     tags={"Comments"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID del comentario",
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Comentario obtenido con éxito",
+     *         @OA\JsonContent(ref="#/components/schemas/Comment")
+     *     ),
+     *     @OA\Response(response=404, description="Comentario no encontrado")
+     * )
      */
     public function show(Comment $comment)
     {
@@ -45,17 +100,60 @@ class CommentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/api/comments/{comment}",
+     *     summary="Actualizar un comentario",
+     *     tags={"Comments"},
+     *     security={{ "sanctum": {} }},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID del comentario a actualizar",
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"body"},
+     *             @OA\Property(property="body", type="string", example="Comentario actualizado")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Comentario actualizado correctamente",
+     *         @OA\JsonContent(ref="#/components/schemas/Comment")
+     *     ),
+     *     @OA\Response(response=401, description="No autenticado"),
+     *     @OA\Response(response=403, description="No autorizado para actualizar este comentario"),
+     *     @OA\Response(response=404, description="Comentario no encontrado")
+     * )
      */
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
-        $comment->update($request->all());
+        $comment->update($request->validated());
 
         return new CommentResource($comment);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *     path="/api/comments/{comment}",
+     *     summary="Eliminar un comentario",
+     *     tags={"Comments"},
+     *     security={{ "sanctum": {} }},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID del comentario a eliminar",
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(response=204, description="Comentario eliminado correctamente"),
+     *     @OA\Response(response=401, description="No autenticado"),
+     *     @OA\Response(response=403, description="No autorizado para eliminar este comentario"),
+     *     @OA\Response(response=404, description="Comentario no encontrado")
+     * )
      */
     public function destroy(Comment $comment)
     {
