@@ -27,7 +27,7 @@ it('displays login link if not logged in', function () {
     // Act & Assert
     get(route('welcome'))
         ->assertOk()
-        ->assertSeeText('Login')
+        ->assertSeeText('Iniciar sesión')
         ->assertSee(route('login'));
 });
 
@@ -37,7 +37,7 @@ it('displays logout link if logged in', function () {
     loginAsUser();
     get(route('welcome'))
         ->assertOk()
-        ->assertSeeText('Cerrar sesión')
+        ->assertSeeText('Finalizar sesión')
         ->assertSee(route('logout'));
 });
 

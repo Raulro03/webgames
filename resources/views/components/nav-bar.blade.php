@@ -11,15 +11,15 @@
             </div>
 
             <div class="hidden md:flex space-x-4 justify-center flex-grow">
-                <a href="/" class="{{ request()->is('/') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                <a href="{{route("games")}}" class="{{ request()->is('games') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Juegos</a>
-                <a href="{{route("characters")}}" class="{{ request()->is('characters') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Personajes</a>
-                <a href="{{route("platforms")}}" class="{{ request()->is('platforms') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Plataformas</a>
-                <a href="{{route("forum")}}" class="{{ request()->is('forum') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Foro</a>
+                <a href="/" class="{{ request()->is('/') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('Begin')}}</a>
+                <a href="{{route("games")}}" class="{{ request()->is('games') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('Games')}}</a>
+                <a href="{{route("characters")}}" class="{{ request()->is('characters') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('Character')}}</a>
+                <a href="{{route("platforms")}}" class="{{ request()->is('platforms') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('Platforms')}}</a>
+                <a href="{{route("forum")}}" class="{{ request()->is('forum') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('Forum')}}</a>
                 <a href="{{route("versus")}}" class="{{ request()->is('versus') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Versus</a>
                @auth()
-                    <a href="{{route("forum.my-posts")}}" class="{{ request()->is('forum.my-posts') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Mis Posts</a>
-                    <a href="{{route("comments.my-comments")}}" class="{{ request()->is('comments.my-comments') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Mis Comentarios</a>
+                    <a href="{{route("forum.my-posts")}}" class="{{ request()->is('forum.my-posts') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('My Posts')}}</a>
+                    <a href="{{route("comments.my-comments")}}" class="{{ request()->is('comments.my-comments') ? 'text-white font-bold' : 'text-gray-300 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">{{__('My Comments')}}</a>
                 @endauth
             </div>
             <!-- Botones de Login y Register o Dropdown-->
@@ -27,10 +27,10 @@
                 @guest
                     <!-- Botones de Login y Register para invitados -->
                     <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                        Login
+                        {{__('Login')}}
                     </a>
                     <a href="{{ route('register') }}" class="bg-violet-500 hover:bg-violet-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                        Register
+                        {{__('Register')}}
                     </a>
                 @else
                     <div class="relative dropdown-container">
@@ -43,10 +43,10 @@
                         <!-- Menú desplegable -->
                         <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10">
                             <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"> {{ __('Dashboard') }} </a>
-                            <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Perfil</a>
+                            <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">{{__('Profile')}}</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">Cerrar sesión</button>
+                                <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">{{__('Log Out')}}</button>
                             </form>
                         </div>
                     </div>

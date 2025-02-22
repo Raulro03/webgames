@@ -16,11 +16,11 @@
                         <div class="flex justify-end mt-4">
                             <a href="{{ route('post.show', $post) }}"
                                class="bg-gray-400 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-500">
-                                Cancelar
+                                {{ __('Cancel') }}
                             </a>
                             <button type="submit"
                                     class="ml-3 bg-purple-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-purple-700">
-                                Publicar
+                                {{__('Post')}}
                             </button>
                         </div>
                         @csrf

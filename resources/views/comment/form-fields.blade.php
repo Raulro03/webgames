@@ -1,16 +1,16 @@
 <div>
-    <h3 class="text-lg font-bold">Estas respondiendo al post : {{ $post->title }}</h3>
+    <h3 class="text-lg font-bold">{{__('You are responding to the post')}} {{ $post->title }}</h3>
 </div>
 @if (optional($parent_comment)->exists && $parent_comment)
     <div class="mt-4">
-        <h4 class="text-md font-semibold">Respondiendo a:</h4>
+        <h4 class="text-md font-semibold">{{__('Responding to')}}:</h4>
         <p class="text-sm text-gray-600">{{ $parent_comment->user->name }} - {{ $parent_comment->created_at->diffForHumans() }}</p>
         <p class="mt-2 text-gray-800">{{ $parent_comment->body }}</p>
     </div>
     <input type="hidden" name="parent_id" value="{{ $parent_comment->id}}">
 @else
     <div class="mt-4">
-        <h4 class="text-md font-semibold">Comentario principal</h4>
+        <h4 class="text-md font-semibold">{{__('Top Comment')}}</h4>
     </div>
 @endif
 

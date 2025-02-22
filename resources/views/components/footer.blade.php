@@ -6,7 +6,7 @@
             <div>
                 <h5 class="text-lg font-bold text-white">WebGames</h5>
                 <p class="text-sm text-gray-400">
-                    © 2025 WebGames. Todos los derechos reservados.
+                    © 2025 WebGames. {{__('All rights reserved.')}}
                 </p>
             </div>
 
@@ -27,9 +27,9 @@
 
             <!-- Links rápidos -->
             <div class="flex space-x-4">
-                <a href="{{ route('about') }}" class="hover:text-white text-sm">Acerca de</a>
-                <a href="{{ route('privacy') }}" class="hover:text-white text-sm">Política de privacidad</a>
-                <a href="{{ route('contact') }}" class="hover:text-white text-sm">Contacto</a>
+                <a href="{{ route('about') }}" class="hover:text-white text-sm">{{__('About us')}}</a>
+                <a href="{{ route('privacy') }}" class="hover:text-white text-sm">{{__('Privacy Policy')}}</a>
+                <a href="{{ route('contact') }}" class="hover:text-white text-sm">{{__('Contact')}}</a>
             </div>
         </div>
 

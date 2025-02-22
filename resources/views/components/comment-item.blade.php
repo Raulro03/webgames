@@ -5,14 +5,14 @@
             <a href="{{ route('replies.create', ['post' => $post->id, $comment]) }}" class="text-purple-600 hover:text-purple-900">Comentar</a>
 
             @can('update', $comment)
-            <a href="{{ route('comment.edit', [$post, $comment]) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
+            <a href="{{ route('comment.edit', [$post, $comment]) }}" class="text-blue-500 hover:text-blue-700">{{__('Edit')}}</a>
             @endcan
 
             @can('delete', $comment)
             <form action="{{ route('comment.destroy', [$post, $comment]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="text-red-500 hover:text-red-700">Eliminar</button>
+                <button type="submit" class="text-red-500 hover:text-red-700">{{__('Delete')}}</button>
             </form>
             @endcan
 
