@@ -11,23 +11,23 @@
             <div class="mt-6 flex flex-col md:flex-row items-center">
                 <img src="{{ asset($game->image_url) }}" alt="{{ $game->title }}" class="w-64 h-64 object-cover rounded-lg shadow-md border border-gray-300">
                 <div class="md:ml-6 mt-4 md:mt-0 text-gray-700 dark:text-gray-300">
-                    <p><strong>Desarrollador:</strong> {{ $game->developer->name }}</p>
-                    <p><strong>Categorías:</strong> {{ $game->categories->pluck('name')->join(', ') }}</p>
-                    <p><strong>Descripción:</strong> {{ $game->description }}</p>
-                    <p><strong>Precio:</strong> {{ number_format($game->price / 100, 2, ',', '.') }}€</p>
-                    <p><strong>Calificaion promedio:</strong> {{ $game->average_rating }}</p>
-                    <p><strong>Fecha de lanzamiento:</strong> {{ $game->release_date->format('d/m/Y') }}</p>
+                    <p><strong>{{__('Developer')}}:</strong> {{ $game->developer->name }}</p>
+                    <p><strong>{{__('Category')}}:</strong> {{ $game->categories->pluck('name')->join(', ') }}</p>
+                    <p><strong>{{__('Description')}}:</strong> {{ $game->description }}</p>
+                    <p><strong>{{__('Price')}}:</strong> {{ number_format($game->price / 100, 2, ',', '.') }}€</p>
+                    <p><strong>{{__('Average rating')}}:</strong> {{ $game->average_rating }}</p>
+                    <p><strong>{{__('Release Date')}}:</strong> {{ $game->release_date->format('d/m/Y') }}</p>
                     @foreach($game->platforms as $platform)
                         <div class="mt-4 p-4 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-md">
-                            <a href="{{ route('platforms.show', $platform->id) }}" class="text-lg font-semibold text-gray-800 dark:text-gray-200"><strong>Plataforma:</strong> {{ $platform->name }}</a>
-                            <p class="text-lg text-gray-600 dark:text-gray-400"><strong>Ventas:</strong> {{ $platform->pivot->sales ?? 'No disponible' }} Unidades</p>
+                            <a href="{{ route('platforms.show', $platform->id) }}" class="text-lg font-semibold text-gray-800 dark:text-gray-200"><strong>{{__('Platform')}}:</strong> {{ $platform->name }}</a>
+                            <p class="text-lg text-gray-600 dark:text-gray-400"><strong>{{__('Sales')}}:</strong> {{ $platform->pivot->sales ?? 'No disponible' }} Unidades</p>
                         </div>
                     @endforeach
                 </div>
             </div>
 
             <div class="mt-6 text-center">
-                <a href="{{ route('games') }}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">Volver a la lista</a>
+                <a href="{{ route('games') }}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">{{__('Back to list')}}</a>
             </div>
 
             <x-download-pdf-button route="game.pdf" :id="$game->id" />

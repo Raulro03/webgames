@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego - {{ $game->title }}</title>
+    <title>Game - {{ $game->title }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,12 +64,12 @@
         <img src="{{$imageData}}" width="300" alt="{{ $game->title }}">
     </div>
 
-    <p><span class="highlight">Descripción:</span> {{ $game->description }}</p>
-    <p><span class="highlight">Rating:</span> {{ $game->average_rating }}</p>
-    <p><span class="highlight">Precio:</span> {{ number_format($game->price / 100, 2, ',', '.') }}€</p>
-    <p><span class="highlight">Desarrollador:</span> {{ $game->developer->name }}</p>
-    <p><span class="highlight">Categorías:</span> {{ $game->categories->pluck('name')->join(', ') }}</p>
-    <p><span class="highlight">Fecha de lanzamiento:</span> {{ $game->release_date->format('d/m/Y') }}</p>
+    <p><span class="highlight">{{__('Description')}}:</span> {{ $game->description }}</p>
+    <p><span class="highlight">{{__('Rating')}}:</span> {{ $game->average_rating }}</p>
+    <p><span class="highlight">{{__('Price')}}:</span> {{ number_format($game->price / 100, 2, ',', '.') }}€</p>
+    <p><span class="highlight">{{__('Developer')}}:</span> {{ $game->developer->name }}</p>
+    <p><span class="highlight">{{__('Category')}}:</span> {{ $game->categories->pluck('name')->join(', ') }}</p>
+    <p><span class="highlight">{{__('Release date')}}:</span> {{ $game->release_date->format('d/m/Y') }}</p>
 </div>
 </body>
 </html>

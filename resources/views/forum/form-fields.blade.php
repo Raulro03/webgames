@@ -17,7 +17,7 @@
     <x-input-error-form :messages="$errors->get('body')" class="mt-2" />
 </div>
 <div>
-    <x-input-label for="published_at" :value="__('Published_At')" />
+    <x-input-label for="published_at" :value="__('Published on:')" />
     <x-text-input id="published_at"
                   name="published_at"
                   type="date"

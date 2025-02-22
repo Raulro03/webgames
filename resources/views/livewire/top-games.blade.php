@@ -1,10 +1,10 @@
 
 <div class="max-w-5xl mx-auto mt-10">
-    <h1 class="text-3xl font-bold text-purple-600 text-center">Juegos Más Populares</h1>
+    <h1 class="text-3xl font-bold text-purple-600 text-center">{{__('Most Popular Games')}}</h1>
 
     <div class="flex justify-end mt-4">
         <a href="{{ route('games') }}" class="mr-2 bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-blue-700">
-            Volver a Juegos
+            {{ __('Back to Games') }}
         </a>
     </div>
 
@@ -23,12 +23,12 @@
     <div class="flex justify-center space-x-4 m-4">
         @if(count($games) > 10)
             <button wire:click="loadLess" class="px-4 py-2 bg-blue-300 text-white rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-blue-500">
-                Mostrar menos
+                {{ __('Show 10 less') }}
             </button>
         @endif
 
         <button wire:click="loadMore" class="px-4 py-2 bg-purple-600 text-white rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-purple-700">
-            Mostrar 10 más
+            {{ __('Show 10 more') }}
         </button>
     </div>
 </div>

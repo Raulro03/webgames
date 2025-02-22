@@ -37,7 +37,7 @@
         @endforeach
             </div>
         @else
-            <p class="text-gray-600 dark:text-gray-400">No se han encontrado juegos</p>
+            <p class="text-gray-600 dark:text-gray-400">{{__('No Games Found')}}</p>
 
         @endif
 

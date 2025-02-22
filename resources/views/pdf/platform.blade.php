@@ -64,9 +64,9 @@
         <img src="{{ $imageData }}" width="300" alt="{{ $platform->name }}">
     </div>
 
-    <p><span class="highlight">Fecha de lanzamiento:</span> {{ $platform->release_date->format('d/m/Y') }}</p>
-    <p><span class="highlight">Descripción:</span> {{ $platform->description }}</p>
-    <p><span class="highlight">Precio:</span> {{ number_format($platform->price / 100, 2, ',', '.') }}€</p>
+    <p><span class="highlight">{{__('Release Date')}}:</span> {{ $platform->release_date->format('d/m/Y') }}</p>
+    <p><span class="highlight">{{__('Description')}}:</span> {{ $platform->description }}</p>
+    <p><span class="highlight">{{__('Price')}}:</span> {{ number_format($platform->price / 100, 2, ',', '.') }}€</p>
 </div>
 </body>
 </html>

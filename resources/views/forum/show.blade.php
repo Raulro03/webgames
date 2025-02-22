@@ -70,19 +70,19 @@
         <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
             <div class="bg-purple-600 text-white text-center py-6">
                 <h1 class="text-3xl font-bold">{{ $post->title }}</h1>
-                <p class="text-purple-200 text-sm">Publicado por {{ $post->user->name }} - {{ $post->published_at->diffForHumans() }}</p>
+                <p class="text-purple-200 text-sm">{{__('Published by:')}} {{ $post->user->name }} - {{ $post->published_at->diffForHumans() }}</p>
             </div>
             <div class="p-6 text-gray-800 leading-relaxed">
                 <p>{{ $post->body }}</p>
             </div>
             <div class="p-4 text-gray-800 leading-relaxed flex justify-between items-center">
-                <p><strong>Categoría:</strong> {{ $post->forum_category->category_type." , ".$post->forum_category->related_id }}</p>
-                <a href="{{ route('comment.create', $post ) }}" class="px-4 py-2 text-purple-600 hover:text-purple-900">Comentar</a>
+                <p><strong>{{__('Category')}}:</strong> {{ $post->forum_category->category_type." , ".$post->forum_category->related_id }}</p>
+                <a href="{{ route('comment.create', $post ) }}" class="px-4 py-2 text-purple-600 hover:text-purple-900">{{__('Comment')}}</a>
             </div>
         </div>
 
         <div class="max-w-3xl mx-auto mt-10">
-            <h2 class="text-2xl font-bold text-purple-600 mb-4">Comentarios</h2>
+            <h2 class="text-2xl font-bold text-purple-600 mb-4">{{__('Comments')}}</h2>
             <div class="space-y-4">
                     <div class="space-y-4">
                         @foreach ($post->comments as $comment)
