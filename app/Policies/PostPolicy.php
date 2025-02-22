@@ -21,4 +21,16 @@ class PostPolicy
         return ($user->hasRole('author') && $user->id === $post->user_id)
             || $user->hasRole('admin');
     }
+
+    public function restore(User $user, Post $post)
+    {
+        return ($user->hasRole('author') && $user->id === $post->user_id)
+            || $user->hasRole('admin');
+    }
+
+    public function forceDelete(User $user, Post $post)
+    {
+        return ($user->hasRole('author') && $user->id === $post->user_id)
+            || $user->hasRole('admin');
+    }
 }

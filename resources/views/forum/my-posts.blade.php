@@ -39,5 +39,9 @@
            class="fixed top-24 left-8 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300">
             ➕ {{__('New Post')}}
         </a>
+        <a href="{{ route('posts.trash-posts') }}"
+           class="fixed top-24 right-8 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300">
+            🗑️ {{__('Trash')}}
+        </a>
     </div>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Controllers\Pages\PagePlatformsController;
 use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\TrashPostsController;
 use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,11 @@ Route::middleware([
     Route::post('/forum/{post}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
     Route::resource('forum/post', ForumController::class)
         ->only(['show','create', 'store', 'edit', 'update', 'destroy']);
+
+    Route::get('/posts/trash', [TrashPostsController::class, 'showTrashPosts'])->name('posts.trash-posts');
+    Route::patch('/posts/trash/{id}/restore', [TrashPostsController::class, 'restorePost'])->name('posts.restore');
+    Route::delete('/posts/trash/{id}/force-delete', [TrashPostsController::class, 'forceDeletePost'])->name('posts.forceDelete');
+
 
     Route::resource('/comments/{post}/comment', CommentController::class)->except(['index', 'show']);
     Route::get('/my-comments', [CommentController::class, 'myComments'])->name('comments.my-comments');
