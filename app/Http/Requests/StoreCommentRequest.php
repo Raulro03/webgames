@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\NoPalabrasProhibidas;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCommentRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreCommentRequest extends FormRequest
         return [
 
             'post_id' => ['required'],
-            'body' => ['required'],
+            'body' => ['required',new NoPalabrasProhibidas()],
             'parent_id' => ['nullable'],
         ];
     }

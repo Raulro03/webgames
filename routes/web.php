@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\Pages\PageCharactersController;

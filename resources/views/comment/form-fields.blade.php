@@ -14,6 +14,11 @@
     </div>
 @endif
 
+@error('parent_id')
+    <div class="text-red-500 text-sm mt-1">
+        {{ $message }}
+    </div>
+@enderror
 
 
 <input type="hidden" name="post_id" value="{{ $post->id }}">
