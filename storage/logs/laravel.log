@@ -1,3 +1,13 @@
 [2025-02-22 22:02:01] testing.INFO: Command ejecutado para actualizar status de posts  
 [2025-02-22 22:02:34] testing.INFO: Eliminando post archivado: 1 - nemo  
 [2025-02-22 22:02:34] testing.INFO: Se eliminaron 1 posts archivados de más de 5 años.  
+[2025-02-22 22:25:02] local.ERROR: There are no commands defined in the "user" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"user\" namespace. at C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php:660)
+[stacktrace]
+#0 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php(709): Symfony\\Component\\Console\\Application->findNamespace('user')
+#1 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php(284): Symfony\\Component\\Console\\Application->find('user:generate-t...')
+#2 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#6 {main}
+"} 
