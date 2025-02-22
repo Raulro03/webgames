@@ -10,7 +10,6 @@ use App\Models\ForumCategory;
 use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Artisan;
-use JetBrains\PhpStorm\NoReturn;
 
 class ForumController extends Controller
 {

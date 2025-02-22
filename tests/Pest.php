@@ -65,17 +65,31 @@ function CreateUser_ForumCategory(): void
 
 }
 
-function CreateUser_Post(): void
+function CreateUserAuth_Post()
 {
     $user = User::factory()->create();
 
     loginAsUser($user);
 
     $category = ForumCategory::factory()->create();
-    Post::factory()->create([
+    $post = Post::factory()->create([
         'user_id' => $user->id,
         'category_id' => $category->id,
     ]);
+
+    return $post;
+}
+function CreateUser_Post()
+{
+    $user = User::factory()->create();
+
+    $category = ForumCategory::factory()->create();
+    $post = Post::factory()->create([
+        'user_id' => $user->id,
+        'category_id' => $category->id,
+    ]);
+
+    return $post;
 }
 
 expect()->extend('toBeOne', function () {
