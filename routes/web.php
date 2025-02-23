@@ -68,8 +68,15 @@ Route::middleware([
     Route::post('/comments/{post}/{comment?}/reply', [CommentController::class, 'store'])->name('replies.store');
 
     Route::get('/dashboard', function () {
+        if (auth()->user()->hasRole('admin')) {
+            return redirect()->route('admin.dashboard');
+        }
+
         return view('dashboard');
     })->name('dashboard');
     Route::post('/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])->name('dashboard.deleteArchivedPosts');
 
 });
+Route::get('/admin/dashboard', function () {
+    return view('admin-dashboard');
+})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
