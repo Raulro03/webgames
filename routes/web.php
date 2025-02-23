@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\Pages\PageCharactersController;
 use App\Http\Controllers\Pages\PageGamesController;
@@ -69,4 +70,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::post('/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])->name('dashboard.deleteArchivedPosts');
+
 });
