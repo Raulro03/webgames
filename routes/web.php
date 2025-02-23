@@ -69,8 +69,13 @@ Route::middleware([
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::post('/admin/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])
-        ->middleware('role:admin')->name('dashboard.deleteArchivedPosts');
+    Route::middleware('role:admin')->group(function () {
+        Route::post('/admin/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])
+            ->name('dashboard.deleteArchivedPosts');
+        Route::post('/admin/dashboard/CleanTrashedPosts', [DashboardController::class, 'cleanTrashPosts'])
+            ->name('dashboard.CleanTrashedPosts');
+    });
+
 
 });
 

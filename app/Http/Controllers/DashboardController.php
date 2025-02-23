@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CleanTrashedPosts;
 use App\Jobs\DeleteOldArchivedPosts;
 use App\Models\Comment;
 use App\Models\Post;
@@ -32,6 +33,13 @@ class DashboardController extends Controller
         (new DeleteOldArchivedPosts())->handle();
 
         return back()->with('status', 'Los posts archivados antiguos han sido eliminados.');
+    }
+
+    public function cleanTrashPosts()
+    {
+       (new CleanTrashedPosts())->handle();
+
+        return back()->with('status', 'Los posts en la papelera han sido eliminados.');
     }
 }
 

@@ -23,7 +23,7 @@
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-purple-800 text-white shadow-lg rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <h2 class="text-xl font-semibold text-purple-300 mb-3">📝 Gestionar Publicaciones</h2>
-                <p class="text-sm text-purple-200">Administra las publicaciones existentes o crea nuevas.</p>
+                <p class="text-sm text-purple-200">Administra las tus publicaciones existentes o crea nuevas.</p>
                 <a href="{{ route('forum.my-posts') }}" class="block mt-4 text-purple-400 font-medium hover:text-purple-200">
                     Ver mis publicaciones →
                 </a>
@@ -31,7 +31,7 @@
 
             <div class="bg-purple-800 text-white shadow-lg rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <h2 class="text-xl font-semibold text-purple-300 mb-3">💬 Gestionar Comentarios</h2>
-                <p class="text-sm text-purple-200">Revisa y modera los comentarios realizados en la plataforma.</p>
+                <p class="text-sm text-purple-200">Revisa y modera tus comentarios realizados en la plataforma.</p>
                 <a href="{{ route('comments.my-comments') }}" class="block mt-4 text-purple-400 font-medium hover:text-purple-200">
                     Ver mis comentarios →
                 </a>
