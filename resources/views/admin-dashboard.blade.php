@@ -8,6 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                <x-welcome :stats="$stats" />
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                <h2 class="text-4xl font-extrabold text-purple-600 text-center mb-4 pt-4">Panel del Admin</h2>
                 <form action="{{ route('dashboard.deleteArchivedPosts') }}" method="POST">
                     @csrf
                     <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 mb-2">
@@ -18,7 +24,6 @@
                 @if(session('status'))
                     <p x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" class="mb-2 text-white bg-violet-800 transition-opacity duration-500 ease-in-out animate-fade-in">{{ session('status') }}</p>
                 @endif
-                <x-welcome />
             </div>
         </div>
     </div>

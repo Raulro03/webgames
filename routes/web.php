@@ -67,16 +67,10 @@ Route::middleware([
     Route::get('/comments/{post}/{comment?}/reply', [CommentController::class, 'create'])->name('replies.create');
     Route::post('/comments/{post}/{comment?}/reply', [CommentController::class, 'store'])->name('replies.store');
 
-    Route::get('/dashboard', function () {
-        if (auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
-        }
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        return view('dashboard');
-    })->name('dashboard');
-    Route::post('/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])->name('dashboard.deleteArchivedPosts');
+    Route::post('/admin/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])
+        ->middleware('role:admin')->name('dashboard.deleteArchivedPosts');
 
 });
-Route::get('/admin/dashboard', function () {
-    return view('admin-dashboard');
-})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+

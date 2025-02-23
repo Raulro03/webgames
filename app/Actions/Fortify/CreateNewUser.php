@@ -34,8 +34,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        $user->assignRole('user');
-
         Mail::to($user->email)->send(new CorreoRegistro($user));
 
         return $user;
