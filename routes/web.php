@@ -44,7 +44,11 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
+
+    Route::resource('/games', PageGamesController::class)
+        ->only(['create', 'edit', 'destroy'])->middleware('role:admin');
     Route::get('/games/{game}', [PageGamesController::class, 'show'])->name('games.show');
+
     Route::get('/characters/{character}', [PageCharactersController::class, 'show'])->name('characters.show');
     Route::get('/platforms/{platform}', [PagePlatformsController::class, 'show'])->name('platforms.show');
 

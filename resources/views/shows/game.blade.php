@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <!-- Game Show Section -->
+
         <div class="max-w-4xl w-full bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 border border-purple-500 relative">
             <div class="absolute top-0 left-0 w-full h-2 bg-purple-500 rounded-t-2xl animate-pulse"></div>
 
@@ -28,6 +28,12 @@
 
             <div class="mt-6 text-center">
                 <a href="{{ route('games') }}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300">{{__('Back to list')}}</a>
+                <a href="{{ route('games.edit', $game->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ml-2">{{__('Edit')}}</a>
+                <form action="{{ route('games.destroy', $game->id) }}" method="POST" class="inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ml-2">{{__('Delete')}}</button>
+                </form>
             </div>
 
             <x-download-pdf-button route="game.pdf" :id="$game->id" />
