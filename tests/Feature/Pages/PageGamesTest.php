@@ -2,9 +2,6 @@
 
 use App\Models\Developer;
 use App\Models\Game;
-use App\Models\Platform;
-
-;
 
 it('loads the games page', function () {
     $response = $this->get(route('games'));

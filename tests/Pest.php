@@ -12,8 +12,10 @@
 */
 
 
+use App\Models\Character;
 use App\Models\ForumCategory;
 use App\Models\Post;
+use App\Models\Statistics;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Spatie\Permission\Models\Role;
@@ -59,8 +61,8 @@ function ConfirmRolesExist(): void
 
 function CreateUser_ForumCategory(): void
 {
-    $user = User::factory()->create();
-    $category = ForumCategory::factory()->create();
+    User::factory()->create();
+    ForumCategory::factory()->create();
 
 
 }
@@ -90,6 +92,37 @@ function CreateUser_Post()
     ]);
 
     return $post;
+}
+
+function CreateCharactersWithStats()
+{
+    Character::factory()->create([
+        'name' => 'Character 1',
+    ]);
+    Character::factory()->create([
+        'name' => 'Character 2',
+    ]);
+    Statistics::factory()->create([
+        'character_id' => 1,
+        'constitution' => 3,
+        'strength' => 6,
+        'agility' => 7,
+        'intelligence' => 8,
+        'charisma' => 9,
+    ]);
+    Statistics::factory()->create([
+        'character_id' => 2,
+        'constitution' => 3,
+        'strength' => 6,
+        'agility' => 7,
+        'intelligence' => 8,
+        'charisma' => 9,
+    ]);
+
+    $char1 = Character::with('statistics')->first();
+    $char2 = Character::with('statistics')->skip(1)->first();
+
+    return [$char1, $char2];
 }
 
 expect()->extend('toBeOne', function () {
