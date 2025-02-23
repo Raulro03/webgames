@@ -13,7 +13,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word(),
+            'title' => $this->faker->sentence(5),
             'body' => $this->faker->paragraph(),
             'published_at' => $published_at = $this->faker->dateTimeBetween('-1 year', '+1 year'),
             'status' => $published_at > Carbon::now() ? 'not_published' : ($published_at > Carbon::now()->subYear() ? 'published' : 'archived'),

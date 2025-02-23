@@ -50,7 +50,7 @@ it('creates a post when authenticated', function () {
 
     $category = ForumCategory::factory()->create();
     $data = [
-        'title' => 'Nuevo Post',
+        'title' => 'Nuevo Post magico',
         'body' => 'Contenido de prueba',
         'published_at' => now()->toDateTimeString(),
         'category_id' => $category->id,
@@ -61,7 +61,7 @@ it('creates a post when authenticated', function () {
     $response->assertCreated()
         ->assertJsonStructure(['data' => ['id', 'title', 'body']]);
 
-    expect(Post::where('title', 'Nuevo Post')->exists())->toBeTrue();
+    expect(Post::where('title', 'Nuevo Post magico')->exists())->toBeTrue();
 });
 
 it('does not create a post when unauthenticated', function () {

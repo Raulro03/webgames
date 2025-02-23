@@ -58,7 +58,7 @@ it('allows an authenticated user to create a post', function () {
     $category = ForumCategory::factory()->create();
 
     $postData = [
-        'title' => 'New Post',
+        'title' => 'New Post Magic',
         'body' => 'This is a test post.',
         'category_id' => $category->id,
         'status' => 'published',
@@ -68,7 +68,7 @@ it('allows an authenticated user to create a post', function () {
     $response = post(route('post.store'), $postData);
 
     $response->assertRedirect(route('forum'));
-    expect(Post::where('title', 'New Post')->exists())->toBeTrue();
+    expect(Post::where('title', 'New Post Magic')->exists())->toBeTrue();
 });
 
 it('prevents unauthenticated users from creating a post', function () {
