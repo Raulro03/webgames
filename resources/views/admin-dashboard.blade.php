@@ -30,6 +30,11 @@
                             🗑️ Limpiar Papelera
                         </button>
                     </form>
+                    <form action="{{ route('admin.users') }}" method="GET">
+                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 mb-2">
+                            👤 Ver Usuarios
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

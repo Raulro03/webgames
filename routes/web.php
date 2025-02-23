@@ -10,6 +10,7 @@ use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\TrashPostsController;
+use App\Http\Controllers\UserController;
 use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,9 @@ Route::middleware([
             ->name('dashboard.deleteArchivedPosts');
         Route::post('/admin/dashboard/CleanTrashedPosts', [DashboardController::class, 'cleanTrashPosts'])
             ->name('dashboard.CleanTrashedPosts');
+        Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+        Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users-delete');
+        Route::post('/admin/users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('admin.users-make-admin');
     });
 
 
