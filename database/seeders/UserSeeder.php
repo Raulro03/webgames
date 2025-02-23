@@ -24,7 +24,11 @@ class UserSeeder extends Seeder
 
         $this->command->info("Admin Token: $token");
 
-        file_put_contents(storage_path('app/tokens.txt'), "Admin Token: $token");
+        if (file_exists(storage_path('app/tokens.txt'))) {
+            unlink(storage_path('app/tokens.txt'));
+        }
+
+        file_put_contents(storage_path('app/tokens.txt'), "Most Recent Admin Token: $token\n", FILE_APPEND);
 
 
         User::factory()->create([

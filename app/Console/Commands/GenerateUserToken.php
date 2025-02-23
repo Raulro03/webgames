@@ -32,6 +32,7 @@ class GenerateUserToken extends Command
         if ($user) {
             $token = $user->createToken('Personal Access Token')->plainTextToken;
             $this->info("El token del usuario {$email} es: {$token}");
+            file_put_contents(storage_path('app/tokens.txt'), "Most Recent {$email} Token: $token\n", FILE_APPEND);
         } else {
             $this->error("No se encontró un usuario con el email {$email}");
         }
