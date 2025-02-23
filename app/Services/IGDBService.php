@@ -57,36 +57,4 @@ class IGDBService {
 
         return $response->json()[0] ?? null;
     }
-
-    /*public function getTopPlatformsByPopularity()
-    {
-        $response = Http::withHeaders([
-            'Client-ID' => $this->clientId,
-            'Authorization' => 'Bearer ' . $this->accessToken,
-        ])->withBody("
-            fields id, name, generation, url, platform_logo;
-            sort rating desc;
-            limit 10;
-            ", 'text/plain')->post('https://api.igdb.com/v4/platforms');
-
-        $topPlatforms = $response->json();
-
-        dd($topPlatforms);
-        return collect($topPlatforms)->map(function ($platform) {
-            return $this->getPlatformDetails($platform['id']);
-        });
-    }
-
-    private function getPlatformDetails($platformId)
-    {
-        $response = Http::withHeaders([
-            'Client-ID' => $this->clientId,
-            'Authorization' => 'Bearer ' . $this->accessToken,
-        ])->withBody("
-            fields name, generation, url, platform_logo;
-            where id = $platformId;
-        ", 'text/plain')->post('https://api.igdb.com/v4/platforms');
-
-        return $response->json()[0] ?? null;
-    }*/
 }
