@@ -34,7 +34,7 @@ class GameSearch extends Component
         $searchTerm = trim($this->search);
 
         $games = Game::when($searchTerm, function ($query, $searchTerm) {
-            return $query->where('title', 'like', '%' . $searchTerm . '%');
+            $query->where('title', 'like', '%' . $searchTerm . '%');
         })
             ->orderBy('average_rating', $this->orderBy)
             ->paginate(9);

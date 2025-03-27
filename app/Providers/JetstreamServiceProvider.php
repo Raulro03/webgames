@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Policies\CommentPolicy;
 use App\Policies\PostPolicy;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
@@ -14,6 +15,7 @@ use Laravel\Jetstream\Jetstream;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */

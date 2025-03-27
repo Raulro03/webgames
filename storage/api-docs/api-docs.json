@@ -458,7 +458,7 @@
                 "operationId": "a4c94437dbb9fc9516a8da2d7605f624",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "gameId",
                         "in": "path",
                         "description": "ID del juego",
                         "required": true,

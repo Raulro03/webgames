@@ -37,7 +37,7 @@ class GameController extends Controller
      *     summary="Obtener todos los juegos",
      *     tags={"Games"},
      *      @OA\Parameter (
-     *          name="id",
+     *          name="gameId",
      *          in="path",
      *          required=true,
      *          description="ID del juego",

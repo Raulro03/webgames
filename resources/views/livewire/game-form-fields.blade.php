@@ -70,7 +70,6 @@
             @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
-        <!-- Vista previa de la imagen -->
         @if ($imagePreview)
             <div class="mt-4">
                 <p class="text-gray-700 font-semibold">Vista previa:</p>
@@ -78,5 +77,5 @@
             </div>
         @endif
 
-    <x-primary-button type="submit" class="mt-4">{{ __('Save') }}</x-primary-button>
+    <x-primary-button type="submit" class="mt-4  " aria-label="Save">{{ __('Save') }}</x-primary-button>
 </form>

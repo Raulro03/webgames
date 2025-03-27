@@ -15,7 +15,6 @@ class PDFController extends Controller
         $imagePath = public_path($game->image_url);
         $imageData = '';
 
-        // Verificar si el archivo existe antes de intentar leerlo
         if (file_exists($imagePath)) {
             $imageData = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($imagePath));
         }
@@ -32,7 +31,6 @@ class PDFController extends Controller
         $imagePath = public_path($platform->image_url);
         $imageData = '';
 
-        // Verificar si el archivo existe antes de intentar leerlo
         if (file_exists($imagePath)) {
             $imageData = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($imagePath));
         }

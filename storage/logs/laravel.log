@@ -1,5 +1,256 @@
-[2025-02-23 23:13:07] testing.INFO: Eliminando post archivado: 2 - Accusantium eum ex culpa.  
-[2025-02-23 23:13:07] testing.INFO: Se eliminaron 1 posts archivados de más de 5 años.  
-[2025-02-23 23:13:08] testing.INFO: Command ejecutado para actualizar status de posts  
-[2025-02-23 23:13:37] testing.INFO: Eliminando post archivado: 1 - Autem eius commodi ut in et.  
-[2025-02-23 23:13:37] testing.INFO: Se eliminaron 1 posts archivados de más de 5 años.  
+[2025-02-26 16:24:40] testing.INFO: Eliminando post archivado: 2 - Sint rerum voluptatem magni rem odit a.  
+[2025-02-26 16:24:40] testing.INFO: Se eliminaron 1 posts archivados de más de 5 años.  
+[2025-02-26 16:24:41] testing.INFO: Command ejecutado para actualizar status de posts  
+[2025-02-26 16:25:11] testing.INFO: Eliminando post archivado: 1 - Harum necessitatibus quasi dolore asperiores et quisquam.  
+[2025-02-26 16:25:11] testing.INFO: Se eliminaron 1 posts archivados de más de 5 años.  
+[2025-02-27 08:28:28] local.DEBUG: From: webgames <hello@example.com>
+To: ccc@mail.es
+Subject: Bienvenido ccafas
+MIME-Version: 1.0
+Date: Thu, 27 Feb 2025 08:28:28 +0000
+Message-ID: <a3a3a8557b1ae5c7d1b57bf7700e0400@example.com>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+<div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px;">
+    <h2 style="color: #333;">Bienvenido a webgames!</h2>
+    <p>Hola, gracias por registrarte en nuestra plataforma. Esperamos que disfrutes la experiencia.</p>
+    <p>Si tienes alguna pregunta, contáctanos.</p>
+    <p style="text-align: center;">
+        <a href="https://webgames.test" style="padding: 10px 15px; background: #6200ea; color: white; text-decoration: none; border-radius: 5px;">
+            Ir a la Web
+        </a>
+    </p>
+    <p style="font-size: 12px; color: #777;">© 2025 webgames. Todos los derechos reservados.</p>
+</div>
+</body>
+</html>
+  
+[2025-02-27 08:28:36] local.DEBUG: From: webgames <hello@example.com>
+To: ccc@mail.es
+Subject: Confirme su correo =?utf-8?Q?electr=C3=B3nico?=
+MIME-Version: 1.0
+Date: Thu, 27 Feb 2025 08:28:36 +0000
+Message-ID: <8ce07e727dd6964292d4ea9b640e4eba@example.com>
+Content-Type: multipart/alternative; boundary=WdMHovCd
+
+--WdMHovCd
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+webgames: http://webgames.test
+
+# ¡Hola!
+
+Por favor, haga clic en el botón de abajo para verificar su dirección de correo electrónico.
+
+Confirme su correo electrónico: https://webgames.test/email/verify/7/4e738495d149e6c6c68d258d65bc4c75a0d50c8e?expires=1740648508&signature=54134c3970dcf973609f182f1a44325f5ba4ac0a4c664da22c11ba40787a188e
+
+Si no ha creado una cuenta, no se requiere ninguna acción adicional.
+
+Saludos,
+webgames
+
+Si está teniendo problemas al hacer clic en el botón "Confirme su correo electrónico", copie y pegue la URL de abajo
+en su navegador web: [https://webgames.test/email/verify/7/4e738495d149e6c6c68d258d65bc4c75a0d50c8e?expires=1740648508&signature=54134c3970dcf973609f182f1a44325f5ba4ac0a4c664da22c11ba40787a188e](https://webgames.test/email/verify/7/4e738495d149e6c6c68d258d65bc4c75a0d50c8e?expires=1740648508&signature=54134c3970dcf973609f182f1a44325f5ba4ac0a4c664da22c11ba40787a188e)
+
+© 2025 webgames. Todos los derechos reservados.
+
+--WdMHovCd
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>webgames</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<style>
+@media only screen and (max-width: 600px) {
+.inner-body {
+width: 100% !important;
+}
+
+.footer {
+width: 100% !important;
+}
+}
+
+@media only screen and (max-width: 500px) {
+.button {
+width: 100% !important;
+}
+}
+</style>
+
+</head>
+<body style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -webkit-text-size-adjust: none; background-color: #ffffff; color: #718096; height: 100%; line-height: 1.4; margin: 0; padding: 0; width: 100% !important;">
+
+<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; background-color: #edf2f7; margin: 0; padding: 0; width: 100%;">
+<tr>
+<td align="center" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; margin: 0; padding: 0; width: 100%;">
+<tr>
+<td class="header" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 25px 0; text-align: center;">
+<a href="http://webgames.test" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 19px; font-weight: bold; text-decoration: none; display: inline-block;">
+webgames
+</a>
+</td>
+</tr>
+
+<!-- Email Body -->
+<tr>
+<td class="body" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; background-color: #edf2f7; border-bottom: 1px solid #edf2f7; border-top: 1px solid #edf2f7; margin: 0; padding: 0; width: 100%; border: hidden !important;">
+<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px; background-color: #ffffff; border-color: #e8e5ef; border-radius: 2px; border-width: 1px; box-shadow: 0 2px 0 rgba(0, 0, 150, 0.025), 2px 4px 0 rgba(0, 0, 150, 0.015); margin: 0 auto; padding: 0; width: 570px;">
+<!-- Body content -->
+<tr>
+<td class="content-cell" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
+<h1 style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">¡Hola!</h1>
+<p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Por favor, haga clic en el botón de abajo para verificar su dirección de correo electrónico.</p>
+<table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; margin: 30px auto; padding: 0; text-align: center; width: 100%; float: unset;">
+<tr>
+<td align="center" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr>
+<td align="center" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr>
+<td style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<a href="https://webgames.test/email/verify/7/4e738495d149e6c6c68d258d65bc4c75a0d50c8e?expires=1740648508&amp;signature=54134c3970dcf973609f182f1a44325f5ba4ac0a4c664da22c11ba40787a188e" class="button button-primary" target="_blank" rel="noopener" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -webkit-text-size-adjust: none; border-radius: 4px; color: #fff; display: inline-block; overflow: hidden; text-decoration: none; background-color: #2d3748; border-bottom: 8px solid #2d3748; border-left: 18px solid #2d3748; border-right: 18px solid #2d3748; border-top: 8px solid #2d3748; word-break: break-all;">Confirme su correo electrónico</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Si no ha creado una cuenta, no se requiere ninguna acción adicional.</p>
+<p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Saludos,<br>
+webgames</p>
+
+
+<table class="subcopy" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-top: 1px solid #e8e5ef; margin-top: 25px; padding-top: 25px;">
+<tr>
+<td style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; text-align: left; font-size: 14px;">Si está teniendo problemas al hacer clic en el botón "Confirme su correo electrónico", copie y pegue la URL de abajo
+en su navegador web: <span class="break-all" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; word-break: break-all;"><a href="https://webgames.test/email/verify/7/4e738495d149e6c6c68d258d65bc4c75a0d50c8e?expires=1740648508&amp;signature=54134c3970dcf973609f182f1a44325f5ba4ac0a4c664da22c11ba40787a188e" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3869d4; word-break: break-all;">https://webgames.test/email/verify/7/4e738495d149e6c6c68d258d65bc4c75a0d50c8e?expires=1740648508&amp;signature=54134c3970dcf973609f182f1a44325f5ba4ac0a4c664da22c11ba40787a188e</a></span></p>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px; margin: 0 auto; padding: 0; text-align: center; width: 570px;">
+<tr>
+<td class="content-cell" align="center" style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
+<p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; color: #b0adc5; font-size: 12px; text-align: center;">© 2025 webgames. Todos los derechos reservados.</p>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+--WdMHovCd--
+  
+[2025-02-27 08:41:53] local.DEBUG: From: webgames <hello@example.com>
+To: ccc@mail.es
+Subject: !First Post Created!
+MIME-Version: 1.0
+Date: Thu, 27 Feb 2025 08:41:53 +0000
+Message-ID: <900aeddad553efb469ff0fc633a97491@example.com>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer post creado</title>
+</head>
+<body>
+<div>
+    <h2>¡Congratulations, ccafas! 🎉</h2>
+    <p>Has publicado tu primer post en nuestra plataforma</p>
+    <h3>dasdasdasdas</h3>
+    <p>dasdasdas</p>
+    <a href="https://webgames.test/forum/post/44">
+        Ver post
+    </a>
+</div>
+</body>
+  
+[2025-02-27 08:41:53] local.INFO: Command ejecutado para actualizar status de posts  
+[2025-02-27 14:54:12] local.ERROR: $ref "#/components/schemas/Platform" not found for @OA\Items() in \App\Http\Controllers\Api\PlatformController->index() in C:\Users\Raul\Desktop\2DAW\DWES\Proyectos\webgames\app\Http\Controllers\Api\PlatformController.php on line 37 {"exception":"[object] (ErrorException(code: 0): $ref \"#/components/schemas/Platform\" not found for @OA\\Items() in \\App\\Http\\Controllers\\Api\\PlatformController->index() in C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\app\\Http\\Controllers\\Api\\PlatformController.php on line 37 at C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Loggers\\DefaultLogger.php:31)
+[stacktrace]
+#0 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(290): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(512, '$ref \"#/compone...', 'C:\\\\Users\\\\Raul\\\\D...', 31)
+#1 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(512, '$ref \"#/compone...', 'C:\\\\Users\\\\Raul\\\\D...', 31)
+#2 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Loggers\\DefaultLogger.php(31): trigger_error('$ref \"#/compone...', 512)
+#3 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\psr\\log\\src\\LoggerTrait.php(61): OpenApi\\Loggers\\DefaultLogger->log('warning', '$ref \"#/compone...', Array)
+#4 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(511): Psr\\Log\\AbstractLogger->warning('$ref \"#/compone...', Array)
+#5 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\Schema.php(517): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#6 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\Items.php(50): OpenApi\\Annotations\\Schema->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#7 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(592): OpenApi\\Annotations\\Items->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#8 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(565): OpenApi\\Annotations\\AbstractAnnotation::_validate(Object(OpenApi\\Annotations\\JsonContent), Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#9 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\Schema.php(517): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#10 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(592): OpenApi\\Annotations\\Schema->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#11 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(565): OpenApi\\Annotations\\AbstractAnnotation::_validate(Object(OpenApi\\Annotations\\MediaType), Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#12 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(592): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#13 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(598): OpenApi\\Annotations\\AbstractAnnotation::_validate(Array, Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#14 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(565): OpenApi\\Annotations\\AbstractAnnotation::_validate(Object(OpenApi\\Annotations\\Response), Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#15 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\Response.php(121): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#16 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(592): OpenApi\\Annotations\\Response->validate(Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#17 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(598): OpenApi\\Annotations\\AbstractAnnotation::_validate(Array, Array, Array, '#/paths/6/get/r...', Object(stdClass))
+#18 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(565): OpenApi\\Annotations\\AbstractAnnotation::_validate(Object(OpenApi\\Annotations\\Get), Array, Array, '#/paths/6/get', Object(stdClass))
+#19 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\Operation.php(223): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#/paths/6/get', Object(stdClass))
+#20 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(592): OpenApi\\Annotations\\Operation->validate(Array, Array, '#/paths/6/get', Object(stdClass))
+#21 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(565): OpenApi\\Annotations\\AbstractAnnotation::_validate(Object(OpenApi\\Annotations\\PathItem), Array, Array, '#/paths/6', Object(stdClass))
+#22 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(592): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#/paths/6', Object(stdClass))
+#23 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(598): OpenApi\\Annotations\\AbstractAnnotation::_validate(Array, Array, Array, '#/paths', Object(stdClass))
+#24 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\AbstractAnnotation.php(565): OpenApi\\Annotations\\AbstractAnnotation::_validate(Object(OpenApi\\Annotations\\OpenApi), Array, Array, '#', Object(stdClass))
+#25 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Annotations\\OpenApi.php(170): OpenApi\\Annotations\\AbstractAnnotation->validate(Array, Array, '#', Object(stdClass))
+#26 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Analysis.php(440): OpenApi\\Annotations\\OpenApi->validate()
+#27 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\zircote\\swagger-php\\src\\Generator.php(511): OpenApi\\Analysis->validate()
+#28 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\darkaonline\\l5-swagger\\src\\Generator.php(191): OpenApi\\Generator->generate(Object(Symfony\\Component\\Finder\\Finder), Object(OpenApi\\Analysis))
+#29 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\darkaonline\\l5-swagger\\src\\Generator.php(132): L5Swagger\\Generator->scanFilesForDocumentation()
+#30 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\darkaonline\\l5-swagger\\src\\Console\\GenerateDocsCommand.php(72): L5Swagger\\Generator->generateDocs()
+#31 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\darkaonline\\l5-swagger\\src\\Console\\GenerateDocsCommand.php(58): L5Swagger\\Console\\GenerateDocsCommand->generateDocumentation(Object(L5Swagger\\GeneratorFactory), 'default')
+#32 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): L5Swagger\\Console\\GenerateDocsCommand->handle(Object(L5Swagger\\GeneratorFactory))
+#33 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#34 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#35 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#36 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#37 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(213): Illuminate\\Container\\Container->call(Array)
+#38 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#39 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#40 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php(1094): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php(342): Symfony\\Component\\Console\\Application->doRunCommand(Object(L5Swagger\\Console\\GenerateDocsCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\symfony\\console\\Application.php(193): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1205): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#45 C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#46 {main}
+"} 

@@ -30,14 +30,14 @@ class DashboardController extends Controller
     }
     public function deleteArchivedPosts()
     {
-        (new DeleteOldArchivedPosts())->handle();
+        DeleteOldArchivedPosts::dispatch();
 
         return back()->with('status', 'Los posts archivados antiguos han sido eliminados.');
     }
 
     public function cleanTrashPosts()
     {
-       (new CleanTrashedPosts())->handle();
+        CleanTrashedPosts::dispatch();
 
         return back()->with('status', 'Los posts en la papelera han sido eliminados.');
     }

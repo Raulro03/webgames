@@ -54,7 +54,7 @@ class GameFormFields extends Component
 
         try {
             $this->imagePreview = $this->image->temporaryUrl();
-        } catch (\Exception $e) {
+        } catch ( \Exception) {
             $this->addError('image', 'No se pudo cargar la vista previa.');
         }
     }
