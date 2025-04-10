@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForumController;
@@ -10,7 +12,6 @@ use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\TrashPostsController;
-use App\Http\Controllers\UserController;
 use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
@@ -75,13 +76,13 @@ Route::middleware([
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
-        Route::post('/admin/dashboard/delete-archived-posts', [DashboardController::class, 'deleteArchivedPosts'])
+        Route::post('/admin/dashboard/delete-archived-posts', [AdminDashboardController::class, 'deleteArchivedPosts'])
             ->name('dashboard.deleteArchivedPosts');
-        Route::post('/admin/dashboard/CleanTrashedPosts', [DashboardController::class, 'cleanTrashPosts'])
+        Route::post('/admin/dashboard/CleanTrashedPosts', [AdminDashboardController::class, 'cleanTrashPosts'])
             ->name('dashboard.CleanTrashedPosts');
-        Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
-        Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users-delete');
-        Route::post('/admin/users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('admin.users-make-admin');
+        Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
+        Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users-delete');
+        Route::post('/admin/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users-make-admin');
     });
 
 
