@@ -33,11 +33,11 @@ class GameController extends Controller
     }
     /**
      * @OA\Get(
-     *     path="/api/games/{gameId}",
+     *     path="/api/games/{id}",
      *     summary="Obtener todos los juegos",
      *     tags={"Games"},
      *      @OA\Parameter (
-     *          name="gameId",
+     *          name="id",
      *          in="path",
      *          required=true,
      *          description="ID del juego",

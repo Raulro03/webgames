@@ -11,12 +11,25 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     schema="Comment",
  *     title="Comment",
  *     description="Estructura del comentario en la API",
- *     required={"id", "body", "published_at", "post_id", "user_id", "category_id"},
+ *     required={"post_id", "user_id", "body", "published_at"},
  *     @OA\Property(
  *         property="id",
  *         type="integer",
+ *         readOnly=true,
  *         example=1,
- *         description="ID único del comentario"
+ *         description="ID autoincremental del comentario (generado automáticamente)"
+ *     ),
+ *     @OA\Property(
+ *         property="post_id",
+ *         type="integer",
+ *         example=3,
+ *         description="ID del post al que pertenece el comentario"
+ *     ),
+ *     @OA\Property(
+ *         property="user_id",
+ *         type="integer",
+ *         example=5,
+ *         description="ID del usuario que escribió el comentario"
  *     ),
  *     @OA\Property(
  *         property="body",
@@ -27,22 +40,31 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(
  *         property="published_at",
  *         type="string",
- *         format="date-time",
- *         example="2025-02-21T13:00:20.000000Z",
- *         description="Fecha y hora en que se publicó el comentario"
+ *         format="date",
+ *         example="2025-04-29",
+ *         description="Fecha en la que se publicó el comentario"
  *     ),
  *     @OA\Property(
- *         property="parent",
- *         ref="#/components/schemas/Comment",
+ *         property="parent_id",
+ *         type="integer",
  *         nullable=true,
- *         description="Comentario padre si es una respuesta"
+ *         example=2,
+ *         description="ID del comentario padre si este comentario es una respuesta"
  *     ),
  *     @OA\Property(
- *         property="replies",
- *         type="array",
- *         @OA\Items(ref="#/components/schemas/Comment"),
- *         description="Lista de respuestas a este comentario"
- *     )
+ *         property="created_at",
+ *         type="string",
+ *         format="date-time",
+ *         example="2025-04-29T10:30:00Z",
+ *         description="Fecha de creación del comentario"
+ *     ),
+ *     @OA\Property(
+ *         property="updated_at",
+ *         type="string",
+ *         format="date-time",
+ *         example="2025-04-29T11:00:00Z",
+ *         description="Fecha de última actualización del comentario"
+ *     ),
  * )
  */
 class CommentResource extends JsonResource

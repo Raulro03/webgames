@@ -7,14 +7,24 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @OA\Schema(
  *     schema="Post",
- *     title="Post",
  *     description="Estructura de un post en la API",
- *     required={"id", "title", "body", "status", "published_at"},
- *     @OA\Property(property="id", type="integer", example=1, description="ID del post"),
+ *     required={"user_id", "category_id", "title", "body", "status", "published_at"},
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer",
+ *         readOnly=true,
+ *         example=1,
+ *         description="ID autoincremental del post (generado automáticamente)"
+ *     ),
+ *     @OA\Property(property="user_id", type="integer", example=5, description="ID del usuario que creó el post"),
+ *     @OA\Property(property="category_id", type="integer", example=2, description="ID de la categoría del foro"),
  *     @OA\Property(property="title", type="string", example="Título del post", description="Título del post"),
- *     @OA\Property(property="body", type="string", example="Contenido del post", description="Cuerpo del post"),
+ *     @OA\Property(property="body", type="string", example="Contenido detallado del post", description="Cuerpo del post"),
  *     @OA\Property(property="status", type="string", example="published", description="Estado del post"),
- *     @OA\Property(property="published_at", type="string", format="date-time", example="2025-02-22T14:30:00Z", description="Fecha y hora de publicación"),
+ *     @OA\Property(property="published_at", type="string", format="date", example="2025-04-29", description="Fecha de publicación"),
+ *     @OA\Property(property="created_at", type="string", format="date-time", example="2025-04-29", description="Fecha de creación"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-04-29", description="Fecha de última modificación"),
+ *     @OA\Property(property="deleted_at", type="string", format="date-time", nullable=true, example="null", description="Fecha de borrado lógico (soft delete)"),
  *     @OA\Property(
  *         property="comments",
  *         type="array",

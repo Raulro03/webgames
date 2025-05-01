@@ -98,18 +98,18 @@
                 },
                 "security": [
                     {
-                        "sanctum": []
+                        "bearerAuth": []
                     }
                 ]
             }
         },
-        "/api/comments/{comment}": {
+        "/api/comments/{id}": {
             "get": {
                 "tags": [
                     "Comments"
                 ],
                 "summary": "Obtener un comentario específico con sus respuestas",
-                "operationId": "884e61ac3f4a0c4eb6d52f68929b4fc9",
+                "operationId": "dfbfe62d6ea6efe5a6ebc2be766a00e0",
                 "parameters": [
                     {
                         "name": "id",
@@ -143,7 +143,7 @@
                     "Comments"
                 ],
                 "summary": "Actualizar un comentario",
-                "operationId": "2b73d856972689aa0e0d9223d46011ee",
+                "operationId": "17f16fb86b3722d33c54e6d165a02c80",
                 "parameters": [
                     {
                         "name": "id",
@@ -165,9 +165,26 @@
                                     "body"
                                 ],
                                 "properties": {
+                                    "user_id": {
+                                        "description": "ID del usuario que edita el comentario",
+                                        "type": "integer",
+                                        "example": 5
+                                    },
                                     "body": {
+                                        "description": "Nuevo contenido del comentario",
                                         "type": "string",
-                                        "example": "Comentario actualizado"
+                                        "example": "Este es un comentario actualizado"
+                                    },
+                                    "published_at": {
+                                        "description": "Fecha de publicación",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-04-29"
+                                    },
+                                    "post_id": {
+                                        "description": "ID del post donde esta el comentario",
+                                        "type": "integer",
+                                        "example": 3
                                     }
                                 },
                                 "type": "object"
@@ -198,7 +215,7 @@
                 },
                 "security": [
                     {
-                        "sanctum": []
+                        "bearerAuth": []
                     }
                 ]
             },
@@ -207,7 +224,7 @@
                     "Comments"
                 ],
                 "summary": "Eliminar un comentario",
-                "operationId": "3d590dba6524ead27a250d196bc2729b",
+                "operationId": "b683c30a239aa780ffc7e9b219e90811",
                 "parameters": [
                     {
                         "name": "id",
@@ -236,7 +253,7 @@
                 },
                 "security": [
                     {
-                        "sanctum": []
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -297,7 +314,7 @@
                 },
                 "security": [
                     {
-                        "sanctum": []
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -337,12 +354,47 @@
                     }
                 }
             },
-            "put": {
+            "delete": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Eliminar un post por su ID",
+                "operationId": "99ebdc70261b374312883380361c1237",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del post a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Post eliminado correctamente"
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    },
+                    "404": {
+                        "description": "Post no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
                 "tags": [
                     "Posts"
                 ],
                 "summary": "Actualizar un post existente",
-                "operationId": "d6040854a2219203d3e8cf4eeafcdfa6",
+                "operationId": "c5f7ac402b789598848d6551f7326b70",
                 "parameters": [
                     {
                         "name": "id",
@@ -385,42 +437,7 @@
                 },
                 "security": [
                     {
-                        "sanctum": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Posts"
-                ],
-                "summary": "Eliminar un post por su ID",
-                "operationId": "99ebdc70261b374312883380361c1237",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID del post a eliminar",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "example": 1
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Post eliminado correctamente"
-                    },
-                    "401": {
-                        "description": "No autenticado"
-                    },
-                    "404": {
-                        "description": "Post no encontrado"
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -449,16 +466,16 @@
                 }
             }
         },
-        "/api/games/{gameId}": {
+        "/api/games/{id}": {
             "get": {
                 "tags": [
                     "Games"
                 ],
                 "summary": "Obtener todos los juegos",
-                "operationId": "a4c94437dbb9fc9516a8da2d7605f624",
+                "operationId": "48fb06317bf9e8f10c22dd892ff7425e",
                 "parameters": [
                     {
-                        "name": "gameId",
+                        "name": "id",
                         "in": "path",
                         "description": "ID del juego",
                         "required": true,
@@ -521,13 +538,13 @@
                 }
             }
         },
-        "/api/platforms/{platformId}": {
+        "/api/platforms/{id}": {
             "get": {
                 "tags": [
                     "Platforms"
                 ],
                 "summary": "Obtener una plataforma específica",
-                "operationId": "9d59ac06a341bbc01791abb9cfabe5e6",
+                "operationId": "3deec4f1d4d2c00065c8ec17fd57a93b",
                 "parameters": [
                     {
                         "name": "id",
@@ -563,18 +580,27 @@
                 "title": "Comment",
                 "description": "Estructura del comentario en la API",
                 "required": [
-                    "id",
-                    "body",
-                    "published_at",
                     "post_id",
                     "user_id",
-                    "category_id"
+                    "body",
+                    "published_at"
                 ],
                 "properties": {
                     "id": {
-                        "description": "ID único del comentario",
+                        "description": "ID autoincremental del comentario (generado automáticamente)",
                         "type": "integer",
+                        "readOnly": true,
                         "example": 1
+                    },
+                    "post_id": {
+                        "description": "ID del post al que pertenece el comentario",
+                        "type": "integer",
+                        "example": 3
+                    },
+                    "user_id": {
+                        "description": "ID del usuario que escribió el comentario",
+                        "type": "integer",
+                        "example": 5
                     },
                     "body": {
                         "description": "Contenido del comentario",
@@ -582,35 +608,37 @@
                         "example": "Este es un comentario de prueba"
                     },
                     "published_at": {
-                        "description": "Fecha y hora en que se publicó el comentario",
+                        "description": "Fecha en la que se publicó el comentario",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-04-29"
+                    },
+                    "parent_id": {
+                        "description": "ID del comentario padre si este comentario es una respuesta",
+                        "type": "integer",
+                        "example": 2,
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación del comentario",
                         "type": "string",
                         "format": "date-time",
-                        "example": "2025-02-21T13:00:20.000000Z"
+                        "example": "2025-04-29T10:30:00Z"
                     },
-                    "parent": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/components/schemas/Comment"
-                            }
-                        ],
-                        "nullable": true,
-                        "description": "Comentario padre si es una respuesta"
-                    },
-                    "replies": {
-                        "description": "Lista de respuestas a este comentario",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Comment"
-                        }
+                    "updated_at": {
+                        "description": "Fecha de última actualización del comentario",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-29T11:00:00Z"
                     }
                 },
                 "type": "object"
             },
             "Post": {
-                "title": "Post",
                 "description": "Estructura de un post en la API",
                 "required": [
-                    "id",
+                    "user_id",
+                    "category_id",
                     "title",
                     "body",
                     "status",
@@ -618,9 +646,20 @@
                 ],
                 "properties": {
                     "id": {
-                        "description": "ID del post",
+                        "description": "ID autoincremental del post (generado automáticamente)",
                         "type": "integer",
+                        "readOnly": true,
                         "example": 1
+                    },
+                    "user_id": {
+                        "description": "ID del usuario que creó el post",
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "category_id": {
+                        "description": "ID de la categoría del foro",
+                        "type": "integer",
+                        "example": 2
                     },
                     "title": {
                         "description": "Título del post",
@@ -630,7 +669,7 @@
                     "body": {
                         "description": "Cuerpo del post",
                         "type": "string",
-                        "example": "Contenido del post"
+                        "example": "Contenido detallado del post"
                     },
                     "status": {
                         "description": "Estado del post",
@@ -638,10 +677,29 @@
                         "example": "published"
                     },
                     "published_at": {
-                        "description": "Fecha y hora de publicación",
+                        "description": "Fecha de publicación",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-04-29"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación",
                         "type": "string",
                         "format": "date-time",
-                        "example": "2025-02-22T14:30:00Z"
+                        "example": "2025-04-29"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última modificación",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-29"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de borrado lógico (soft delete)",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "null",
+                        "nullable": true
                     },
                     "comments": {
                         "description": "Lista de comentarios asociados al post",
@@ -667,10 +725,12 @@
                     },
                     "title": {
                         "type": "string",
+                        "maxLength": 255,
                         "example": "The Legend of Zelda: Breath of the Wild"
                     },
                     "description": {
                         "type": "string",
+                        "maxLength": 200,
                         "example": "The Legend of Zelda: Breath of the Wild es un videojuego de acción-aventura de 2017 desarrollado y publicado por Nintendo para la consola Nintendo Switch y Wii U."
                     },
                     "release_date": {
@@ -679,18 +739,19 @@
                         "example": "2017-03-03"
                     },
                     "price": {
-                        "type": "number",
-                        "format": "float",
-                        "example": 59.99
+                        "type": "integer",
+                        "example": 5999
                     },
                     "average_rating": {
                         "type": "number",
                         "format": "float",
+                        "maximum": 9.99,
+                        "minimum": 0,
                         "example": 4.9
                     },
                     "image_url": {
                         "type": "string",
-                        "example": "https://example.com/image.jpg"
+                        "example": "images/games/residentevil.png"
                     },
                     "developer_id": {
                         "type": "integer",
@@ -710,7 +771,8 @@
             "Platform": {
                 "required": [
                     "id",
-                    "name"
+                    "name",
+                    "release_date"
                 ],
                 "properties": {
                     "id": {
@@ -719,11 +781,13 @@
                     },
                     "name": {
                         "type": "string",
+                        "maxLength": 50,
                         "example": "PlayStation 5"
                     },
                     "description": {
                         "type": "string",
-                        "example": "La PlayStation 5 es una consola de videojuegos de sobremesa desarrollada por Sony Interactive Entertainment. Anunciada en 2019 como la sucesora de la PlayStation 4, se lanzó el 12 de noviembre de 2020 en Australia, Japón, Nueva Zelanda, América del Norte y Corea del Sur, y el 19 de noviembre de 2020 en el resto del mundo."
+                        "maxLength": 100,
+                        "example": "La PlayStation 5 es una consola de videojuegos de sobremesa desarrollada por Sony Interactive Entertainment."
                     },
                     "release_date": {
                         "type": "string",
@@ -731,18 +795,19 @@
                         "example": "2020-11-12"
                     },
                     "price": {
-                        "type": "number",
-                        "format": "float",
-                        "example": 499.99
+                        "type": "integer",
+                        "example": 4990
                     },
                     "average_rating": {
                         "type": "number",
                         "format": "float",
+                        "maximum": 9.99,
+                        "minimum": 0,
                         "example": 4.5
                     },
                     "image_url": {
                         "type": "string",
-                        "example": "https://example.com/image.jpg"
+                        "example": "images/platforms/nintendo.png"
                     },
                     "created_at": {
                         "type": "string",
@@ -754,6 +819,14 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Token personal generado por Sanctum",
+                "bearerFormat": "Token",
+                "scheme": "bearer"
             }
         }
     },

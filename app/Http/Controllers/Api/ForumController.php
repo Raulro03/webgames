@@ -39,7 +39,7 @@ class ForumController extends Controller
      *     path="/api/posts",
      *     summary="Crear un nuevo post",
      *     tags={"Posts"},
-     *     security={{ "sanctum": {} }},
+     *     security={{ "bearerAuth": {} }},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(ref="#/components/schemas/Post")
@@ -93,11 +93,11 @@ class ForumController extends Controller
     }
 
     /**
-     * @OA\Put(
+     * @OA\Patch(
      *     path="/api/posts/{id}",
      *     summary="Actualizar un post existente",
      *     tags={"Posts"},
-     *     security={{ "sanctum": {} }},
+     *     security={{ "bearerAuth": {} }},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -136,7 +136,7 @@ class ForumController extends Controller
      *     path="/api/posts/{id}",
      *     summary="Eliminar un post por su ID",
      *     tags={"Posts"},
-     *     security={{ "sanctum": {} }},
+     *     security={{ "bearerAuth": {} }},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

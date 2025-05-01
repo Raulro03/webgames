@@ -43,7 +43,7 @@ class CommentController extends Controller
      *     path="/api/comments",
      *     summary="Crear un nuevo comentario",
      *     tags={"Comments"},
-     *     security={{ "sanctum": {} }},
+     *     security={{ "bearerAuth": {} }},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -76,7 +76,7 @@ class CommentController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/comments/{comment}",
+     *     path="/api/comments/{id}",
      *     summary="Obtener un comentario específico con sus respuestas",
      *     tags={"Comments"},
      *     @OA\Parameter(
@@ -101,10 +101,10 @@ class CommentController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/comments/{comment}",
+     *     path="/api/comments/{id}",
      *     summary="Actualizar un comentario",
      *     tags={"Comments"},
-     *     security={{ "sanctum": {} }},
+     *     security={{ "bearerAuth": {} }},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -116,7 +116,10 @@ class CommentController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"body"},
-     *             @OA\Property(property="body", type="string", example="Comentario actualizado")
+     *            @OA\Property(property="user_id", type="integer", example=5, description="ID del usuario que edita el comentario"),
+     *            @OA\Property(property="body", type="string", example="Este es un comentario actualizado", description="Nuevo contenido del comentario"),
+     *            @OA\Property(property="published_at", type="string", format="date", example="2025-04-29", description="Fecha de publicación"),
+     *            @OA\Property(property="post_id", type="integer", example=3, description="ID del post donde esta el comentario")
      *         )
      *     ),
      *     @OA\Response(
@@ -138,10 +141,10 @@ class CommentController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/comments/{comment}",
+     *     path="/api/comments/{id}",
      *     summary="Eliminar un comentario",
      *     tags={"Comments"},
-     *     security={{ "sanctum": {} }},
+     *     security={{ "bearerAuth": {} }},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

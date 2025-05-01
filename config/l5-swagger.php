@@ -169,6 +169,12 @@ return [
          * API security definitions. Will be generated into documentation file.
         */
         'securityDefinitions' => [
+            'bearerAuth' => [
+                'type' => 'http',
+                'scheme' => 'bearer',
+                'bearerFormat' => 'Token',
+                'description' => 'Token personal generado por Sanctum. Ejemplo: 2|xxxxxxx',
+            ],
             'securitySchemes' => [
                 /*
                  * Examples of Security schemes

@@ -6,6 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Platform;
 
 /**
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="Token",
+ *     description="Token personal generado por Sanctum"
+ * )
  * @OA\Info(
  *      version="1.0.0",
  *      title="WebGames API",
@@ -41,7 +48,7 @@ class PlatformController extends Controller
     }
     /**
      * @OA\Get(
-     *     path="/api/platforms/{platformId}",
+     *     path="/api/platforms/{id}",
      *     summary="Obtener una plataforma específica",
      *     tags={"Platforms"},
      *     @OA\Parameter(
