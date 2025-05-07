@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Platform;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -22,6 +23,9 @@ class GameFormFields extends Component
     public $image;
     public $imagePreview;
     public $developers;
+    public $platforms;
+    public $selectedPlatforms = [];
+    public $sales = [];
 
     protected $rules = [
         'title' => 'required|string|min:10|max:255',
@@ -30,11 +34,14 @@ class GameFormFields extends Component
         'average_rating' => 'nullable|numeric|between:0,9.99',
         'price' => 'required|integer|max:999999',
         'developer_id' => 'required',
+        'selectedPlatforms' => 'nullable|array',
+        'selectedPlatforms.*' => 'required|integer|min:0',
         'image' => 'nullable|image',
     ];
 
     public function mount($game = null)
     {
+        $this->platforms = Platform::all();
         $this->developers = Developer::all();
 
         if ($game) {
@@ -44,6 +51,9 @@ class GameFormFields extends Component
             $this->release_date = optional($game->release_date)->format('Y-m-d');
             $this->average_rating = $game->average_rating;
             $this->developer_id = $game->developer_id;
+            foreach ($game->platforms as $platform) {
+                $this->selectedPlatforms[$platform->id] = $platform->pivot->sales;
+            }
             $this->imagePreview = $game->image_url ? asset('storage/' . $game->image_url) : null;
         }
     }
@@ -66,11 +76,17 @@ class GameFormFields extends Component
 
         $validatedData['image_url'] = $this->handleImageUpload();
 
-        Game::updateOrCreate(
+        $game = Game::updateOrCreate(
             ['id' => optional($this->game)->id],
             $validatedData
         );
 
+        foreach ($this->selectedPlatforms as $platformId => $selected) {
+            if ($selected) {
+                $sales = $this->sales[$platformId] ?? 0;
+                $game->platforms()->attach($platformId, ['sales' => $sales]);
+            }
+        }
 
         return redirect()->route('games')
             ->with('status', $this->game ? 'Juego actualizado correctamente' : 'Juego creado exitosamente');

@@ -51,6 +51,25 @@
             @error('developer_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
+        <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2">Plataformas</label>
+            @foreach ($platforms as $platform)
+                <div class="flex items-center space-x-2">
+                    <input type="checkbox"
+                           wire:model="selectedPlatforms.{{ $platform->id }}">
+                    <span>{{ $platform->name }}</span>
+
+                    @if (!empty($selectedPlatforms[$platform->id]))
+                        <input type="number"
+                               wire:model.defer="sales.{{ $platform->id }}"
+                               placeholder="Ventas"
+                               class="border rounded px-2 py-1 w-32"
+                               min="0">
+                    @endif
+                </div>
+            @endforeach
+        </div>
+
         <!-- Drag and Drop Imagen -->
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">Imagen del Juego</label>
@@ -69,6 +88,7 @@
             </div>
             @error('image') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
+
 
         @if ($imagePreview)
             <div class="mt-4">
