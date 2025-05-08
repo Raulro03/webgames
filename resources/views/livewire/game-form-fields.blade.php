@@ -54,17 +54,22 @@
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold mb-2">Plataformas</label>
             @foreach ($platforms as $platform)
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-4 mb-2">
+                    <!-- Checkbox -->
                     <input type="checkbox"
-                           wire:model="selectedPlatforms.{{ $platform->id }}">
-                    <span>{{ $platform->name }}</span>
+                           wire:click="togglePlatform({{ $platform->id }})"
+                           @if(isset($selectedPlatforms[$platform->id])) checked @endif
+                    >
+                    <label>{{ $platform->name }}</label>
 
-                    @if (!empty($selectedPlatforms[$platform->id]))
+                    <!-- Input de ventas -->
+                    @if(isset($selectedPlatforms[$platform->id]))
                         <input type="number"
-                               wire:model.defer="sales.{{ $platform->id }}"
+                               wire:model.defer="platformSales.{{ $platform->id }}"
                                placeholder="Ventas"
                                class="border rounded px-2 py-1 w-32"
-                               min="0">
+                               min="0"
+                        >
                     @endif
                 </div>
             @endforeach

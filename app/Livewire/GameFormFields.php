@@ -25,7 +25,7 @@ class GameFormFields extends Component
     public $developers;
     public $platforms;
     public $selectedPlatforms = [];
-    public $sales = [];
+    public $platformSales = [];
 
     protected $rules = [
         'title' => 'required|string|min:10|max:255',
@@ -36,6 +36,8 @@ class GameFormFields extends Component
         'developer_id' => 'required',
         'selectedPlatforms' => 'nullable|array',
         'selectedPlatforms.*' => 'required|integer|min:0',
+        'platformSales' => 'nullable|array',
+        'platformSales.*' => 'required|integer|min:0',
         'image' => 'nullable|image',
     ];
 
@@ -55,6 +57,17 @@ class GameFormFields extends Component
                 $this->selectedPlatforms[$platform->id] = $platform->pivot->sales;
             }
             $this->imagePreview = $game->image_url ? asset('storage/' . $game->image_url) : null;
+        }
+    }
+
+    public function togglePlatform($platformId)
+    {
+        if (isset($this->selectedPlatforms[$platformId])) {
+            unset($this->selectedPlatforms[$platformId]);
+            unset($this->platformSales[$platformId]);
+        } else {
+            $this->selectedPlatforms[$platformId] = true;
+            $this->platformSales[$platformId] = 0;
         }
     }
 
@@ -81,12 +94,13 @@ class GameFormFields extends Component
             $validatedData
         );
 
-        foreach ($this->selectedPlatforms as $platformId => $selected) {
-            if ($selected) {
-                $sales = $this->sales[$platformId] ?? 0;
-                $game->platforms()->attach($platformId, ['sales' => $sales]);
-            }
+        $syncData = [];
+
+        foreach ($this->selectedPlatforms as $platformId => $active) {
+            $syncData[$platformId] = ['sales' => $this->platformSales[$platformId] ?? 0];
         }
+
+        $game->platforms()->sync($syncData);
 
         return redirect()->route('games')
             ->with('status', $this->game ? 'Juego actualizado correctamente' : 'Juego creado exitosamente');
