@@ -12,6 +12,7 @@ use App\Http\Controllers\Pages\PageVersusController;
 use App\Http\Controllers\Pages\PageWelcomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\TrashPostsController;
+use App\Http\Controllers\User\UserDashboardController;
 use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,8 @@ Route::middleware([
     Route::post('/comments/{post}/{comment?}/reply', [CommentController::class, 'store'])->name('replies.store');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/user/generate-tokens', [UserDashboardController::class, 'generateTokens'])->name('user.generate.tokens');
+
 
     Route::middleware('role:admin')->group(function () {
         Route::post('/admin/dashboard/delete-archived-posts', [AdminDashboardController::class, 'deleteArchivedPosts'])
@@ -84,7 +87,6 @@ Route::middleware([
         Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users-delete');
         Route::post('/admin/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users-make-admin');
     });
-
 
 });
 
