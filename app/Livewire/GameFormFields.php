@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Character;
 use App\Models\Platform;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -26,6 +27,9 @@ class GameFormFields extends Component
     public $platforms;
     public $selectedPlatforms = [];
     public $platformSales = [];
+    public $characters;
+    public $selectedCharacters = [];
+    public $characterAppearance = [] ;
 
     protected $rules = [
         'title' => 'required|string|min:10|max:255',
@@ -38,6 +42,10 @@ class GameFormFields extends Component
         'selectedPlatforms.*' => 'required|integer|min:0',
         'platformSales' => 'nullable|array',
         'platformSales.*' => 'required|integer|min:0',
+        'selectedCharacters' => 'nullable|array',
+        'selectedCharacters.*' => 'required|integer|min:0',
+        'characterAppearance' => 'nullable|array',
+        'characterAppearance.*' => 'required|date',
         'image' => 'nullable|image',
     ];
 
@@ -45,6 +53,7 @@ class GameFormFields extends Component
     {
         $this->platforms = Platform::all();
         $this->developers = Developer::all();
+        $this->characters = Character::all();
 
         if ($game) {
             $this->title = $game->title;
@@ -55,6 +64,9 @@ class GameFormFields extends Component
             $this->developer_id = $game->developer_id;
             foreach ($game->platforms as $platform) {
                 $this->selectedPlatforms[$platform->id] = $platform->pivot->sales;
+            }
+            foreach ($game->characters as $character) {
+                $this->selectedCharacters[$character->id] = $character->pivot->appearance;
             }
             $this->imagePreview = $game->image_url ? asset('storage/' . $game->image_url) : null;
         }
@@ -68,6 +80,17 @@ class GameFormFields extends Component
         } else {
             $this->selectedPlatforms[$platformId] = true;
             $this->platformSales[$platformId] = 0;
+        }
+    }
+
+    public function toggleCharacter($characterId)
+    {
+        if (isset($this->selectedCharacters[$characterId])) {
+            unset($this->selectedCharacters[$characterId]);
+            unset($this->characterAppearance[$characterId]);
+        } else {
+            $this->selectedCharacters[$characterId] = true;
+            $this->characterAppearance[$characterId] = null;
         }
     }
 
@@ -94,13 +117,21 @@ class GameFormFields extends Component
             $validatedData
         );
 
-        $syncData = [];
+        $platformSyncData = [];
 
         foreach ($this->selectedPlatforms as $platformId => $active) {
-            $syncData[$platformId] = ['sales' => $this->platformSales[$platformId] ?? 0];
+            $platformSyncData[$platformId] = ['sales' => $this->platformSales[$platformId] ?? 0];
         }
 
-        $game->platforms()->sync($syncData);
+        $game->platforms()->sync($platformSyncData);
+
+        $characterSyncData = [];
+
+        foreach ($this->selectedCharacters as $characterId => $active) {
+            $characterSyncData[$characterId] = ['appearance' => $this->characterAppearance[$characterId] ?? now()];
+        }
+
+        $game->characters()->sync($characterSyncData);
 
         return redirect()->route('games')
             ->with('status', $this->game ? 'Juego actualizado correctamente' : 'Juego creado exitosamente');

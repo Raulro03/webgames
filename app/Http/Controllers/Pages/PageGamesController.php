@@ -37,6 +37,9 @@ class PageGamesController extends Controller
             Storage::disk('public')->delete($game->image_url);
         }
 
+        $game->platforms()->detach();
+        $game->characters()->detach();
+
         $game->delete();
 
         return redirect()->route('games')->with('status', 'Juego eliminado exitosamente!');
