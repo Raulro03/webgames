@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Requests\GameRequest;
 use App\Models\Character;
 use App\Models\Platform;
 use Livewire\Component;
@@ -31,23 +32,9 @@ class GameFormFields extends Component
     public $selectedCharacters = [];
     public $characterAppearance = [] ;
 
-    protected $rules = [
-        'title' => 'required|string|min:10|max:255',
-        'description' => 'nullable|string',
-        'release_date' => 'required|date',
-        'average_rating' => 'nullable|numeric|between:0,9.99',
-        'price' => 'required|integer|max:999999',
-        'developer_id' => 'required',
-        'selectedPlatforms' => 'nullable|array',
-        'selectedPlatforms.*' => 'required|integer|min:0',
-        'platformSales' => 'nullable|array',
-        'platformSales.*' => 'required|integer|min:0',
-        'selectedCharacters' => 'nullable|array',
-        'selectedCharacters.*' => 'required|integer|min:0',
-        'characterAppearance' => 'nullable|array',
-        'characterAppearance.*' => 'required|date',
-        'image' => 'nullable|image',
-    ];
+    protected function rules() {
+        return (new GameRequest())->rules();
+    }
 
     public function mount($game = null)
     {
