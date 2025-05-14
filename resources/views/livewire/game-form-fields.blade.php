@@ -60,17 +60,21 @@
                         <div class="flex items-center space-x-4 mb-2">
                             <input type="checkbox"
                                    wire:click="togglePlatform({{ $platform->id }})"
-                                   @if(isset($selectedPlatforms[$platform->id])) checked @endif
+                                   @if(isset($platformSales[$platform->id])) checked @endif
                             >
                             <label>{{ $platform->name }}</label>
 
-                            @if(isset($selectedPlatforms[$platform->id]))
+                            @if(isset($platformSales[$platform->id]))
                                 <input type="number"
                                        wire:model.defer="platformSales.{{ $platform->id }}"
                                        placeholder="Ventas"
                                        class="border rounded px-2 py-1 w-32"
                                        min="0"
+                                       value="{{$platformSales[$platform->id] ?? 0}}"
                                 >
+                                @error("platformSales.$platform->id")
+                                <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
                             @endif
                         </div>
                     @endforeach
@@ -83,15 +87,18 @@
                         <div class="flex items-center space-x-4 mb-2">
                             <input type="checkbox"
                                    wire:click="toggleCharacter({{ $character->id }})"
-                                   @if(isset($selectedCharacters[$character->id])) checked @endif
+                                   @if(isset($characterAppearance[$character->id])) checked @endif
                             >
                             <label>{{ $character->name }}</label>
 
-                            @if(isset($selectedCharacters[$character->id]))
+                            @if(isset($characterAppearance[$character->id]))
                                 <input type="date"
                                        wire:model.defer="characterAppearance.{{ $character->id }}"
                                        class="border rounded px-2 py-1 w-48"
-                            >
+                                >
+                                @error("characterAppearance.$character->id")
+                                <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
                             @endif
                         </div>
                     @endforeach

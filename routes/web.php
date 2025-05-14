@@ -13,6 +13,7 @@ use App\Http\Controllers\Pages\PageWelcomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\TrashPostsController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Livewire\PlatformsManager;
 use App\Livewire\TopGames;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,7 @@ Route::get('/games', [PageGamesController::class, 'index'])->name('games');
 
 Route::get('/characters', [PageCharactersController::class, 'index'])->name('characters');
 
-Route::get('/platforms', [PagePlatformsController::class, 'index'])->name('platforms');
+Route::get('/platforms', [PagePlatformsController::class, 'invoke'])->name('platforms');
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/forum/my-posts', [ForumController::class, 'myPosts'])->name('forum.my-posts')
@@ -39,7 +40,6 @@ Route::get('/privacy', function () {
     return view('privacy');
 })->name('privacy');
 
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -52,7 +52,6 @@ Route::middleware([
     Route::get('/games/{game}', [PageGamesController::class, 'show'])->name('games.show');
 
     Route::get('/characters/{character}', [PageCharactersController::class, 'show'])->name('characters.show');
-    Route::get('/platforms/{platform}', [PagePlatformsController::class, 'show'])->name('platforms.show');
 
     Route::get('/game/{id}/pdf', [PDFController::class, 'gamePDF'])->name('game.pdf');
     Route::get('/platform/{id}/pdf', [PDFController::class, 'platformPDF'])->name('platform.pdf');

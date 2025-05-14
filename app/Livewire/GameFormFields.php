@@ -26,10 +26,9 @@ class GameFormFields extends Component
     public $imagePreview;
     public $developers;
     public $platforms;
-    public $selectedPlatforms = [];
     public $platformSales = [];
+
     public $characters;
-    public $selectedCharacters = [];
     public $characterAppearance = [] ;
 
     protected function rules() {
@@ -50,10 +49,10 @@ class GameFormFields extends Component
             $this->average_rating = $game->average_rating;
             $this->developer_id = $game->developer_id;
             foreach ($game->platforms as $platform) {
-                $this->selectedPlatforms[$platform->id] = $platform->pivot->sales;
+                $this->platformSales[$platform->id] = $platform->pivot->sales;
             }
             foreach ($game->characters as $character) {
-                $this->selectedCharacters[$character->id] = $character->pivot->appearance;
+                $this->characterAppearance[$character->id] = $character->pivot->appearance;
             }
             $this->imagePreview = $game->image_url ? asset('storage/' . $game->image_url) : null;
         }
@@ -61,23 +60,19 @@ class GameFormFields extends Component
 
     public function togglePlatform($platformId)
     {
-        if (isset($this->selectedPlatforms[$platformId])) {
-            unset($this->selectedPlatforms[$platformId]);
+        if (isset($this->platformSales[$platformId])) {
             unset($this->platformSales[$platformId]);
         } else {
-            $this->selectedPlatforms[$platformId] = true;
             $this->platformSales[$platformId] = 0;
         }
     }
 
     public function toggleCharacter($characterId)
     {
-        if (isset($this->selectedCharacters[$characterId])) {
-            unset($this->selectedCharacters[$characterId]);
+        if (isset($this->characterAppearance[$characterId])) {
             unset($this->characterAppearance[$characterId]);
         } else {
-            $this->selectedCharacters[$characterId] = true;
-            $this->characterAppearance[$characterId] = null;
+            $this->characterAppearance[$characterId] = now();
         }
     }
 
@@ -95,7 +90,10 @@ class GameFormFields extends Component
     public function save()
     {
 
-        $validatedData = $this->validate();
+        $validatedData = $this->validate(
+            $this->rules(),
+            [],
+            $this->attributes());
 
         $validatedData['image_url'] = $this->handleImageUpload();
 
@@ -106,16 +104,16 @@ class GameFormFields extends Component
 
         $platformSyncData = [];
 
-        foreach ($this->selectedPlatforms as $platformId => $active) {
-            $platformSyncData[$platformId] = ['sales' => $this->platformSales[$platformId] ?? 0];
+        foreach ($this->platformSales as $platformId => $sales) {
+            $platformSyncData[$platformId] = ['sales' => $sales ?? 0];
         }
 
         $game->platforms()->sync($platformSyncData);
 
         $characterSyncData = [];
 
-        foreach ($this->selectedCharacters as $characterId => $active) {
-            $characterSyncData[$characterId] = ['appearance' => $this->characterAppearance[$characterId] ?? now()];
+        foreach ($this->characterAppearance as $characterId => $appearance) {
+            $characterSyncData[$characterId] = ['appearance' => $appearance ?? now()];
         }
 
         $game->characters()->sync($characterSyncData);
@@ -139,5 +137,22 @@ class GameFormFields extends Component
         }
 
         return $this->game->image_url ?? null;
+    }
+
+    public function attributes()
+    {
+        $attributes = [];
+
+        foreach ($this->platformSales as $id => $value) {
+            $platform = $this->platforms->firstWhere('id', $id);
+            $attributes["platformSales.$id"] = $platform ? "ventas de {$platform->name}" : "ventas de plataforma";
+        }
+
+        foreach ($this->characterAppearance as $id => $value) {
+            $character = $this->characters->firstWhere('id', $id);
+            $attributes["characterAppearance.$id"] = $character ? "aparición de {$character->name}" : "aparición de personaje";
+        }
+
+        return $attributes;
     }
 }

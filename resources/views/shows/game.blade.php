@@ -19,7 +19,7 @@
                     <p><strong>{{__('Release Date')}}:</strong> {{ $game->release_date->format('d/m/Y') }}</p>
                     @foreach($game->platforms as $platform)
                         <div class="mt-4 p-4 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-md">
-                            <a href="{{ route('platforms.show', $platform->id) }}" class="text-lg font-semibold text-gray-800 dark:text-gray-200"><strong>{{__('Platform')}}:</strong> {{ $platform->name }}</a>
+                            <a href="{{ route('platforms') }}" class="text-lg font-semibold text-gray-800 dark:text-gray-200"><strong>{{__('Platform')}}:</strong> {{ $platform->name }}</a>
                             <p class="text-lg text-gray-600 dark:text-gray-400"><strong>{{__('Sales')}}:</strong> {{ $platform->pivot->sales ?? 'No disponible' }} Unidades</p>
                         </div>
                     @endforeach
