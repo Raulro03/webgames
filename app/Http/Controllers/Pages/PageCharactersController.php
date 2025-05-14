@@ -3,18 +3,12 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\Character;
 
 class PageCharactersController extends Controller
 {
-    public function index()
+    public function invoke()
     {
-        $characters = Character::query()->paginate(9);
-        return view('pages.characters', compact('characters'));
+        return view('pages.characters');
     }
 
-    public function show(Character $character)
-    {
-        return view('shows.character', compact('character'));
-    }
 }

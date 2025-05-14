@@ -21,7 +21,7 @@ Route::get('/', PageWelcomeController::class)->name('welcome');
 
 Route::get('/games', [PageGamesController::class, 'index'])->name('games');
 
-Route::get('/characters', [PageCharactersController::class, 'index'])->name('characters');
+Route::get('/characters', [PageCharactersController::class, 'invoke'])->name('characters');
 
 Route::get('/platforms', [PagePlatformsController::class, 'invoke'])->name('platforms');
 
@@ -50,8 +50,6 @@ Route::middleware([
     Route::resource('/games', PageGamesController::class)
         ->only(['create', 'edit', 'destroy'])->middleware('role:admin');
     Route::get('/games/{game}', [PageGamesController::class, 'show'])->name('games.show');
-
-    Route::get('/characters/{character}', [PageCharactersController::class, 'show'])->name('characters.show');
 
     Route::get('/game/{id}/pdf', [PDFController::class, 'gamePDF'])->name('game.pdf');
     Route::get('/platform/{id}/pdf', [PDFController::class, 'platformPDF'])->name('platform.pdf');
