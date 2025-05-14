@@ -2,7 +2,7 @@
     {{-- Botón Crear --}}
     <div class="flex justify-end mb-6">
         <button wire:click="create" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
-            + Nueva Plataforma
+            + {{__("New Platform")}}
         </button>
     </div>
 
@@ -22,11 +22,11 @@
                         </span>
                         <div class="space-x-2">
                             <button wire:click="show({{ $platform->id }})"
-                                    class="text-blue-500 hover:underline">Ver</button>
+                                    class="text-blue-500 hover:underline">{{__("See")}}</button>
                             <button wire:click="edit({{ $platform->id }})"
-                                    class="text-yellow-500 hover:underline">Editar</button>
+                                    class="text-yellow-500 hover:underline">{{__('Edit')}}</button>
                             <button wire:click="confirmDelete({{ $platform->id }})"
-                                    class="text-red-500 hover:underline">Eliminar</button>
+                                    class="text-red-500 hover:underline">{{__("Delete")}}</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             <div class="bg-white dark:bg-gray-800 w-full max-w-xl mx-auto rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
                 <div class="flex justify-between items-center mb-4 border-b pb-2">
                     <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                        {{ $isEditMode ? 'Editar Plataforma' : 'Crear Plataforma' }}
+                        {{ $isEditMode ? __("Edit Platform") : __('Create Platform') }}
                     </h2>
                     <button wire:click="closeModalCreateEdit" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-xl">
                         &times;
@@ -54,7 +54,7 @@
                 <form wire:submit.prevent="{{ $isEditMode ? 'update' : 'store' }}" class="space-y-4">
                     {{-- Nombre --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Name")}}</label>
                         <input wire:model="name" type="text"
                                class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                         @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -62,7 +62,7 @@
 
                     {{-- Descripción --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descripción</label>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Description")}}</label>
                         <textarea wire:model="description"
                                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                                   rows="3"></textarea>
@@ -71,7 +71,7 @@
 
                     {{-- Fecha de lanzamiento --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Fecha de lanzamiento</label>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Release Date")}}</label>
                         <input wire:model="release_date" type="date"
                                class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                         @error('release_date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -79,7 +79,7 @@
 
                     {{-- Precio --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Precio (€)</label>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Price")}} (€)</label>
                         <input wire:model="price" type="number" step="1" min="0"
                                class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                         @error('price') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -87,7 +87,7 @@
 
                     {{-- Rating medio --}}
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Rating medio</label>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Average rating")}}</label>
                         <input wire:model="average_rating" type="number" step="0.01" max="9.99"
                                class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                         @error('average_rating') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -152,7 +152,7 @@
                     <div class="flex justify-end gap-3 pt-4">
                         <button type="button" wire:click="closeModalCreateEdit"
                                 class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md shadow-sm">
-                            Cancelar
+                            {{__("Cancel")}}
                         </button>
                         <button type="submit"
                                 class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-sm">
@@ -184,10 +184,10 @@
 
                     <!-- Información -->
                     <div class="md:ml-6 text-gray-700 dark:text-gray-300 space-y-3">
-                        <p><strong>Descripción:</strong> {{ $currentPlatform->description }}</p>
-                        <p><strong>Precio:</strong> {{ number_format($currentPlatform->price / 100, 2, ',', '.') }}€</p>
-                        <p><strong>Calificación Promedio:</strong> {{ $currentPlatform->average_rating }}</p>
-                        <p><strong>Fecha de Lanzamiento:</strong> {{ \Carbon\Carbon::parse($currentPlatform->release_date)->format('d/m/Y') }}</p>
+                        <p><strong>{{__("Description")}}:</strong> {{ $currentPlatform->description }}</p>
+                        <p><strong>{{__("Price")}}:</strong> {{ number_format($currentPlatform->price / 100, 2, ',', '.') }}€</p>
+                        <p><strong>{{__("Average rating")}}:</strong> {{ $currentPlatform->average_rating }}</p>
+                        <p><strong>{{__("Release Date")}}:</strong> {{ \Carbon\Carbon::parse($currentPlatform->release_date)->format('d/m/Y') }}</p>
                     </div>
                 </div>
 
@@ -195,7 +195,7 @@
                 <div class="mt-6 text-center space-x-4">
                     <button wire:click="$set('ShowModal', false)"
                             class="bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300">
-                        Cerrar
+                        {{__("Close")}}
                     </button>
 
                     <x-download-pdf-button route="platform.pdf" :id="$currentPlatform->id" />
@@ -209,19 +209,19 @@
         <x-modal title="Eliminar Plataforma" wire:model="DeleteModal">
             <div class="text-center space-y-4">
                 <p class="text-lg font-semibold text-red-600">
-                    ¿Eliminar plataforma?
+                    ¿{{__("Delete Platform")}}?
                 </p>
                 <p class="text-gray-700 dark:text-gray-300">
-                    ¿Estás seguro de que deseas eliminar <strong>{{ $currentPlatform->name }}</strong>? Esta acción no se puede deshacer.
+                    ¿{{__("Are you sure you want to delete")}} <strong>{{ $currentPlatform->name }}</strong>? {{__("This action cannot be undone")}}.
                 </p>
                 <div class="flex justify-center space-x-3 pt-4">
                     <button wire:click="delete"
                             class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
-                        Eliminar
+                        {{__("Delete")}}
                     </button>
                     <button wire:click="$set('DeleteModal', false)"
                             class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition">
-                        Cancelar
+                        {{__("Close")}}
                     </button>
                 </div>
             </div>
