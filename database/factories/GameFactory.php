@@ -18,7 +18,7 @@ class GameFactory extends Factory
             'release_date' => Carbon::now()->subYears(rand(0, 10)),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
             'price' => $this->faker->randomNumber(),
-            'image_url' => 'images/games/' . $this->faker->randomElement([
+            'image_url' => 'storage/images/games/' . $this->faker->randomElement([
                     'ds1.png',
                     'uncharted.png',
                     'wars.png',

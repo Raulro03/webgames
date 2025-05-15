@@ -18,7 +18,7 @@ class PlatformFactory extends Factory
             'release_date' => Carbon::now()->subYears(rand(0, 10)),
             'price' => $this->faker->randomNumber(),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
-            'image_url' => 'images/platforms/' . $this->faker->randomElement([
+            'image_url' => 'storage/images/platforms/' . $this->faker->randomElement([
                     'nintendo.png',
                     'ps4.png',
                     'xbox.png',

@@ -34,7 +34,7 @@
         @endforeach
     </div>
 
-    <div class="mt-6 flex justify-center">
+    <div class="d-flex m-3 px-6 justify-content-center">
         {{ $platforms->links() }}
     </div>
 

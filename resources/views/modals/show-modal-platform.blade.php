@@ -10,7 +10,7 @@
 
         <div class="flex flex-col md:flex-row items-center">
             <!-- Imagen -->
-            <img src="{{ asset('storage/' . $currentPlatform->image_url) }}"
+            <img src="{{ asset($currentPlatform->image_url) }}"
                  alt="Imagen de {{ $currentPlatform->name }}"
                  class="w-64 h-64 object-cover rounded-lg shadow-md border border-gray-300 mb-4 md:mb-0">
 
@@ -19,7 +19,7 @@
                 <p><strong>{{__("Description")}}:</strong> {{ $currentPlatform->description }}</p>
                 <p><strong>{{__("Price")}}:</strong> {{ number_format($currentPlatform->price / 100, 2, ',', '.') }}€</p>
                 <p><strong>{{__("Average rating")}}:</strong> {{ $currentPlatform->average_rating }}</p>
-                <p><strong>{{__("Release Date")}}:</strong> {{ \Carbon\Carbon::parse($currentPlatform->release_date)->format('d/m/Y') }}</p>
+                <p><strong>{{__("Release Date")}}:</strong> {{ $currentPlatform->release_date->format('d/m/Y') }}</p>
             </div>
         </div>
 

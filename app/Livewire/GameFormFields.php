@@ -54,7 +54,7 @@ class GameFormFields extends Component
             foreach ($game->characters as $character) {
                 $this->characterAppearance[$character->id] = $character->pivot->appearance;
             }
-            $this->imagePreview = $game->image_url ? asset('storage/' . $game->image_url) : null;
+            $this->imagePreview = $game->image_url ? asset($game->image_url) : null;
         }
     }
 
@@ -133,7 +133,7 @@ class GameFormFields extends Component
             if ($this->game && $this->game->image_url) {
                 Storage::disk('public')->delete($this->game->image_url);
             }
-            return $this->image->store('images/games', 'public');
+            return $this->image->store('storage/images/games', 'public');
         }
 
         return $this->game->image_url ?? null;

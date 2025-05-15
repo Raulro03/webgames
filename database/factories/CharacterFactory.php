@@ -16,7 +16,7 @@ class CharacterFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(100),
             'age' => $this->faker->numberBetween(1, 100),
-            'image_url' => 'images/characters/' . $this->faker->randomElement([
+            'image_url' => 'storage/images/characters/' . $this->faker->randomElement([
                     'darth.png',
                     'leon.png',
                     'mario.png',

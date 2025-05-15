@@ -3,4 +3,5 @@
 @section('content')
 
     <livewire:platforms-manager>
+
 @endsection

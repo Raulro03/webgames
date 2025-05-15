@@ -95,7 +95,7 @@ class PlatformsManager extends Component
         $this->release_date = $this->currentPlatform->release_date;
         $this->price = $this->currentPlatform->price;
         $this->average_rating = $this->currentPlatform->average_rating;
-        $this->imagePreview = $this->currentPlatform->image_url ? asset('storage/' . $this->currentPlatform->image_url) : null;
+        $this->imagePreview = $this->currentPlatform->image_url ? asset($this->currentPlatform->image_url) : null;
 
         foreach ($this->currentPlatform->games as $game) {
             $this->gamesSales[$game->id] = $game->pivot->sales;

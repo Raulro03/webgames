@@ -486,10 +486,14 @@
     "Preview:": "Vista previa:",
     "Generate Token": "Generar Token",
     "New Platform": "Nueva Plataforma",
+    "New Character": "Nuevo Personaje",
     "See": "Ver",
     "Edit Platform": "Editar Plataforma",
     "Create Platform": "Crear PLataforma",
     "Delete Platform": "Eliminar plataforma",
+    "Delete Character": "Eliminar Personaje",
     "Are you sure you want to delete": "Estás seguro de que deseas eliminar",
-    "This action cannot be undone": "Esta acción no se puede deshacer"
+    "This action cannot be undone": "Esta acción no se puede deshacer",
+    "Are you sure?": "Estas seguro?",
+    "You are about to delete": "Estás a punto de eliminar "
 }
