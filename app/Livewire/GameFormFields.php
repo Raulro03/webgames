@@ -133,7 +133,7 @@ class GameFormFields extends Component
             if ($this->game && $this->game->image_url) {
                 Storage::disk('public')->delete($this->game->image_url);
             }
-            return $this->image->store('storage/images/games', 'public');
+            return $this->image->store('images/games', 'public');
         }
 
         return $this->game->image_url ?? null;

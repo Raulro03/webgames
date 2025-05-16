@@ -12,7 +12,7 @@ class PDFController extends Controller
     {
         $game = Game::findOrFail($id);
 
-        $imagePath = public_path($game->image_url);
+        $imagePath = public_path( 'storage/' . $game->image_url);
         $imageData = '';
 
         if (file_exists($imagePath)) {
@@ -28,7 +28,7 @@ class PDFController extends Controller
     {
         $platform = Platform::findOrFail($id);
 
-        $imagePath = public_path($platform->image_url);
+        $imagePath = public_path('storage/' . $platform->image_url);
         $imageData = '';
 
         if (file_exists($imagePath)) {
