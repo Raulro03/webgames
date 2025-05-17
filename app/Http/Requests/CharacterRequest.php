@@ -12,7 +12,9 @@ class CharacterRequest extends FormRequest
             'name' => ['required'],
             'age' => ['nullable', 'integer'],
             'description' => ['nullable'],
-            'image_url' => ['nullable'],
+            'image' => 'nullable|image|',
+            'gamesAppearance' => ['nullable', 'array'],
+            'gamesAppearance.*' => ['required', 'date'],
         ];
     }
 

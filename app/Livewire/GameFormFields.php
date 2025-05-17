@@ -113,7 +113,7 @@ class GameFormFields extends Component
         $characterSyncData = [];
 
         foreach ($this->characterAppearance as $characterId => $appearance) {
-            $characterSyncData[$characterId] = ['appearance' => $appearance ?? now()];
+            $characterSyncData[$characterId] = ['appearance' => $appearance];
         }
 
         $game->characters()->sync($characterSyncData);

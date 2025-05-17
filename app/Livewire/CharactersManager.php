@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
+use App\Models\Game;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -35,6 +36,10 @@ class CharactersManager extends Component
 
     public function render()
     {
+        if (!$this->games) {
+            $this->games = Game::all();
+        }
+
         return view('livewire.characters-manager', [
             'characters' => Character::query()->paginate(9)
         ]);
@@ -60,7 +65,10 @@ class CharactersManager extends Component
 
     public function store()
     {
-        $this->validate();
+        $this->validate(
+            $this->rules(),
+            [],
+            $this->attributes());
 
         $character = $this->fillCharacterData(new Character(),$this->handleImageUpload());
         $character->save();
@@ -99,13 +107,16 @@ class CharactersManager extends Component
         if (isset($this->gamesAppearance[$gameId])) {
             unset($this->gamesAppearance[$gameId]);
         } else {
-            $this->gamesAppearance[$gameId] = 0;
+            $this->gamesAppearance[$gameId] = now();
         }
     }
 
     public function update()
     {
-        $this->validate();
+        $this->validate(
+            $this->rules(),
+            [],
+            $this->attributes());
 
         $character = Character::findOrFail($this->currentCharacter->id);
         $character = $this->fillCharacterData($character,$this->handleImageUpload());
@@ -114,7 +125,7 @@ class CharactersManager extends Component
         $gameSyncData = [];
 
         foreach ($this->gamesAppearance as $gameId => $appearance) {
-            $gameSyncData[$gameId] = ['appearance' => $appearance ?? 0];
+            $gameSyncData[$gameId] = ['appearance' => $appearance];
         }
 
         $character->games()->sync($gameSyncData);
@@ -192,5 +203,17 @@ class CharactersManager extends Component
         }
 
         return $character;
+    }
+
+    public function attributes()
+    {
+        $attributes = [];
+
+        foreach ($this->gamesAppearance as $id => $value) {
+            $game = $this->games->firstWhere('id', $id);
+            $attributes["gamesAppearance.$id"] = $game ? "aparición de {$game->title}" : "aparición de personaje";
+        }
+
+        return $attributes;
     }
 }
