@@ -36,7 +36,6 @@ class CommentController extends Controller
 
     public function edit(Post $post, Comment $comment)
     {
-        $this->authorize('update', $comment);
         $parent_comment = $comment->parent;
 
         return view('comment.edit', compact('comment','parent_comment', 'post'));
@@ -44,7 +43,7 @@ class CommentController extends Controller
 
     public function update(UpdateCommentRequest $request, Post $post, Comment $comment)
     {
-        $this->authorize('update', $comment);
+
         $comment->update($request->validated());
 
         return to_route('post.show', $post)

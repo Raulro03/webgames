@@ -65,8 +65,6 @@ class ForumController extends Controller
 
     public function edit(Post $post){
 
-        $this->authorize('update', $post); //me lo encuentra porque el parametro es post
-
         $forumCategories = ForumCategory::all();
 
         return view('forum.edit', compact('post'), compact('forumCategories'));
@@ -74,7 +72,6 @@ class ForumController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $this->authorize('update', $post);
 
         $post->update($request->validated());
 
