@@ -55,29 +55,9 @@
 
         {{-- Imagen --}}
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Character Image')}}</label>
-            <div x-data="{ dragging: false }"
-                 class="border-2 border-dashed border-purple-500 p-6 text-center rounded-lg"
-                 x-bind:class="{ 'bg-purple-100': dragging }"
-                 x-on:dragover.prevent="dragging = true"
-                 x-on:dragleave.prevent="dragging = false"
-                 x-on:drop.prevent="dragging = false">
-                <input type="file" wire:model="image" class="hidden" id="uploadImage">
-                <p class="text-gray-600">{{__('Drag your image here or click to upload it')}}</p>
-                <button type="button" onclick="document.getElementById('uploadImage').click()"
-                        class="mt-2 bg-purple-600 text-white px-4 py-2 rounded-md">
-                    {{__('Select Image')}}
-                </button>
-            </div>
-            @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 font-semibold">{{ __('Character Image') }}</label>
+            <x-drag-and-drop :imagePreview="$imagePreview" />
         </div>
-
-        @if ($imagePreview)
-            <div class="mt-4">
-                <p class="text-gray-700 font-semibold">{{__('Preview:')}}</p>
-                <img src="{{ $imagePreview }}" alt="preview" class="w-auto max-w-full h-auto max-h-48 rounded-lg shadow-md mx-auto">
-            </div>
-        @endif
     </x-slot>
 
     <x-slot name="footer">
