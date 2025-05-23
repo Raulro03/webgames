@@ -16,12 +16,13 @@ class AdminUserController extends Controller
     public function makeAdmin(User $user)
     {
         if ($user->hasRole('admin')) {
-            return back()->with('status', 'Este usuario ya es administrador.');
+            $user->syncRoles(['author']);
+            return back()->with('status', 'Este usuario ahora es author.');
+        } else {
+            $user->syncRoles(['admin']);
+            return back()->with('status', 'El usuario ahora es administrador.');
         }
 
-        $user->syncRoles(['admin']);
-
-        return back()->with('status', 'El usuario ahora es administrador.');
     }
 
     public function destroy(User $user)

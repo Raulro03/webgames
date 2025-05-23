@@ -21,4 +21,5 @@ class AdminDashboardController extends Controller
 
         return back()->with('status', 'Los posts en la papelera han sido eliminados.');
     }
+
 }
