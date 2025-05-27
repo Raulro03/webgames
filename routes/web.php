@@ -73,6 +73,8 @@ Route::middleware([
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/user/generate-tokens', [UserDashboardController::class, 'generateTokens'])->name('user.generate.tokens');
+    Route::post('/forbidden-words/request', [UserDashboardController::class, 'requestForbiddenWord'])
+        ->name('forbidden-words.request');
 
 
     Route::middleware('role:admin')->group(function () {
@@ -80,9 +82,13 @@ Route::middleware([
             ->name('dashboard.deleteArchivedPosts');
         Route::post('/admin/dashboard/CleanTrashedPosts', [AdminDashboardController::class, 'cleanTrashPosts'])
             ->name('dashboard.CleanTrashedPosts');
+        Route::post('/admin/forbidden-words/{id}/manage', [AdminDashboardController::class, 'manageForbiddenWord'])
+            ->name('admin.forbidden-words.manage');
+
         Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
         Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users-delete');
         Route::post('/admin/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users-make-admin');
+
     });
 
 });

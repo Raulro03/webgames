@@ -1,4 +1,4 @@
-<div class="p-6">
+<div class="p-6 float-left mr-9">
     <form action="{{ route('user.generate.tokens') }}" method="POST" class="mb-6">
         @csrf
         <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-xl shadow">

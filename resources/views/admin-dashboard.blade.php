@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <x-button-generate-token/>
+                <x-request-forbidden-word/>
                 <x-welcome :stats="$stats" />
             </div>
         </div>
@@ -38,6 +39,31 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="mt-6 bg-white dark:bg-gray-800 p-4 rounded-lg">
+            <h3 class="text-2xl text-purple-600 font-semibold mb-4">Solicitudes de Palabras Prohibidas</h3>
+
+            @foreach($stats['words'] as $word)
+                <div class="flex justify-between items-center mb-3 bg-gray-100 p-3 rounded dark:bg-gray-900">
+                    <span class="text-gray-800 dark:text-gray-200 font-medium">{{ $word->word }}</span>
+                    <div class="flex gap-2">
+                        <form method="POST" action="{{ route('admin.forbidden-words.manage', $word->id) }}">
+                            @csrf
+                            <input type="hidden" name="action" value="accept">
+                            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">
+                                ✅ Aceptar
+                            </button>
+                        </form>
+                        <form method="POST" action="{{ route('admin.forbidden-words.manage', $word->id) }}">
+                            @csrf
+                            <input type="hidden" name="action" value="decline">
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                                ❌ Rechazar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>
