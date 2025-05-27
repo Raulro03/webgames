@@ -15,7 +15,7 @@
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <h2 class="text-4xl font-extrabold text-purple-600 text-center mb-4 pt-4">Panel del Admin</h2>
+                <h2 class="text-4xl font-extrabold text-purple-600 text-center mb-4 pt-4">{{__('Dashboard Admin')}}</h2>
                 @if(session('status'))
                     <p x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" class="mb-2 text-white bg-violet-800 transition-opacity duration-500 ease-in-out animate-fade-in">{{ session('status') }}</p>
                 @endif
@@ -23,25 +23,25 @@
                     <form action="{{ route('dashboard.deleteArchivedPosts') }}" method="POST">
                         @csrf
                         <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 mb-2">
-                            🗑️ Eliminar Posts Archivados de +5 Años
+                            🗑️ {{__('Delete Archived Posts Older than 5 Years')}}
                         </button>
                     </form>
                     <form action="{{ route('dashboard.CleanTrashedPosts') }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar los posts archivados?')">
                         @csrf
                         <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md">
-                            🗑️ Limpiar Papelera
+                            🗑️ {{__('Clean trash')}}
                         </button>
                     </form>
                     <form action="{{ route('admin.users') }}" method="GET">
                         <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 mb-2">
-                            👤 Ver Usuarios
+                            👤 {{__('Watch User')}}
                         </button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="mt-6 bg-white dark:bg-gray-800 p-4 rounded-lg">
-            <h3 class="text-2xl text-purple-600 font-semibold mb-4">Solicitudes de Palabras Prohibidas</h3>
+            <h3 class="text-2xl text-purple-600 font-semibold mb-4">{{__('Requests for Forbidden Words')}}</h3>
 
             @foreach($stats['words'] as $word)
                 <div class="flex justify-between items-center mb-3 bg-gray-100 p-3 rounded dark:bg-gray-900">
@@ -51,14 +51,14 @@
                             @csrf
                             <input type="hidden" name="action" value="accept">
                             <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">
-                                ✅ Aceptar
+                                ✅ {{__('Accept')}}
                             </button>
                         </form>
                         <form method="POST" action="{{ route('admin.forbidden-words.manage', $word->id) }}">
                             @csrf
                             <input type="hidden" name="action" value="decline">
                             <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
-                                ❌ Rechazar
+                                ❌ {{__('Declined')}}
                             </button>
                         </form>
                     </div>

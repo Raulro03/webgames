@@ -496,5 +496,12 @@
     "Are you sure you want to delete": "Estás seguro de que deseas eliminar",
     "This action cannot be undone": "Esta acción no se puede deshacer",
     "Are you sure?": "Estas seguro?",
-    "You are about to delete": "Estás a punto de eliminar "
+    "You are about to delete": "Estás a punto de eliminar ",
+    "Request new banned word": "Solicitar nueva palabra prohibida",
+    "Dashboard Admin": "Panel del Admin",
+    "Watch User": "Ver usuarios",
+    "Clean trash": "Limpiar Papelera",
+    "Delete Archived Posts Older than 5 Years": "Eliminar Posts Archivados de +5 Años",
+    "Declined": "Rechazar",
+    "Requests for Forbidden Words": "Solicitudes de Palabras Prohibidas"
 }
