@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\GeneratePDFUserHistoryJob;
 use Illuminate\Support\Facades\Http;
 use App\Models\Game;
 use App\Models\Platform;
@@ -45,42 +46,8 @@ class PDFController extends Controller
     public function generateUserPdf()
     {
         $user = auth()->user();
-        $user->loadCount(['posts', 'comments']);
+        GeneratePDFUserHistoryJob::dispatch($user);
 
-        $posts = $user->posts()->with('forum_category')->get();
-
-        $categoriesCount = $posts->groupBy(fn($post) => $post->forum_category->category_type ?? 'General')
-            ->map->count();
-
-        $labels = $categoriesCount->keys()->toArray();
-        $data = $categoriesCount->values()->toArray();
-
-        $chartConfig = [
-            'type' => 'pie',
-            'data' => [
-                'labels' => $labels,
-                'datasets' => [[
-                    'data' => $data,
-                    'backgroundColor' => ['#6366f1', '#8b5cf6', '#ec4899', '#10b981']
-                ]]
-            ]
-        ];
-
-        $response = Http::get('https://quickchart.io/chart', [
-            'c' => json_encode($chartConfig),
-            'format' => 'png',
-            'width' => 500,
-            'height' => 300,
-            'backgroundColor' => 'white',
-        ]);
-
-        if ($response->successful()) {
-            $chartImage = 'data:image/png;base64,' . base64_encode($response->body());
-
-            $pdf = PDF::loadView('pdf.user_report', compact('user', 'categoriesCount', 'chartImage'));
-            return $pdf->download('Resumen_' . $user->name . '.pdf');
-        } else {
-            return back()->with('error', 'No se pudo generar el gráfico.');
-        }
+        return back()->with('status', 'El reporte se está generando. Estará disponible en breve.');
     }
 }

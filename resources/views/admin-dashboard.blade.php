@@ -11,6 +11,7 @@
                 <x-button-generate-token/>
                 <x-request-forbidden-word/>
                 <x-welcome :stats="$stats" />
+                <x-button-generate-pdf/>
             </div>
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
