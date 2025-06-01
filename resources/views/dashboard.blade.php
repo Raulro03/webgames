@@ -10,7 +10,7 @@
                 <x-button-generate-token/>
                 <x-request-forbidden-word/>
                 <x-welcome :stats="$stats"/>
-                <x-button-generate-pdf/>
+                <x-button-generate-pdf :pdfReady="$pdfReady"/>
             </div>
         </div>
     </div>

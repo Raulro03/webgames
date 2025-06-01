@@ -22,12 +22,15 @@ class DashboardController extends Controller
             'words' => ForbiddenWord::where('status', 'pending')->get()
         ];
 
-            if (auth()->user()->hasRole('admin')) {
+        $pdfPath = 'reports/Resumen_' . Auth::user()->name . '.pdf';
+        $pdfReady = \Storage::disk('public')->exists($pdfPath);
 
-                return view('admin-dashboard', ['stats' => $stats]);
-            }
+        $view = auth()->user()->hasRole('admin') ? 'admin-dashboard' : 'dashboard';
 
-            return view('dashboard', ['stats' => $stats]);
+        return view($view, [
+            'stats' => $stats,
+            'pdfReady' => $pdfReady
+        ]);
     }
 }
 

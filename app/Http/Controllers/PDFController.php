@@ -48,6 +48,6 @@ class PDFController extends Controller
         $user = auth()->user();
         GeneratePDFUserHistoryJob::dispatch($user);
 
-        return back()->with('status', 'El reporte se está generando. Estará disponible en breve.');
+        return back()->with('status_pdf', 'El reporte se está generando. Estará disponible en breve.');
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreForbiddenWordRequest;
 use App\Models\ForbiddenWord;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserDashboardController extends Controller
 {
@@ -37,5 +38,16 @@ class UserDashboardController extends Controller
         return back()->with('status', $isAdmin
             ? 'Palabra añadida directamente a la lista prohibida.'
             : 'Palabra enviada a los administradores para su revisión.');
+    }
+
+    public function downloadPDFUser()
+    {
+        $path = 'reports/Resumen_' . Auth::user()->name . '.pdf';
+
+        if (!Storage::disk('public')->exists($path)) {
+            abort(404, 'El resumen aún no está listo.');
+        }
+
+        return Storage::disk('public')->download($path);
     }
 }
