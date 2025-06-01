@@ -71,4 +71,13 @@ class Game extends Model
         return $this->belongsToMany(Category::class, 'category_game');
     }
 
+    public function scopeFilterAndOrder($query, $searchTerm = null, $orderBy = 'desc')
+    {
+        return $query
+            ->when($searchTerm, function ($query) use ($searchTerm) {
+                $query->where('title', 'like', '%' . $searchTerm . '%');
+            })
+            ->orderBy('average_rating', $orderBy);
+    }
+
 }

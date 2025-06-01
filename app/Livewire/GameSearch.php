@@ -33,11 +33,7 @@ class GameSearch extends Component
     {
         $searchTerm = trim($this->search);
 
-        $games = Game::when($searchTerm, function ($query, $searchTerm) {
-            $query->where('title', 'like', '%' . $searchTerm . '%');
-        })
-            ->orderBy('average_rating', $this->orderBy)
-            ->paginate(9);
+        $games = Game::filterAndOrder($searchTerm, $this->orderBy)->paginate(9);
 
         return view('livewire.game-search', compact('games'));
     }
