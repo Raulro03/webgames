@@ -58,25 +58,18 @@
                     <label class="block text-gray-700 font-semibold mb-2">{{ __('Platforms') }}</label>
                     @foreach ($platforms as $platform)
                         <div class="flex items-center space-x-4 mb-2">
-                            <x-form.checkbox-with-label
+                            <x-livewire.checkbox-with-label
                                 :item="$platform"
                                 :selectedItems="$platformSales"
                                 toggleMethod="togglePlatform"
                                 labelField="name"
                             />
 
-                            @if(isset($platformSales[$platform->id]))
-                                <input type="number"
-                                       wire:model.defer="platformSales.{{ $platform->id }}"
-                                       placeholder="Ventas"
-                                       class="border rounded px-2 py-1 w-32"
-                                       min="0"
-                                       value="{{$platformSales[$platform->id] ?? 0}}"
-                                >
-                                @error("platformSales.$platform->id")
-                                <p class="text-red-500 text-sm">{{ $message }}</p>
-                                @enderror
-                            @endif
+                            <x-livewire.number-input-for-item
+                                :item="$platform"
+                                modelPrefix="platformSales"
+                                :model="$platformSales"
+                            />
                         </div>
                     @endforeach
                 </div>
@@ -86,16 +79,17 @@
                     <label class="block text-gray-700 font-semibold mb-2">{{ __('Character') }}</label>
                     @foreach ($characters as $character)
                         <div class="flex items-center space-x-4 mb-2">
-                            <x-form.checkbox-with-label
+                            <x-livewire.checkbox-with-label
                                 :item="$character"
                                 :selectedItems="$characterAppearance"
                                 toggleMethod="toggleCharacter"
                                 labelField="name"
                             />
 
-                            <x-form.date-input-for-item
+                            <x-livewire.date-input-for-item
                                 :item="$character"
                                 modelPrefix="characterAppearance"
+                                :model="$characterAppearance"
                             />
                         </div>
                     @endforeach
@@ -104,7 +98,7 @@
     <!-- Drag and Drop Imagen -->
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">{{ __('Game Image') }}</label>
-            <x-drag-and-drop :imagePreview="$imagePreview" />
+            <x-livewire.drag-and-drop :imagePreview="$imagePreview" />
         </div>
 
     <x-primary-button type="submit" class="mt-4  " aria-label="Save">{{ __('Save') }}</x-primary-button>

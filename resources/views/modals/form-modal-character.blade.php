@@ -34,16 +34,17 @@
             <label class="block text-gray-700 font-semibold mb-2">{{ __('Games') }}</label>
             @foreach ($games as $game)
                 <div class="flex items-center space-x-4 mb-2">
-                    <x-form.checkbox-with-label
+                    <x-livewire.checkbox-with-label
                         :item="$game"
-                        :selectedItems="$gamesSales"
+                        :selectedItems="$gamesAppearance"
                         toggleMethod="toggleGames"
                         labelField="title"
                     />
 
-                    <x-form.date-input-for-item
-                        :item="$character"
+                    <x-livewire.date-input-for-item
+                        :item="$game"
                         modelPrefix="gamesAppearance"
+                        :model="$gamesAppearance"
                     />
                 </div>
             @endforeach
@@ -52,7 +53,7 @@
         {{-- Imagen --}}
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">{{ __('Character Image') }}</label>
-            <x-drag-and-drop :imagePreview="$imagePreview" />
+            <x-livewire.drag-and-drop :imagePreview="$imagePreview" />
         </div>
     </x-slot>
 

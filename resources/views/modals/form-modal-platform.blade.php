@@ -50,24 +50,18 @@
             <label class="block text-gray-700 font-semibold mb-2">{{ __('Games') }}</label>
             @foreach ($games as $game)
                 <div class="flex items-center space-x-4 mb-2">
-                    <x-form.checkbox-with-label
+                    <x-livewire.checkbox-with-label
                         :item="$game"
                         :selectedItems="$gamesSales"
                         toggleMethod="toggleGames"
                         labelField="title"
                     />
 
-                    @if(isset($gamesSales[$game->id]))
-                        <input type="number"
-                               wire:model.defer="gamesSales.{{ $game->id }}"
-                               placeholder="Ventas"
-                               class="border rounded px-2 py-1 w-32"
-                               min="0"
-                        >
-                        @error("gamesSales.$game->id")
-                        <p class="text-red-500 text-sm">{{ $message }}</p>
-                        @enderror
-                    @endif
+                    <x-livewire.number-input-for-item
+                        :item="$game"
+                        modelPrefix="gamesSales"
+                        :model="$gamesSales"
+                    />
                 </div>
             @endforeach
         </div>
@@ -75,7 +69,7 @@
         {{-- Imagen --}}
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">{{ __('Platform Image') }}</label>
-            <x-drag-and-drop :imagePreview="$imagePreview" />
+            <x-livewire.drag-and-drop :imagePreview="$imagePreview" />
         </div>
     </x-slot>
 
