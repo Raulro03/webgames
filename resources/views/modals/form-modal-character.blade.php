@@ -34,21 +34,17 @@
             <label class="block text-gray-700 font-semibold mb-2">{{ __('Games') }}</label>
             @foreach ($games as $game)
                 <div class="flex items-center space-x-4 mb-2">
-                    <input type="checkbox"
-                           wire:click="toggleGames({{ $game->id }})"
-                           @if(isset($gamesAppearance[$game->id])) checked @endif
-                    >
-                    <label>{{ $game->title }}</label>
+                    <x-form.checkbox-with-label
+                        :item="$game"
+                        :selectedItems="$gamesSales"
+                        toggleMethod="toggleGames"
+                        labelField="title"
+                    />
 
-                    @if(isset($gamesAppearance[$game->id]))
-                        <input type="date"
-                               wire:model.defer="gamesAppearance.{{ $game->id }}"
-                               class="border rounded px-2 py-1 w-32"
-                        >
-                        @error("gamesAppearance.$game->id")
-                        <p class="text-red-500 text-sm">{{ $message }}</p>
-                        @enderror
-                    @endif
+                    <x-form.date-input-for-item
+                        :item="$character"
+                        modelPrefix="gamesAppearance"
+                    />
                 </div>
             @endforeach
         </div>

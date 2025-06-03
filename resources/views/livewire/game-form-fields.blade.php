@@ -58,11 +58,12 @@
                     <label class="block text-gray-700 font-semibold mb-2">{{ __('Platforms') }}</label>
                     @foreach ($platforms as $platform)
                         <div class="flex items-center space-x-4 mb-2">
-                            <input type="checkbox"
-                                   wire:click="togglePlatform({{ $platform->id }})"
-                                   @if(isset($platformSales[$platform->id])) checked @endif
-                            >
-                            <label>{{ $platform->name }}</label>
+                            <x-form.checkbox-with-label
+                                :item="$platform"
+                                :selectedItems="$platformSales"
+                                toggleMethod="togglePlatform"
+                                labelField="name"
+                            />
 
                             @if(isset($platformSales[$platform->id]))
                                 <input type="number"
@@ -85,21 +86,17 @@
                     <label class="block text-gray-700 font-semibold mb-2">{{ __('Character') }}</label>
                     @foreach ($characters as $character)
                         <div class="flex items-center space-x-4 mb-2">
-                            <input type="checkbox"
-                                   wire:click="toggleCharacter({{ $character->id }})"
-                                   @if(isset($characterAppearance[$character->id])) checked @endif
-                            >
-                            <label>{{ $character->name }}</label>
+                            <x-form.checkbox-with-label
+                                :item="$character"
+                                :selectedItems="$characterAppearance"
+                                toggleMethod="toggleCharacter"
+                                labelField="name"
+                            />
 
-                            @if(isset($characterAppearance[$character->id]))
-                                <input type="date"
-                                       wire:model.defer="characterAppearance.{{ $character->id }}"
-                                       class="border rounded px-2 py-1 w-48"
-                                >
-                                @error("characterAppearance.$character->id")
-                                <p class="text-red-500 text-sm">{{ $message }}</p>
-                                @enderror
-                            @endif
+                            <x-form.date-input-for-item
+                                :item="$character"
+                                modelPrefix="characterAppearance"
+                            />
                         </div>
                     @endforeach
                 </div>
