@@ -6,7 +6,7 @@
     <x-slot name="content">
         {{-- Nombre --}}
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Name")}}</label>
+            <x-label :value="__('Name')" />
             <input wire:model="name" type="text"
                    class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
             @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -14,7 +14,7 @@
 
         {{-- Descripción --}}
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Description")}}</label>
+            <x-label :value="__('Description')" />
             <textarea wire:model="description"
                       class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       rows="3"></textarea>
@@ -23,7 +23,7 @@
 
         {{-- Edad --}}
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__("Age")}}</label>
+            <x-label :value="__('Age')" />
             <input wire:model="age" type="number" step="1" min="0"
                    class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
             @error('age') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -31,7 +31,7 @@
 
         {{-- Juegos --}}
         <div class="mb-4 w-full max-h-64 overflow-y-auto border p-2 rounded">
-            <label class="block text-gray-700 font-semibold mb-2">{{ __('Games') }}</label>
+            <x-label :value="__('Games')" class="font-semibold mb-2 text-gray-700" />
             @foreach ($games as $game)
                 <div class="flex items-center space-x-4 mb-2">
                     <x-livewire.checkbox-with-label
@@ -52,7 +52,7 @@
 
         {{-- Imagen --}}
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{ __('Character Image') }}</label>
+            <x-label :value="__('Character Image')" class="font-semibold text-gray-700" />
             <x-livewire.drag-and-drop :imagePreview="$imagePreview" />
         </div>
     </x-slot>

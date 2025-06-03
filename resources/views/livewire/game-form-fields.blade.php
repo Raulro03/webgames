@@ -6,42 +6,42 @@
 
         <!-- Campo Título -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Title')}}</label>
+            <x-label :value="__('Title')" class="text-gray-700 font-semibold" />
             <input type="text" wire:model="title" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
             @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <!-- Campo Descripción -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Description')}}</label>
+            <x-label :value="__('Description')" class="text-gray-700 font-semibold" />
             <textarea wire:model="description" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400"></textarea>
             @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <!-- Campo Fecha de Lanzamiento -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Release Date')}}</label>
+            <x-label :value="__('Release Date')" class="text-gray-700 font-semibold" />
             <input type="date" wire:model="release_date" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
             @error('release_date') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <!-- Campo Rating Promedio -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Average rating')}}</label>
+            <x-label :value="__('Average rating')" class="text-gray-700 font-semibold" />
             <input type="number" wire:model="average_rating" step="0.01" min="0" max="10" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
             @error('average_rating') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <!-- Campo Precio -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Price')}} (€)</label>
+            <x-label :value="__('Price') . ' (€)'" class="text-gray-700 font-semibold" />
             <input type="number" wire:model="price" step="1" min="0" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
             @error('price') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <!-- Selección de Desarrollador -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{__('Developer')}}</label>
+            <x-label :value="__('Developer')" class="text-gray-700 font-semibold" />
             <select wire:model="developer_id" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
                 <option value="">Selecciona un desarrollador</option>
                 @foreach($developers as $developer)
@@ -55,7 +55,7 @@
             <div class="flex gap-6">
                 <!-- Plataformas -->
                 <div class="w-1/2 max-h-96 overflow-y-auto border p-2 rounded">
-                    <label class="block text-gray-700 font-semibold mb-2">{{ __('Platforms') }}</label>
+                    <x-label :value="__('Platforms')" class="text-gray-700 font-semibold mb-2" />
                     @foreach ($platforms as $platform)
                         <div class="flex items-center space-x-4 mb-2">
                             <x-livewire.checkbox-with-label
@@ -76,7 +76,7 @@
 
                 <!-- Personajes -->
                 <div class="w-1/2 max-h-96 overflow-y-auto border p-2 rounded">
-                    <label class="block text-gray-700 font-semibold mb-2">{{ __('Character') }}</label>
+                    <x-label :value="__('Character')" class="text-gray-700 font-semibold mb-2" />
                     @foreach ($characters as $character)
                         <div class="flex items-center space-x-4 mb-2">
                             <x-livewire.checkbox-with-label
@@ -97,7 +97,7 @@
             </div>
     <!-- Drag and Drop Imagen -->
         <div class="mb-4">
-            <label class="block text-gray-700 font-semibold">{{ __('Game Image') }}</label>
+            <x-label :value="__('Game Image')" class="text-gray-700 font-semibold" />
             <x-livewire.drag-and-drop :imagePreview="$imagePreview" />
         </div>
 
