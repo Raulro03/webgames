@@ -5,39 +5,42 @@
         </h1>
 
         <!-- Campo Título -->
-        <div class="mb-4">
-            <x-label :value="__('Title')" class="text-gray-700 font-semibold" />
-            <input type="text" wire:model="title" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
-            @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-text
+            label="{{__('Title')}}"
+            model="title"
+            placeholder="Introduce el titulo del juego"
+        />
 
         <!-- Campo Descripción -->
-        <div class="mb-4">
-            <x-label :value="__('Description')" class="text-gray-700 font-semibold" />
-            <textarea wire:model="description" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400"></textarea>
-            @error('description') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-textarea
+            label="{{ __('Description') }}"
+            model="description"
+            rows="3"
+        />
 
         <!-- Campo Fecha de Lanzamiento -->
-        <div class="mb-4">
-            <x-label :value="__('Release Date')" class="text-gray-700 font-semibold" />
-            <input type="date" wire:model="release_date" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
-            @error('release_date') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-date
+            label="{{ __('Release Date') }}"
+            model="release_date"
+        />
 
         <!-- Campo Rating Promedio -->
-        <div class="mb-4">
-            <x-label :value="__('Average rating')" class="text-gray-700 font-semibold" />
-            <input type="number" wire:model="average_rating" step="0.01" min="0" max="10" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
-            @error('average_rating') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-number
+            label="{{ __('Average rating') }}"
+            model="average_rating"
+            step="0.01"
+            min="0"
+            max="10"
+            placeholder="Ingresa un valor entre 0 y 10"
+        />
 
         <!-- Campo Precio -->
-        <div class="mb-4">
-            <x-label :value="__('Price') . ' (€)'" class="text-gray-700 font-semibold" />
-            <input type="number" wire:model="price" step="1" min="0" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
-            @error('price') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-number
+            label="{{__('Price') . ' (€)'}}"
+            model="price"
+            step="1"
+            min="0"
+        />
 
         <!-- Selección de Desarrollador -->
         <div class="mb-4">

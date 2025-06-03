@@ -5,45 +5,42 @@
 
     <x-slot name="content">
         {{-- Nombre --}}
-        <div class="mb-4">
-            <x-label :value="__('Name')" />
-            <input wire:model="name" type="text"
-                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-text
+            label="{{__('Name')}}"
+            model="name"
+            placeholder="Introduce el nombre del juego"
+        />
 
         {{-- Descripción --}}
-        <div class="mb-4">
-            <x-label :value="__('Description')" />
-            <textarea wire:model="description"
-                      class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                      rows="3"></textarea>
-            @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-textarea
+            label="{{ __('Description') }}"
+            model="description"
+            rows="3"
+        />
 
         {{-- Fecha de lanzamiento --}}
-        <div class="mb-4">
-            <x-label :value="__('Release Date')" />
-            <input wire:model="release_date" type="date"
-                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            @error('release_date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-date
+            label="{{ __('Release Date') }}"
+            model="release_date"
+        />
 
         {{-- Precio --}}
-        <div class="mb-4">
-            <x-label :value="__('Price') . ' (€)'" />
-            <input wire:model="price" type="number" step="1" min="0"
-                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            @error('price') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+            <x-input.input-number
+                label="{{__('Price') . ' (€)'}}"
+                model="price"
+                step="1"
+                min="0"
+            />
 
         {{-- Rating medio --}}
-        <div class="mb-4">
-            <x-label :value="__('Average rating')" />
-            <input wire:model="average_rating" type="number" step="0.01" max="9.99"
-                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            @error('average_rating') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-number
+            label="{{ __('Average rating') }}"
+            model="average_rating"
+            step="0.01"
+            min="0"
+            max="10"
+            placeholder="Ingresa un valor entre 0 y 10"
+        />
 
         {{-- Juegos --}}
         <div class="mb-4 w-full max-h-64 overflow-y-auto border p-2 rounded">

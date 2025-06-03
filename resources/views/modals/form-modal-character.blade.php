@@ -5,29 +5,27 @@
 
     <x-slot name="content">
         {{-- Nombre --}}
-        <div class="mb-4">
-            <x-label :value="__('Name')" />
-            <input wire:model="name" type="text"
-                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-text
+            label="{{__('Name')}}"
+            model="name"
+            placeholder="Introduce el nombre del personaje"
+        />
 
         {{-- Descripción --}}
-        <div class="mb-4">
-            <x-label :value="__('Description')" />
-            <textarea wire:model="description"
-                      class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                      rows="3"></textarea>
-            @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-textarea
+            label="{{ __('Description') }}"
+            model="description"
+            rows="3"
+        />
 
         {{-- Edad --}}
-        <div class="mb-4">
-            <x-label :value="__('Age')" />
-            <input wire:model="age" type="number" step="1" min="0"
-                   class="mt-1 w-full px-4 py-2 border rounded-md shadow-sm focus:ring focus:ring-blue-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            @error('age') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-        </div>
+        <x-input.input-number
+            label="{{__('Age')}}"
+            model="age"
+            min="0"
+            step="1"
+            placeholder="Edad del Personaje"
+        />
 
         {{-- Juegos --}}
         <div class="mb-4 w-full max-h-64 overflow-y-auto border p-2 rounded">
