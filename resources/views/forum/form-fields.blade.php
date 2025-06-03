@@ -28,13 +28,13 @@
 </div>
 <div>
     <x-input-label for="category_id" :value="__('Category_Id')" />
-    <select name="category_id" id="category_id" class="block w-full mt-1">
-
-        @foreach($forumCategories as $category)
-
-            <option value="{{$category->id}}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>{{$category->category_type ." , ". $category->related_id}}</option>
-        @endforeach
-    </select>
+    <x-select
+        id="category_id"
+        :items="$forumCategories"
+        name="category_id"
+        :selected="old('category_id', $post->category_id)"
+        class="mb-4"
+    />
 
     <x-input-error-form :messages="$errors->get('category_id')" class="mt-2" />
 </div>

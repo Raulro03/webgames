@@ -42,12 +42,11 @@
         <!-- Selección de Desarrollador -->
         <div class="mb-4">
             <x-label :value="__('Developer')" class="text-gray-700 font-semibold" />
-            <select wire:model="developer_id" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400">
-                <option value="">Selecciona un desarrollador</option>
-                @foreach($developers as $developer)
-                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
-                @endforeach
-            </select>
+            <x-select
+                :items="$developers"
+                model="developer_id"
+                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-400"
+            />
             @error('developer_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
