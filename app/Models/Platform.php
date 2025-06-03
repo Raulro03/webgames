@@ -45,4 +45,30 @@ class Platform extends Model
         return $this->belongsToMany(Game::class, 'platform_game')
             ->withPivot('sales')->withTimestamps();
     }
+    public function scopeFilter($query, $filters)
+    {
+        return $query
+            ->when($filters['search'] ?? null, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->when($filters['min_price'] ?? null, function ($query, $min) {
+                $query->where('price', '>=', $min * 100);
+            })
+            ->when($filters['max_price'] ?? null, function ($query, $max) {
+                $query->where('price', '<=', $max * 100);
+            })
+            ->when($filters['min_rating'] ?? null, function ($query, $min) {
+                $query->where('average_rating', '>=', $min);
+            })
+            ->when($filters['max_rating'] ?? null, function ($query, $max) {
+                $query->where('average_rating', '<=', $max);
+            })
+            ->when($filters['release_from'] ?? null, function ($query, $from) {
+                $query->whereDate('release_date', '>=', $from);
+            })
+            ->when($filters['release_to'] ?? null, function ($query, $to) {
+                $query->whereDate('release_date', '<=', $to);
+            });
+    }
+
 }

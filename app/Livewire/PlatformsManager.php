@@ -31,6 +31,14 @@ class PlatformsManager extends Component
     public $games;
     public $gamesSales =[];
 
+    public $search = '';
+    public $min_price;
+    public $max_price;
+    public $min_rating;
+    public $max_rating;
+    public $release_from;
+    public $release_to;
+
     protected function rules()
     {
         return (new PlatformsRequest())->rules();
@@ -42,8 +50,18 @@ class PlatformsManager extends Component
             $this->games = Game::all();
         }
 
+        $filters = [
+            'search' => $this->search,
+            'min_price' => $this->min_price,
+            'max_price' => $this->max_price,
+            'min_rating' => $this->min_rating,
+            'max_rating' => $this->max_rating,
+            'release_from' => $this->release_from,
+            'release_to' => $this->release_to,
+        ];
+
         return view('livewire.platforms-manager', [
-            'platforms' => Platform::query()->paginate(9),
+            'platforms' => Platform::filter($filters)->paginate(9),
         ]);
     }
 
@@ -58,6 +76,22 @@ class PlatformsManager extends Component
         $this->imagePreview = null;
         $this->currentPlatform = null;
         $this->gamesSales = [];
+    }
+
+    public function resetFilters()
+    {
+        $this->search = '';
+        $this->min_price = null;
+        $this->max_price = null;
+        $this->min_rating = null;
+        $this->max_rating = null;
+        $this->release_from = null;
+        $this->release_to = null;
+    }
+
+    public function updated($propertyName)
+    {
+        $this->resetPage();
     }
 
     public function create()

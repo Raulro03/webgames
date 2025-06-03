@@ -506,5 +506,13 @@
     "Requests for Forbidden Words": "Solicitudes de Palabras Prohibidas",
     "Generate PDF History User": "Generar PDF Historial Usuario",
     "Download PDF History User": "Descargar PDF Historial Usuario",
-    "Select a Option": "Selecciona una Opcion"
+    "Select a Option": "Selecciona una Opcion",
+    "Clean filter": "Limpiar filtros",
+    "Search by name": "Buscar por nombre",
+    "Min price": "Precio Minimo (€)",
+    "Max price": "Precio Maximo (€)",
+    "Min rating": "Rating Minimo",
+    "Max rating": "Rating Maximo",
+    "Release date from": "Fecha de lanzamiento desde",
+    "Release date to": "Fecha de lanzamiento hasta"
 }
