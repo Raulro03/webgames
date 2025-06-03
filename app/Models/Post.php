@@ -39,8 +39,19 @@ class Post extends Model
         $query->orderBy('published_at', 'desc');
     }
 
-    public function scopePublished(Builder $query): void
+    public function scopeNotPublished($query)
     {
-        $query->where('status', 'published');
+        return $query->where('published_at', '>', now());
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<=', now())
+            ->where('published_at', '>', now()->subYear());
+    }
+
+    public function scopeArchived($query)
+    {
+        return $query->where('published_at', '<=', now()->subYear());
     }
 }

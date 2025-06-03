@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Post;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class UpdatePostStatus extends Command
@@ -13,18 +12,10 @@ class UpdatePostStatus extends Command
 
     public function handle()
     {
-        $posts = Post::all();
 
-        foreach ($posts as $post) {
-            if ($post->published_at > Carbon::now()) {
-                $post->status = 'not_published';
-            } elseif ($post->published_at <= Carbon::now() && $post->published_at > Carbon::now()->subYear()) {
-                $post->status = 'published';
-            } elseif ($post->published_at <= Carbon::now()->subYear()) {
-                $post->status = 'archived';
-            }
-            $post->save();
-        }
+        Post::notPublished()->update(['status' => 'not_published']);
+        Post::published()->update(['status' => 'published']);
+        Post::archived()->update(['status' => 'archived']);
 
         $this->info("Se actualizaron los estados de los posts");
     }
