@@ -61,7 +61,7 @@ class PlatformsManager extends Component
         ];
 
         return view('livewire.platforms-manager', [
-            'platforms' => Platform::filter($filters)->paginate(9),
+            'platforms' => Platform::filterPlatform($filters)->paginate(9),
         ]);
     }
 
@@ -89,7 +89,7 @@ class PlatformsManager extends Component
         $this->release_to = null;
     }
 
-    public function updated($propertyName)
+    public function updated()
     {
         $this->resetPage();
     }

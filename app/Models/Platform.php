@@ -45,7 +45,7 @@ class Platform extends Model
         return $this->belongsToMany(Game::class, 'platform_game')
             ->withPivot('sales')->withTimestamps();
     }
-    public function scopeFilter($query, $filters)
+    public function scopeFilterPlatform($query, $filters)
     {
         return $query
             ->when($filters['search'] ?? null, function ($query, $search) {

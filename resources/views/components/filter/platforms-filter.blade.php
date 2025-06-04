@@ -34,5 +34,5 @@
         <input type="date" wire:model.live.debounce.300ms="release_to" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-indigo-200 focus:outline-none">
     </div>
 
-    <button wire:click="resetFilters" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md font-medium transition">{{__('Clean filter')}}</button>
+    <x-filter.button-clean-filter/>
 </div>

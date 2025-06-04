@@ -29,6 +29,15 @@ class CharactersManager extends Component
     public $games;
     public $gamesAppearance =[];
 
+    public $search = '';
+    public $min_age;
+    public $max_age;
+    public $min_constitution;
+    public $min_strength;
+    public $min_agility;
+    public $min_intelligence;
+    public $min_charisma;
+
     protected function rules()
     {
         return (new CharacterRequest())->rules();
@@ -40,8 +49,19 @@ class CharactersManager extends Component
             $this->games = Game::all();
         }
 
+        $filters = [
+            'search' => $this->search,
+            'min_age' => $this->min_age,
+            'max_age' => $this->max_age,
+            'min_constitution' => $this->min_constitution,
+            'min_strength' => $this->min_strength,
+            'min_agility' => $this->min_agility,
+            'min_intelligence' => $this->min_intelligence,
+            'min_charisma' => $this->min_charisma,
+        ];
+
         return view('livewire.characters-manager', [
-            'characters' => Character::query()->paginate(9)
+            'characters' => Character::with('statistics')->filterCharacter($filters)->paginate(9)
         ]);
     }
 
@@ -54,6 +74,23 @@ class CharactersManager extends Component
         $this->imagePreview = null;
         $this->currentCharacter = null;
         $this->gamesAppearance = [];
+    }
+
+    public function resetFilters()
+    {
+        $this->search = '';
+        $this->min_age = null;
+        $this->max_age = null;
+        $this->min_constitution = null;
+        $this->min_strength = null;
+        $this->min_agility = null;
+        $this->min_intelligence = null;
+        $this->min_charisma = null;
+    }
+
+    public function updated()
+    {
+        $this->resetPage();
     }
 
     public function create()
