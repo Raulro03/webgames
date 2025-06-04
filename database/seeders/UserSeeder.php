@@ -36,6 +36,11 @@ class UserSeeder extends Seeder
             'email' => 'normal@example.com',
         ]);
 
+        User::factory()->create([
+            'name' => 'Moderator',
+            'email' => 'moderator@example.com',
+        ])->assignRole('moderator');
+
         User::factory(4)->make()->each(function ($user) {
             $user->assignRole('author')->save();
         });

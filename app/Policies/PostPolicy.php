@@ -13,13 +13,14 @@ class PostPolicy
     public function update(User $user, Post $post)
     {
         return ($user->hasRole('author') && $user->id === $post->user_id)
+            || ($user->hasRole('moderator') && $user->id === $post->user_id)
             || $user->hasRole('admin');
     }
 
     public function delete(User $user, Post $post)
     {
         return ($user->hasRole('author') && $user->id === $post->user_id)
-            || $user->hasRole('admin');
+            || $user->hasRole(['admin', 'moderator']);
     }
 
     public function restore(User $user, Post $post)

@@ -16,6 +16,7 @@ class RoleSeeder extends Seeder
 
         $admin = Role::create(['name' => 'admin']);
         $author = Role::create(['name' => 'author']);
+        $moderator = Role::create(['name' => 'moderator']);
 
         Permission::create(['name' => 'edit your posts']);
         Permission::create(['name' => 'delete your posts']);
@@ -31,6 +32,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'edit any comment']);
 
         $author->givePermissionTo([ 'edit your posts', 'delete your posts', 'edit your comments', 'delete your comments']);
+        $moderator->givePermissionTo(['edit your posts', 'delete your posts', 'edit your comments', 'delete your comments', 'manage games', 'manage platforms', 'manage character', 'delete any post', 'delete any comment']);
         $admin->givePermissionTo(Permission::all());
     }
 }
