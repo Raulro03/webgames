@@ -514,5 +514,12 @@
     "Min rating": "Rating Minimo",
     "Max rating": "Rating Maximo",
     "Release date from": "Fecha de lanzamiento desde",
-    "Release date to": "Fecha de lanzamiento hasta"
+    "Release date to": "Fecha de lanzamiento hasta",
+    "Minimum Age": "Edad mínima",
+    "Maximum Age": "Edad máxima",
+    "Minimum Constitution": "Constitución mínima",
+    "Minimum Strength": "Fuerza mínima",
+    "Minimum Agility": "Agilidad mínima",
+    "Minimum Intelligence": "Inteligencia mínima",
+    "Minimum Charisma": "Carisma mínima"
 }
