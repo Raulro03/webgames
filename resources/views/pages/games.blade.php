@@ -13,9 +13,11 @@
         <a href="{{ route('top-games') }}" class=" mr-2 bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-purple-700">
             {{__('See Most Popular Games of')}} IGDB
         </a>
+        @can('create', Game::class)
         <a href="{{ route('games.create') }}" class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-purple-700">
             {{__('Create New Game')}}
         </a>
+        @endcan
     </div>
 
     <livewire:game-search />

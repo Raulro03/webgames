@@ -21,7 +21,7 @@
     <x-text-input id="published_at"
                   name="published_at"
                   type="date"
-                  value="{{ old('published_at', $post->published_at) }}"
+                  value="{{ old('published_at', optional($post->published_at)->format('Y-m-d')) }}"
                   class="block w-full mt-1"
     />
     <x-input-error-form :messages="$errors->get('published_at')" class="mt-2" />

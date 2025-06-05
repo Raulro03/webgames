@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\NoPalabrasProhibidas;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CharacterRequest extends FormRequest
@@ -11,7 +12,7 @@ class CharacterRequest extends FormRequest
         return [
             'name' => ['required'],
             'age' => ['nullable', 'integer'],
-            'description' => ['nullable'],
+            'description' => ['nullable', new NoPalabrasProhibidas()],
             'image' => 'nullable|image|',
             'gamesAppearance' => ['nullable', 'array'],
             'gamesAppearance.*' => ['required', 'date'],

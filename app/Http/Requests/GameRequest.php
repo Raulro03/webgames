@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\NoPalabrasProhibidas;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GameRequest extends FormRequest
@@ -23,7 +24,7 @@ class GameRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:10|max:255',
-            'description' => 'nullable|string',
+            'description' => ['nullable','string',new NoPalabrasProhibidas()],
             'release_date' => 'required|date',
             'average_rating' => 'nullable|numeric|between:0,9.99',
             'price' => 'required|integer|max:999999',

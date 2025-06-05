@@ -48,7 +48,7 @@ Route::middleware([
 
 
     Route::resource('/games', PageGamesController::class)
-        ->only(['create', 'edit', 'destroy'])->middleware('role:admin');
+        ->only(['create', 'edit', 'destroy'])->middleware('role:admin|moderator');
     Route::get('/games/{game}', [PageGamesController::class, 'show'])->name('games.show');
 
     Route::get('/game/{id}/pdf', [PDFController::class, 'gamePDF'])->name('game.pdf');
