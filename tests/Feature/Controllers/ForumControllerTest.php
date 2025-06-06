@@ -3,6 +3,7 @@
 use App\Models\ForumCategory;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use function Pest\Laravel\{get, post, put, delete};
 
 it('loads the forum index page', function () {
@@ -18,7 +19,8 @@ it('displays posts of a given category', function () {
     $post = Post::factory()->create([
         'user_id' => $user->id,
         'category_id' => $category->id,
-        'status' => 'published'
+        'status' => 'published',
+        'published_at' => Carbon::now()->subMonth()
     ]);
 
     $response = get(route('forum.category', [$post->forum_category->category_type]));
