@@ -69,4 +69,9 @@ class GeneratePDFUserHistoryJob implements ShouldQueue
         $filename = 'Resumen_' . $user->name . '.pdf';
         Storage::disk('public')->put("reports/{$filename}", $pdf->output());
     }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

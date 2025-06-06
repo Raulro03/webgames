@@ -35,6 +35,13 @@ uses(TestCase::class, LazilyRefreshDatabase::class)->in('Feature');
 |
 */
 
+function adminUser()
+{
+    ConfirmRolesExist();
+    $user = loginAsUser();
+    $user->assignRole('admin');
+}
+
 function loginAsUser(?User $user = null)
 {
     $user = $user ?? User::factory()->create();

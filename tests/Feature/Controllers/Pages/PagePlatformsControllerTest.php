@@ -1,5 +1,8 @@
 <?php
 
-use App\Models\Platform;
-use App\Models\User;
-use function Pest\Laravel\get;
+it('shows the platform page', function () {
+    $response = $this->get(route('platforms'));
+
+    $response->assertStatus(200);
+    $response->assertViewIs('pages.platforms');
+});
