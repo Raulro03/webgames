@@ -95,6 +95,8 @@ class CharactersManager extends Component
 
     public function create()
     {
+        $this->authorize('create', Character::class);
+
         $this->resetFields();
         $this->isEditMode = false;
         $this->FormModal = true;
@@ -102,6 +104,8 @@ class CharactersManager extends Component
 
     public function store()
     {
+        $this->authorize('create', Character::class);
+
         $this->validate(
             $this->rules(),
             [],
@@ -125,6 +129,8 @@ class CharactersManager extends Component
     public function edit($id)
     {
         $this->currentCharacter = Character::findOrFail($id);
+
+        $this->authorize('update', Character::class);
 
         $this->name = $this->currentCharacter->name;
         $this->description = $this->currentCharacter->description;
@@ -150,13 +156,15 @@ class CharactersManager extends Component
 
     public function update()
     {
+
+        $this->authorize('update', Character::class);
+
         $this->validate(
             $this->rules(),
             [],
             $this->attributes());
 
-        $character = Character::findOrFail($this->currentCharacter->id);
-        $character = $this->fillCharacterData($character,$this->handleImageUpload());
+        $character = $this->fillCharacterData($this->currentCharacter,$this->handleImageUpload());
         $character->save();
 
         $gameSyncData = [];
@@ -180,11 +188,13 @@ class CharactersManager extends Component
     public function confirmDelete($id)
     {
         $this->currentCharacter = Character::findOrFail($id);
+        $this->authorize('delete', Character::class);
         $this->DeleteModal = true;
     }
 
     public function delete()
     {
+        $this->authorize('delete', Character::class);
 
         if ($this->currentCharacter->image_url) {
             Storage::disk('public')->delete($this->currentCharacter->image_url);

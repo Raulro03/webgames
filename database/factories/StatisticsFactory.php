@@ -13,7 +13,7 @@ class StatisticsFactory extends Factory
     public function definition(): array
     {
         return [
-            'character_id' => $this->faker->randomNumber(),
+            'character_id' => $this->faker->unique()->randomNumber(),
             'constitution' => $this->faker->numberBetween(1, 10),
             'strength' => $this->faker->numberBetween(1, 10),
             'agility' => $this->faker->numberBetween(1, 10),

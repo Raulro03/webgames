@@ -16,7 +16,7 @@ class CharacterFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->unique()->name(),
             'description' => $this->faker->text(100),
             'age' => $this->faker->numberBetween(1, 100),
             'image_url' => function () {

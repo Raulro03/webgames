@@ -1,10 +1,12 @@
 <div class="max-w-7xl mx-auto mt-10 p-4">
     {{-- Botón Crear --}}
+    @can('create', \App\Models\Platform::class)
     <div class="flex justify-end mb-6">
         <button wire:click="create" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
             + {{__("New Platform")}}
         </button>
     </div>
+    @endcan
 
     <x-filter.platforms-filter/>
 
@@ -25,10 +27,14 @@
                         <div class="space-x-2">
                             <button wire:click="show({{ $platform->id }})"
                                     class="text-blue-500 hover:underline">{{__("See")}}</button>
+                            @can('update', $platform)
                             <button wire:click="edit({{ $platform->id }})"
                                     class="text-yellow-500 hover:underline">{{__('Edit')}}</button>
-                            <button wire:click="confirmDelete({{ $platform->id }})"
+                            @endcan
+                            @can('delete', $platform)
+                                <button wire:click="confirmDelete({{ $platform->id }})"
                                     class="text-red-500 hover:underline">{{__("Delete")}}</button>
+                            @endcan
                         </div>
                     </div>
                 </div>

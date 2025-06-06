@@ -12,7 +12,7 @@ class ForbiddenWordFactory extends Factory
     public function definition(): array
     {
         return [
-            'word' => $this->faker->word(),
+            'word' => $this->faker->unique()->word(),
         ];
     }
 }

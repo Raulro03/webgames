@@ -1,10 +1,11 @@
 <div class="max-w-7xl mx-auto mt-10 p-4">
-
+    @can('create', \App\Models\Character::class)
     <div class="flex justify-end mb-6">
         <button wire:click="create" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
             + {{__("New Character")}}
         </button>
     </div>
+    @endcan
 
     <x-filter.characters-filter/>
 
@@ -22,10 +23,15 @@
                                 <div class="space-x-2">
                                     <button wire:click="show({{ $character->id }})"
                                             class="text-blue-500 hover:underline">{{__("See")}}</button>
+                                    @can('update', \App\Models\Character::class)
                                     <button wire:click="edit({{ $character->id }})"
                                             class="text-yellow-500 hover:underline">{{__('Edit')}}</button>
+                                    @endcan
+
+                                    @can('delete', \App\Models\Character::class)
                                     <button wire:click="confirmDelete({{ $character->id }})"
                                             class="text-red-500 hover:underline">{{__("Delete")}}</button>
+                                    @endcan
                                 </div>
                             </div>
                         </div>

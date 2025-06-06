@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Requests\PlatformsRequest;
 use App\Models\Game;
 use App\Models\Platform;
@@ -12,7 +13,7 @@ use Livewire\WithPagination;
 
 class PlatformsManager extends Component
 {
-    use WithPagination, WithFileUploads;
+    use WithPagination, WithFileUploads, AuthorizesRequests;
 
     public $currentPlatform = null;
     public $name;
@@ -96,6 +97,9 @@ class PlatformsManager extends Component
 
     public function create()
     {
+
+        $this->authorize('create', Platform::class);
+
         $this->resetFields();
         $this->isEditMode = false;
         $this->FormModal = true;
@@ -103,6 +107,8 @@ class PlatformsManager extends Component
 
     public function store()
     {
+        $this->authorize('create', Platform::class);
+
         $this->validate();
 
         $platform = $this->fillPlatformData(new Platform(),$this->handleImageUpload());
@@ -123,6 +129,8 @@ class PlatformsManager extends Component
     public function edit($id)
     {
         $this->currentPlatform = Platform::findOrFail($id);
+
+        $this->authorize('update', $this->currentPlatform);
 
         $this->name = $this->currentPlatform->name;
         $this->description = $this->currentPlatform->description;
@@ -150,10 +158,12 @@ class PlatformsManager extends Component
 
     public function update()
     {
+
+        $this->authorize('update', $this->currentPlatform);
+
         $this->validate();
 
-        $platform = Platform::findOrFail($this->currentPlatform->id);
-        $platform = $this->fillPlatformData($platform,$this->handleImageUpload());
+        $platform = $this->fillPlatformData($this->currentPlatform,$this->handleImageUpload());
         $platform->save();
 
         $gameSyncData = [];
@@ -179,11 +189,15 @@ class PlatformsManager extends Component
     public function confirmDelete($id)
     {
         $this->currentPlatform = Platform::findOrFail($id);
+
+        $this->authorize('delete', $this->currentPlatform);
+
         $this->DeleteModal = true;
     }
 
     public function delete()
     {
+        $this->authorize('delete', $this->currentPlatform);
 
         if ($this->currentPlatform->image_url) {
             Storage::disk('public')->delete($this->currentPlatform->image_url);
