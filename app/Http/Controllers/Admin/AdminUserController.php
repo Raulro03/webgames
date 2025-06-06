@@ -15,14 +15,24 @@ class AdminUserController extends Controller
 
     public function makeAdmin(User $user)
     {
-        if ($user->hasRole('admin')) {
-            $user->syncRoles(['author']);
-            return back()->with('status', 'Este usuario ahora es author.');
-        } else {
-            $user->syncRoles(['admin']);
-            return back()->with('status', 'El usuario ahora es administrador.');
+        $user->syncRoles(['admin']);
+        return back()->with('status', 'El usuario ahora es administrador.');
+    }
+
+    public function makeModerator(User $user)
+    {
+        $user->syncRoles(['moderator']);
+        return back()->with('status', 'El usuario ahora es moderador.');
+    }
+
+    public function removeRole(User $user)
+    {
+        if ($user->hasAnyRole(['author', 'moderator'])) {
+            $user->syncRoles([]);
+            return back()->with('status', 'Rol eliminado correctamente.');
         }
 
+        return back()->with('status', 'Este usuario no tiene un rol removable.');
     }
 
     public function destroy(User $user)

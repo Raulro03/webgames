@@ -91,6 +91,8 @@ Route::middleware([
         Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
         Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users-delete');
         Route::post('/admin/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users-make-admin');
+        Route::post('/admin/users/{user}/make-moderator', [AdminUserController::class, 'makeModerator'])->name('admin.users.make-moderator');
+        Route::post('/admin/users/{user}/remove-role', [AdminUserController::class, 'removeRole'])->name('admin.users.remove-role');
 
     });
 

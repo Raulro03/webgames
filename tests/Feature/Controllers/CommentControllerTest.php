@@ -5,6 +5,7 @@ use App\Models\User;
 use function Pest\Laravel\{get, post, patch, delete};
 
 it('shows the comment creation form', function () {
+
     $post = CreateUserAuth_Post();
 
     $response = get(route('comment.create', $post->id));
@@ -15,6 +16,7 @@ it('shows the comment creation form', function () {
 });
 
 it('allows a user to create a comment', function () {
+    ConfirmRolesExist();
     $post = CreateUserAuth_Post();
 
     $data = [
