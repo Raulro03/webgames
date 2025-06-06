@@ -9964,3 +9964,7 @@
 #53 C:\\Program Files\\Herd\\resources\\app.asar.unpacked\\resources\\valet\\server.php(139): require('C:\\\\Users\\\\Raul\\\\D...')
 #54 {main}
 "} 
+[2025-06-06 07:53:38] local.ERROR: Maximum execution time of 60 seconds exceeded {"userId":3,"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at C:\\Users\\Raul\\Desktop\\2DAW\\DWES\\Proyectos\\webgames\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\BladeCompiler.php:608)
+[stacktrace]
+#0 {main}
+"} 

@@ -16,7 +16,7 @@ class GamePolicy
             return true;
         }
 
-        return false;
+        return null;
     }
 
     public function create(User $user){
@@ -29,15 +29,7 @@ class GamePolicy
 
         if ($user->hasRole('moderator')) {
 
-            if ($game->average_rating !== null && $game->average_rating >= 4.5) {
-                return false;
-            }
-
-            if ($game->release_date && $game->release_date->diffInYears(now()) > 1) {
-                return false;
-            }
-
-            return true;
+            return $game->release_date && $game->release_date->lte(now()->subYear());
         }
 
         return false;
@@ -46,7 +38,7 @@ class GamePolicy
     public function delete(User $user, Game $game)
     {
         if ($user->hasRole('moderator')) {
-            return $game->average_rating < 4;
+            return $game->average_rating < 4 && $game->release_date && $game->release_date->lte(now()->subYear());
         }
 
         return false;

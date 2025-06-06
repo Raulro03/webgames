@@ -16,27 +16,31 @@ class PostPolicy
             return true;
         }
 
-        return false;
+        return null;
     }
 
     public function update(User $user, Post $post)
     {
-        return ($user->hasRole('author') && $user->id === $post->user_id);
+        return ($user->hasRole('author') && $user->id === $post->user_id)
+            || ($user->hasRole('moderator') && $user->id === $post->user_id);
     }
 
     public function delete(User $user, Post $post)
     {
         return ($user->hasRole('author') && $user->id === $post->user_id)
-            || ($user->hasRole('moderator') && $post->comments()->count() === 0);
+            || ($user->hasRole('moderator') && $post->comments()->count() === 0
+                || $user->hasRole('moderator') && $user->id === $post->user_id);
     }
 
     public function restore(User $user, Post $post)
     {
-        return ($user->hasRole('author') && $user->id === $post->user_id);
+        return ($user->hasRole('author') && $user->id === $post->user_id)
+            || ($user->hasRole('moderator') && $user->id === $post->user_id);
     }
 
     public function forceDelete(User $user, Post $post)
     {
-        return ($user->hasRole('author') && $user->id === $post->user_id);
+        return ($user->hasRole('author') && $user->id === $post->user_id)
+            || ($user->hasRole('moderator') && $user->id === $post->user_id);
     }
 }

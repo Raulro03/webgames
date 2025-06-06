@@ -16,7 +16,7 @@ class CommentPolicy
             return true;
         }
 
-        return false;
+        return null;
     }
 
     public function update(User $user, Comment $comment)
