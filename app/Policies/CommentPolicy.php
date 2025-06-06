@@ -21,12 +21,13 @@ class CommentPolicy
 
     public function update(User $user, Comment $comment)
     {
-        return ($user->id === $comment->user_id);
+        return ($user->hasRole('author') && $user->id === $comment->user_id)
+            || ($user->hasRole('moderator') && $user->id === $comment->user_id);
     }
 
     public function delete(User $user, Comment $comment)
     {
-        return ($user->id === $comment->user_id)
+        return ($user->hasRole('author') && $user->id === $comment->user_id)
             || $user->hasRole('moderator');
     }
 }

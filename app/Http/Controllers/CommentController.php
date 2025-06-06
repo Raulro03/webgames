@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreatedEvent;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
@@ -30,12 +31,15 @@ class CommentController extends Controller
             ]
         ));
 
+        event(new PostCreatedEvent(auth()->user()));
+
         return to_route('post.show', $request->post_id)
             ->with('status', 'Comment creates successfully!');
     }
 
     public function edit(Post $post, Comment $comment)
     {
+
         $parent_comment = $comment->parent;
 
         return view('comment.edit', compact('comment','parent_comment', 'post'));
