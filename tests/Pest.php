@@ -46,8 +46,8 @@ function loginAsUser(?User $user = null)
 
 function ConfirmRolesExist(): void
 {
-    if (!Role::where('name', 'user')->exists()) {
-        Role::create(['name' => 'user']);
+    if (!Role::where('name', 'moderator')->exists()) {
+        Role::create(['name' => 'moderator']);
     }
 
     if (!Role::where('name', 'admin')->exists()) {

@@ -39,6 +39,7 @@ class CommentController extends Controller
 
     public function edit(Post $post, Comment $comment)
     {
+        $this->authorize('update', $comment);
 
         $parent_comment = $comment->parent;
 

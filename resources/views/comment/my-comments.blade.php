@@ -20,12 +20,16 @@
                         <p class="text-sm text-gray-600">📅 {{__('Posted on')}}: <span class="font-medium">{{ $comment->created_at->format('d/m/Y') }}</span></p>
                     </div>
                     <div class="flex justify-between mt-4">
+                        @can('update', $comment)
                         <a href="{{ route('comment.edit',  [$comment->post_id, $comment]) }}" class="px-3 py-2 text-blue-600 hover:text-blue-900">{{__('Edit')}}</a>
-                        <form action="{{ route('comment.destroy', [$comment->post_id, $comment]) }}" method="POST">
+                        @endcan
+                            @can('delete', $comment)
+                                <form action="{{ route('comment.destroy', [$comment->post_id, $comment]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="px-3 py-2 text-red-600 hover:text-red-900">{{__('Delete')}}</button>
-                        </form>
+                                <button type="submit" class="px-3 py-2 text-red-600 hover:text-red-900">{{__('Delete')}}</button>
+                                </form>
+                            @endcan
                     </div>
                 </article>
             @endforeach

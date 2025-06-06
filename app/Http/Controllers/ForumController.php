@@ -65,6 +65,8 @@ class ForumController extends Controller
 
     public function edit(Post $post){
 
+        $this->authorize('update', $post);
+
         $forumCategories = ForumCategory::all();
 
         return view('forum.edit', compact('post'), compact('forumCategories'));
