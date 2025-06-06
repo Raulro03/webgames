@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\Api\StorePostRequest;
+use App\Http\Requests\Api\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Symfony\Component\HttpFoundation\Response;

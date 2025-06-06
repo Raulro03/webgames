@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCommentRequest;
-use App\Http\Requests\UpdateCommentRequest;
+use App\Http\Requests\Api\StoreCommentRequest;
+use App\Http\Requests\Api\UpdateCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 
