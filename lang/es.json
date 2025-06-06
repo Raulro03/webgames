@@ -521,5 +521,12 @@
     "Minimum Strength": "Fuerza mínima",
     "Minimum Agility": "Agilidad mínima",
     "Minimum Intelligence": "Inteligencia mínima",
-    "Minimum Charisma": "Carisma mínima"
+    "Minimum Charisma": "Carisma mínima",
+    "User Management": "Gestion de Usuaio",
+    "Back to Dashboard": "Volver al Dashboard",
+    "ID": "ID",
+    "Make Admin": "Hacer Administrador",
+    "Make Moderator": "Hacer Moderador",
+    "Remove Role": "Quitar Role"
+
 }
