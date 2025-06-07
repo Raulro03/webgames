@@ -20,7 +20,7 @@ class GameFactory extends Factory
             'description' => $this->faker->text(200),
             'release_date' => Carbon::now()->subYears(rand(0, 10)),
             'average_rating' => $this->faker->randomFloat(2, 0, 9.99),
-            'price' => $this->faker->randomNumber(),
+            'price' => $this->faker->numberBetween(0, 99999),
             'image_url' => function () {
                 // Ruta de origen (donde tienes las imágenes base)
                 $sourceDir = public_path('images/games');
