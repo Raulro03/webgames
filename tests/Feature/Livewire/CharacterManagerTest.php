@@ -96,3 +96,42 @@ it('resets filters properly', function () {
         ->assertSet('max_age', null);
 });
 
+it('toggles game appearance for a character', function () {
+    adminUser();
+
+    $game = CreateGameWithDeveloper();
+
+    Livewire::test(CharactersManager::class)
+        ->set('gamesAppearance', [])
+        ->call('toggleGames', $game->id)
+        ->assertSet("gamesAppearance.{$game->id}", fn ($value) => !empty($value))
+        ->call('toggleGames', $game->id)
+        ->assertDontSee("gamesAppearance.{$game->id}");
+});
+
+it('resets flags after deleting a character', function () {
+    adminUser();
+
+    $character = Character::factory()->create();
+
+    Livewire::test(CharactersManager::class)
+        ->call('confirmDelete', $character->id)
+        ->call('delete')
+        ->assertSet('DeleteModal', false)
+        ->assertSet('confirmingDelete', false)
+        ->assertSet('currentCharacter', null);
+});
+
+it('generates custom attribute names for validation errors', function () {
+    adminUser();
+
+    $game = CreateGameWithDeveloper();
+
+    $component = Livewire::test(CharactersManager::class)
+        ->set('gamesAppearance', [$game->id => '2025-01-01'])
+        ->instance();
+
+    $attributes = $component->attributes();
+
+    expect($attributes)->toHaveKey("gamesAppearance.{$game->id}");
+});

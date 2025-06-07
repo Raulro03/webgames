@@ -13,7 +13,9 @@
 
 
 use App\Models\Character;
+use App\Models\Developer;
 use App\Models\ForumCategory;
+use App\Models\Game;
 use App\Models\Post;
 use App\Models\Statistics;
 use App\Models\User;
@@ -40,6 +42,16 @@ function adminUser()
     ConfirmRolesExist();
     $user = loginAsUser();
     $user->assignRole('admin');
+
+    return $user;
+}
+
+function CreateGameWithDeveloper()
+{
+    $developer = Developer::factory()->create();
+    $game = Game::factory()->create(['developer_id' => $developer->id]);
+
+    return $game;
 }
 
 function loginAsUser(?User $user = null)
