@@ -7,6 +7,7 @@ use App\Jobs\CleanTrashedPosts;
 use App\Jobs\DeleteOldArchivedPosts;
 use App\Models\ForbiddenWord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminDashboardController extends Controller
 {
@@ -38,6 +39,12 @@ class AdminDashboardController extends Controller
         $word->save();
 
         return back()->with('status', "Palabra {$newStatus} correctamente.");
+    }
+
+    public function cleanStorage(){
+        Artisan::call('storage:clear-specific');
+
+        return back()->with('status', 'El contenido de images y reports ha sido limpiado correctamente.');
     }
 
 }

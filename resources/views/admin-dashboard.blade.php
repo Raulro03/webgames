@@ -38,6 +38,12 @@
                             👤 {{__('Watch User')}}
                         </button>
                     </form>
+                    <form action="{{ route('dashboard.cleanStorage') }}" method="POST" onsubmit="return confirm('¿Estás seguro de borrar el contenido de images y reports?')">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 mb-2">
+                            🧹 {{ __('Clear Storage (images & reports)') }}
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

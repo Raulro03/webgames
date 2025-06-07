@@ -87,6 +87,8 @@ Route::middleware([
             ->name('dashboard.CleanTrashedPosts');
         Route::post('/admin/forbidden-words/{id}/manage', [AdminDashboardController::class, 'manageForbiddenWord'])
             ->name('admin.forbidden-words.manage');
+        Route::post('/admin/dashboard/clean-storage', [AdminDashboardController::class, 'cleanStorage'])
+            ->name('dashboard.cleanStorage');
 
         Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
         Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users-delete');
