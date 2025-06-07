@@ -157,7 +157,7 @@
             @if($chartImage)
                 <img src="{{ $chartImage }}" class="chart-image" alt="Grafico de categorias">
             @else
-                <p>No se pudo cargar el grafico.</p>
+                <p>{{ $message }}</p>
             @endif
         </div>
     </section>
