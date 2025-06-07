@@ -116,3 +116,37 @@ it('filters platforms by search, price and rating', function () {
         ->assertDontSee('Cheap Console');
 });
 
+it('can reset filters', function () {
+    adminUser();
+
+    Livewire::test(PlatformsManager::class)
+        ->set('search', 'PS')
+        ->set('min_price', 10)
+        ->set('max_price', 50)
+        ->call('resetFilters')
+        ->assertSet('search', '')
+        ->assertSet('min_price', null)
+        ->assertSet('max_price', null);
+});
+
+it('can show a platform', function () {
+    adminUser();
+
+    $platform = Platform::factory()->create();
+
+    Livewire::test(PlatformsManager::class)
+        ->call('show', $platform->id)
+        ->assertSet('currentPlatform.id', $platform->id)
+        ->assertSet('ShowModal', true);
+});
+
+it('can confirm delete with authorized user', function () {
+    adminUser();
+
+    $platform = Platform::factory()->create();
+
+    Livewire::test(PlatformsManager::class)
+        ->call('confirmDelete', $platform->id)
+        ->assertSet('currentPlatform.id', $platform->id)
+        ->assertSet('DeleteModal', true);
+});

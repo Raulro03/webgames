@@ -10,7 +10,7 @@ class PlatformPolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user, $ability)
+    public function before(User $user)
     {
         if ($user->hasRole('admin')) {
             return true;

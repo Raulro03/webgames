@@ -46,6 +46,15 @@ function adminUser()
     return $user;
 }
 
+function moderatorUser()
+{
+    ConfirmRolesExist();
+    $user = loginAsUser();
+    $user->assignRole('moderator');
+
+    return $user;
+}
+
 function CreateGameWithDeveloper()
 {
     $developer = Developer::factory()->create();
