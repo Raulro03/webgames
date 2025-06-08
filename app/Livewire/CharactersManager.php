@@ -29,6 +29,12 @@ class CharactersManager extends Component
     public $games;
     public $gamesAppearance =[];
 
+    public $constitution;
+    public $strength;
+    public $agility;
+    public $intelligence;
+    public $charisma;
+
     public $search = '';
     public $min_age;
     public $max_age;
@@ -74,6 +80,11 @@ class CharactersManager extends Component
         $this->imagePreview = null;
         $this->currentCharacter = null;
         $this->gamesAppearance = [];
+        $this->constitution = null;
+        $this->strength = null;
+        $this->agility = null;
+        $this->intelligence = null;
+        $this->charisma = null;
     }
 
     public function resetFilters()
@@ -114,6 +125,15 @@ class CharactersManager extends Component
         $character = $this->fillCharacterData(new Character(),$this->handleImageUpload());
         $character->save();
 
+        $character->statistics()->create([
+            'constitution' => $this->constitution,
+            'strength' => $this->strength,
+            'agility' => $this->agility,
+            'intelligence' => $this->intelligence,
+            'charisma' => $this->charisma,
+        ]);
+
+
         $gameSyncData = [];
 
         foreach ($this->gamesAppearance as $gameId=> $appearance) {
@@ -136,6 +156,14 @@ class CharactersManager extends Component
         $this->description = $this->currentCharacter->description;
         $this->age = $this->currentCharacter->age;
         $this->imagePreview = $this->currentCharacter->image_url ? asset($this->currentCharacter->image_url) : null;
+
+        if ($this->currentCharacter->statistics) {
+            $this->constitution = $this->currentCharacter->statistics->constitution;
+            $this->strength = $this->currentCharacter->statistics->strength;
+            $this->agility = $this->currentCharacter->statistics->agility;
+            $this->intelligence = $this->currentCharacter->statistics->intelligence;
+            $this->charisma = $this->currentCharacter->statistics->charisma;
+        }
 
         foreach ($this->currentCharacter->games as $game) {
             $this->gamesAppearance[$game->id] = $game->pivot->appearance;
@@ -166,6 +194,17 @@ class CharactersManager extends Component
 
         $character = $this->fillCharacterData($this->currentCharacter,$this->handleImageUpload());
         $character->save();
+
+        $this->currentCharacter->statistics()->updateOrCreate(
+            ['character_id' => $this->currentCharacter->id],
+            [
+                'constitution' => $this->constitution,
+                'strength' => $this->strength,
+                'agility' => $this->agility,
+                'intelligence' => $this->intelligence,
+                'charisma' => $this->charisma,
+            ]
+        );
 
         $gameSyncData = [];
 

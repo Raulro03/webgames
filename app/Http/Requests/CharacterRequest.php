@@ -16,6 +16,11 @@ class CharacterRequest extends FormRequest
             'image' => 'nullable|image|',
             'gamesAppearance' => ['nullable', 'array'],
             'gamesAppearance.*' => ['required', 'date'],
+            'constitution' => ['required', 'integer', 'min:0', 'max:10'],
+            'strength' => ['required', 'integer', 'min:0', 'max:10'],
+            'agility' => ['required', 'integer', 'min:0', 'max:10'],
+            'intelligence' => ['required', 'integer', 'min:0', 'max:10'],
+            'charisma' => ['required', 'integer', 'min:0', 'max:10'],
         ];
     }
 

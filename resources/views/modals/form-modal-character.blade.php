@@ -48,6 +48,14 @@
             @endforeach
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <x-input.input-number label="{{ __('Constitution') }}" model="constitution" min="0" max="10" />
+            <x-input.input-number label="{{ __('Strength') }}" model="strength" min="0" max="10"/>
+            <x-input.input-number label="{{ __('Agility') }}" model="agility" min="0" />
+            <x-input.input-number label="{{ __('Intelligence') }}" model="intelligence" min="0" max="10"/>
+            <x-input.input-number label="{{ __('Charisma') }}" model="charisma" min="0" max="10"/>
+        </div>
+
         {{-- Imagen --}}
         <div class="mb-4">
             <x-label :value="__('Character Image')" class="font-semibold text-gray-700" />
