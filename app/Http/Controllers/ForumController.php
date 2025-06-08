@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\FirstPostCreatedEvent;
 use App\Events\PostCreatedEvent;
+use App\Events\PostDeletedEvent;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\ForumCategory;
@@ -88,6 +89,8 @@ class ForumController extends Controller
         $this->authorize('delete', $post);
 
         $post->delete();
+
+        event(new PostDeletedEvent($post));
 
         return to_route('forum')
             ->with('status', 'Post deletes successfully!');

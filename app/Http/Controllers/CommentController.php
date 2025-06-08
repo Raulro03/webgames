@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\PostCreatedEvent;
+use App\Events\CommentCreateEvent;
+use App\Events\CommentDeletedEvent;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
@@ -31,7 +32,7 @@ class CommentController extends Controller
             ]
         ));
 
-        event(new PostCreatedEvent(auth()->user()));
+        event(new CommentCreateEvent(auth()->user()));
 
         return to_route('post.show', $request->post_id)
             ->with('status', 'Comment creates successfully!');
@@ -60,6 +61,8 @@ class CommentController extends Controller
         $this->authorize('delete', $comment);
 
         $comment->delete();
+
+        event(new CommentDeletedEvent($comment));
 
         return to_route('post.show', $post)
             ->with('status', 'Comment deletes successfully!');

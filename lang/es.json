@@ -528,6 +528,12 @@
     "Make Admin": "Hacer Administrador",
     "Make Moderator": "Hacer Moderador",
     "Remove Role": "Quitar Role",
-    "Clear Storage (images & reports)": "Limpiar Storage (Imagenes y Reportes)"
+    "Clear Storage (images & reports)": "Limpiar Storage (Imagenes y Reportes)",
+    "Post Deleted": "Post Eliminado",
+    "Hello": "Hola",
+    "We regret to inform you that your post has been deleted by a moderator.": "Lamentamos informarle que su publicación ha sido eliminada por un moderador.",
+    "If you believe this was a mistake, please contact support.": "Si cree que esto fue un error, comuníquese con el soporte técnico.",
+    "Comment Deleted": "Comentario Eliminado",
+    "Your comment has been removed by a moderator.": "Tu comentario ha sido eliminado por un moderador."
 
 }
