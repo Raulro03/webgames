@@ -59,4 +59,16 @@ class Character extends Model
         ])->contains(fn($key) => !empty($filters[$key]));
     }
 
+    public function scopeTopByTotalStats($query, $limit = 5)
+    {
+        return $query->with(['statistics', 'games'])
+            ->get()
+            ->sortByDesc(function ($character) {
+                $stats = $character->statistics;
+                return $stats->constitution + $stats->strength + $stats->agility + $stats->intelligence + $stats->charisma;
+            })
+            ->take($limit)
+            ->values();
+    }
+
 }

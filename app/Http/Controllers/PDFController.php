@@ -54,11 +54,7 @@ class PDFController extends Controller
 
     public function generateTop5CharacterPdf()
     {
-        $topCharacters = Character::with(['statistics', 'games'])
-            ->get()
-            ->sortByDesc(fn($c) => $c->statistics->constitution + $c->statistics->strength + $c->statistics->agility + $c->statistics->intelligence + $c->statistics->charisma)
-            ->take(5)
-            ->values();
+        $topCharacters = Character::topByTotalStats(5);
 
         return Pdf::loadView('pdf.character_summary_top5', compact('topCharacters'))
             ->download('Top_5_Personajes.pdf');
