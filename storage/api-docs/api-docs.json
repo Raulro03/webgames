@@ -9,6 +9,283 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/characters": {
+            "get": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Listar personajes",
+                "description": "Devuelve una lista paginada de personajes con sus estadísticas y juegos relacionados.",
+                "operationId": "getCharacters",
+                "responses": {
+                    "200": {
+                        "description": "Lista de personajes",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Character"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Crear personaje",
+                "description": "Crea un nuevo personaje con estadísticas y juegos asociados.",
+                "operationId": "storeCharacter",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "statistics"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Geralt"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": 100
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Un brujo cazador de monstruos."
+                                    },
+                                    "statistics": {
+                                        "$ref": "#/components/schemas/Statistics"
+                                    },
+                                    "games": {
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "id",
+                                                "appearance"
+                                            ],
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "appearance": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-01-01"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Personaje creado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Logueate"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/characters/{id}": {
+            "get": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Mostrar personaje",
+                "description": "Obtiene un personaje por ID con sus estadísticas y juegos.",
+                "operationId": "showCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles del personaje",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personaje no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Actualizar personaje",
+                "description": "Actualiza la información de un personaje, sus estadísticas y juegos.",
+                "operationId": "updateCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Geralt actualizado"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": 101
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Descripción modificada."
+                                    },
+                                    "statistics": {
+                                        "$ref": "#/components/schemas/Statistics"
+                                    },
+                                    "games": {
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "id",
+                                                "appearance"
+                                            ],
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 2
+                                                },
+                                                "appearance": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-06-01"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Personaje actualizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Character"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Logueate"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Eliminar personaje",
+                "description": "Elimina un personaje junto con sus estadísticas y relaciones con juegos.",
+                "operationId": "deleteCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Personaje eliminado correctamente"
+                    },
+                    "404": {
+                        "description": "Personaje no encontrado"
+                    },
+                    "405": {
+                        "description": "Logueate"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/comments": {
             "get": {
                 "tags": [
@@ -485,7 +762,7 @@
         "/api/games": {
             "get": {
                 "tags": [
-                    "Games"
+                    "Game"
                 ],
                 "summary": "Obtener todas los juegos",
                 "operationId": "e333e2e46e6c7bd4c254fe379b7389dd",
@@ -497,7 +774,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/Games"
+                                        "$ref": "#/components/schemas/Game"
                                     }
                                 }
                             }
@@ -509,9 +786,9 @@
         "/api/games/{id}": {
             "get": {
                 "tags": [
-                    "Games"
+                    "Game"
                 ],
-                "summary": "Obtener todos los juegos",
+                "summary": "Obtener juego por ID",
                 "operationId": "48fb06317bf9e8f10c22dd892ff7425e",
                 "parameters": [
                     {
@@ -526,14 +803,11 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Lista de juegos paginada",
+                        "description": "Detalles del juego",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Games"
-                                    }
+                                    "$ref": "#/components/schemas/Game"
                                 }
                             }
                         }
@@ -543,10 +817,13 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Games"
-                                    }
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Game not found"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -616,6 +893,48 @@
     },
     "components": {
         "schemas": {
+            "Character": {
+                "title": "Character",
+                "required": [
+                    "id",
+                    "name",
+                    "statistics"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Geralt of Rivia"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/geralt.png"
+                    },
+                    "statistics": {
+                        "$ref": "#/components/schemas/Statistics"
+                    },
+                    "games": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Game"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-05-30T14:23:00Z"
+                    }
+                },
+                "type": "object"
+            },
             "Comment": {
                 "title": "Comment",
                 "description": "Estructura del comentario en la API",
@@ -670,6 +989,58 @@
                         "type": "string",
                         "format": "date-time",
                         "example": "2025-04-29T11:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Game": {
+                "title": "Game",
+                "required": [
+                    "id",
+                    "title"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Elden Ring"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "An epic fantasy RPG..."
+                    },
+                    "release_date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2022-02-25"
+                    },
+                    "average_rating": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 4.8
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 59.99
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/image.png"
+                    },
+                    "developer_id": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "appearance": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-01",
+                        "nullable": true
                     }
                 },
                 "type": "object"
@@ -751,59 +1122,35 @@
                 },
                 "type": "object"
             },
-            "Games": {
+            "Statistics": {
+                "title": "Statistics",
                 "required": [
-                    "id",
-                    "title",
-                    "developer_id",
-                    "release_date"
+                    "constitution",
+                    "strength",
+                    "agility",
+                    "intelligence",
+                    "charisma"
                 ],
                 "properties": {
-                    "id": {
+                    "constitution": {
                         "type": "integer",
-                        "example": 1
+                        "example": 10
                     },
-                    "title": {
-                        "type": "string",
-                        "maxLength": 255,
-                        "example": "The Legend of Zelda: Breath of the Wild"
-                    },
-                    "description": {
-                        "type": "string",
-                        "maxLength": 200,
-                        "example": "The Legend of Zelda: Breath of the Wild es un videojuego de acción-aventura de 2017 desarrollado y publicado por Nintendo para la consola Nintendo Switch y Wii U."
-                    },
-                    "release_date": {
-                        "type": "string",
-                        "format": "date",
-                        "example": "2017-03-03"
-                    },
-                    "price": {
+                    "strength": {
                         "type": "integer",
-                        "example": 5999
+                        "example": 8
                     },
-                    "average_rating": {
-                        "type": "number",
-                        "format": "float",
-                        "maximum": 9.99,
-                        "minimum": 0,
-                        "example": 4.9
-                    },
-                    "image_url": {
-                        "type": "string",
-                        "example": "images/games/residentevil.png"
-                    },
-                    "developer_id": {
+                    "agility": {
                         "type": "integer",
-                        "example": 1
+                        "example": 12
                     },
-                    "created_at": {
-                        "type": "string",
-                        "format": "date-time"
+                    "intelligence": {
+                        "type": "integer",
+                        "example": 15
                     },
-                    "updated_at": {
-                        "type": "string",
-                        "format": "date-time"
+                    "charisma": {
+                        "type": "integer",
+                        "example": 14
                     }
                 },
                 "type": "object"
@@ -880,12 +1227,16 @@
             "description": "Endpoints para la gestión de posts en el foro"
         },
         {
-            "name": "Games",
+            "name": "Game",
             "description": "Endpoints para mostrar los juegos"
         },
         {
             "name": "Platforms",
             "description": "Endpoints para la gestión de plataformas"
+        },
+        {
+            "name": "Characters",
+            "description": "Characters"
         }
     ]
 }

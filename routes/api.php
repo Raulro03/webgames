@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CharacterController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ForumController;
 use App\Http\Controllers\Api\GameController;
@@ -23,6 +24,9 @@ Route::get('/posts/{post}', [ForumController::class, 'show']);
 Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/comments/{comment}', [CommentController::class, 'show']);
 
+Route::get('/characters', [CharacterController::class, 'index']);
+Route::get('/characters/{character}', [CharacterController::class, 'show']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/posts', [ForumController::class, 'store']);
     Route::patch('/posts/{post}', [ForumController::class, 'update']);
@@ -31,4 +35,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/comments', [CommentController::class, 'store']);
     Route::put('/comments/{comment}', [CommentController::class, 'update']);
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
+
+    Route::post('/characters', [CharacterController::class, 'store']);
+    Route::patch('/characters/{character}', [CharacterController::class, 'update']);
+    Route::delete('/characters/{character}', [CharacterController::class, 'destroy']);
 });

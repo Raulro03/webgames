@@ -7,22 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-/**
- * @OA\Schema(
- *     schema="Games",
- *     required={"id", "title", "developer_id", "release_date",},
- *     @OA\Property(property="id", type="integer", example=1),
- *     @OA\Property(property="title", type="string", example="The Legend of Zelda: Breath of the Wild", maxLength=255),
- *     @OA\Property(property="description", type="string", example="The Legend of Zelda: Breath of the Wild es un videojuego de acción-aventura de 2017 desarrollado y publicado por Nintendo para la consola Nintendo Switch y Wii U.", maxLength=200),
- *     @OA\Property(property="release_date", type="string", format="date", example="2017-03-03"),
- *     @OA\Property(property="price", type="int", example=5999),
- *     @OA\Property(property="average_rating", type="number", format="float", maximum=9.99, minimum=0 , example=4.9),
- *     @OA\Property(property="image_url", type="string", example="images/games/residentevil.png"),
- *     @OA\Property(property="developer_id", type="integer", example=1),
- *     @OA\Property(property="created_at", type="string", format="date-time"),
- *     @OA\Property(property="updated_at", type="string", format="date-time")
- * )
- */
+
 class Game extends Model
 {
     use HasFactory;
