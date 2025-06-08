@@ -53,6 +53,7 @@ Route::middleware([
 
     Route::get('/game/{id}/pdf', [PDFController::class, 'gamePDF'])->name('game.pdf');
     Route::get('/platform/{id}/pdf', [PDFController::class, 'platformPDF'])->name('platform.pdf');
+    Route::get('/characters-top5/pdf', [PDFController::class, 'generateTop5CharacterPdf'])->name('characters.pdf');
     Route::get('/dashboard/pdf', [PDFController::class, 'generateUserPdf'])->name('dashboard.pdf');
     Route::get('/dashboard/pdf/download', [UserDashboardController::class, 'downloadPDFUser'])->name('user.download.pdf');
 

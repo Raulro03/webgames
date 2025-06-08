@@ -1,11 +1,17 @@
 <div class="max-w-7xl mx-auto mt-10 p-4">
-    @can('create', \App\Models\Character::class)
+
     <div class="flex justify-end mb-6">
-        <button wire:click="create" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
+        <a href="{{ route('characters.pdf') }}" target="_blank"
+           class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition duration-200">
+            {{ __('Download Top 5 Characters PDF') }}
+        </a>
+        @can('create', \App\Models\Character::class)
+        <button wire:click="create" class=" ml-6 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
             + {{__("New Character")}}
         </button>
+        @endcan
     </div>
-    @endcan
+
 
     <x-filter.characters-filter/>
 

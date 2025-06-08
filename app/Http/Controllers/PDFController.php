@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\GeneratePDFUserHistoryJob;
+use App\Models\Character;
 use Illuminate\Support\Facades\Http;
 use App\Models\Game;
 use App\Models\Platform;
@@ -49,5 +50,17 @@ class PDFController extends Controller
         GeneratePDFUserHistoryJob::dispatch($user);
 
         return back()->with('status_pdf', 'El reporte se está generando. Estará disponible en breve.');
+    }
+
+    public function generateTop5CharacterPdf()
+    {
+        $topCharacters = Character::with(['statistics', 'games'])
+            ->get()
+            ->sortByDesc(fn($c) => $c->statistics->constitution + $c->statistics->strength + $c->statistics->agility + $c->statistics->intelligence + $c->statistics->charisma)
+            ->take(5)
+            ->values();
+
+        return Pdf::loadView('pdf.character_summary_top5', compact('topCharacters'))
+            ->download('Top_5_Personajes.pdf');
     }
 }
