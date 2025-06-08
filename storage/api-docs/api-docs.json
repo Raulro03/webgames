@@ -161,7 +161,43 @@
                     }
                 }
             },
-            "put": {
+            "delete": {
+                "tags": [
+                    "Characters"
+                ],
+                "summary": "Eliminar personaje",
+                "description": "Elimina un personaje junto con sus estadísticas y relaciones con juegos.",
+                "operationId": "deleteCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del personaje",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Personaje eliminado correctamente"
+                    },
+                    "404": {
+                        "description": "Personaje no encontrado"
+                    },
+                    "405": {
+                        "description": "Logueate"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
                 "tags": [
                     "Characters"
                 ],
@@ -238,42 +274,6 @@
                                 }
                             }
                         }
-                    },
-                    "405": {
-                        "description": "Logueate"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Characters"
-                ],
-                "summary": "Eliminar personaje",
-                "description": "Elimina un personaje junto con sus estadísticas y relaciones con juegos.",
-                "operationId": "deleteCharacter",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID del personaje",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "example": 1
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Personaje eliminado correctamente"
-                    },
-                    "404": {
-                        "description": "Personaje no encontrado"
                     },
                     "405": {
                         "description": "Logueate"
@@ -1142,15 +1142,15 @@
                     },
                     "agility": {
                         "type": "integer",
-                        "example": 12
+                        "example": 10
                     },
                     "intelligence": {
                         "type": "integer",
-                        "example": 15
+                        "example": 10
                     },
                     "charisma": {
                         "type": "integer",
-                        "example": 14
+                        "example": 10
                     }
                 },
                 "type": "object"

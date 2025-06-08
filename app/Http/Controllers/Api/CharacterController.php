@@ -122,7 +122,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * @OA\Put(
+     * @OA\Patch(
      *     path="/api/characters/{id}",
      *     summary="Actualizar personaje",
      *     description="Actualiza la información de un personaje, sus estadísticas y juegos.",

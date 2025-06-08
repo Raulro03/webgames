@@ -13,9 +13,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     required={"constitution", "strength", "agility", "intelligence", "charisma"},
  *     @OA\Property(property="constitution", type="integer", example=10),
  *     @OA\Property(property="strength", type="integer", example=8),
- *     @OA\Property(property="agility", type="integer", example=12),
- *     @OA\Property(property="intelligence", type="integer", example=15),
- *     @OA\Property(property="charisma", type="integer", example=14)
+ *     @OA\Property(property="agility", type="integer", example=10),
+ *     @OA\Property(property="intelligence", type="integer", example=10),
+ *     @OA\Property(property="charisma", type="integer", example=10)
  * )
  */
 class StatisticsResource extends JsonResource
