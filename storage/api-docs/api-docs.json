@@ -165,26 +165,10 @@
                                     "body"
                                 ],
                                 "properties": {
-                                    "user_id": {
-                                        "description": "ID del usuario que edita el comentario",
-                                        "type": "integer",
-                                        "example": 5
-                                    },
                                     "body": {
                                         "description": "Nuevo contenido del comentario",
                                         "type": "string",
                                         "example": "Este es un comentario actualizado"
-                                    },
-                                    "published_at": {
-                                        "description": "Fecha de publicación",
-                                        "type": "string",
-                                        "format": "date",
-                                        "example": "2025-04-29"
-                                    },
-                                    "post_id": {
-                                        "description": "ID del post donde esta el comentario",
-                                        "type": "integer",
-                                        "example": 3
                                     }
                                 },
                                 "type": "object"
@@ -249,6 +233,9 @@
                     },
                     "404": {
                         "description": "Comentario no encontrado"
+                    },
+                    "405": {
+                        "description": "Logueate"
                     }
                 },
                 "security": [
@@ -292,7 +279,32 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Post"
+                                "required": [
+                                    "title",
+                                    "body",
+                                    "published_at",
+                                    "category_id"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Mi opinión sobre el nuevo videojuego"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Este juego es increíble por muchas razones..."
+                                    },
+                                    "published_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2025-06-08"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 3
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }
@@ -381,6 +393,9 @@
                     },
                     "404": {
                         "description": "Post no encontrado"
+                    },
+                    "405": {
+                        "description": "Logueate"
                     }
                 },
                 "security": [
@@ -412,7 +427,32 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Post"
+                                "required": [
+                                    "title",
+                                    "body",
+                                    "published_at",
+                                    "category_id"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Mi opinión sobre el nuevo videojuego actualziado"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Este juego es increíble por muchas razones... actualizado"
+                                    },
+                                    "published_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2024-06-08"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 3
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }

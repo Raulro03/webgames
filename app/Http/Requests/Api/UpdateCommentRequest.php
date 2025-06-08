@@ -20,7 +20,6 @@ class UpdateCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'post_id' => ['required'],
             'body' => ['required',new NoPalabrasProhibidas()],
             'parent_id' => ['nullable', new NoParentSelfReference($this->commentId)],
         ];

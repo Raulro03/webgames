@@ -31,7 +31,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return PostResource::collection(Post::query()->paginate(9));
+        return PostResource::collection(Post::with('comments')->paginate(9));
     }
 
     /**
@@ -40,6 +40,35 @@ class ForumController extends Controller
      *     summary="Crear un nuevo post",
      *     tags={"Posts"},
      *     security={{ "bearerAuth": {} }},
+     *
+     *     @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              required={"title", "body", "published_at", "category_id"},
+     *              @OA\Property(
+     *                  property="title",
+     *                  type="string",
+     *                  example="Mi opinión sobre el nuevo videojuego"
+     *              ),
+     *              @OA\Property(
+     *                  property="body",
+     *                  type="string",
+     *                  example="Este juego es increíble por muchas razones..."
+     *              ),
+     *              @OA\Property(
+     *                  property="published_at",
+     *                  type="string",
+     *                  format="date-time",
+     *                  example="2025-06-08"
+     *              ),
+     *              @OA\Property(
+     *                  property="category_id",
+     *                  type="integer",
+     *                  example=3
+     *              )
+     *          )
+     *      ),
+     *
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(ref="#/components/schemas/Post")
@@ -106,9 +135,32 @@ class ForumController extends Controller
      *         @OA\Schema(type="integer", example=1)
      *     ),
      *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Post")
-     *     ),
+     *          required=true,
+     *          @OA\JsonContent(
+     *              required={"title", "body", "published_at", "category_id"},
+     *              @OA\Property(
+     *                  property="title",
+     *                  type="string",
+     *                  example="Mi opinión sobre el nuevo videojuego actualziado"
+     *              ),
+     *              @OA\Property(
+     *                  property="body",
+     *                  type="string",
+     *                  example="Este juego es increíble por muchas razones... actualizado"
+     *              ),
+     *              @OA\Property(
+     *                  property="published_at",
+     *                  type="string",
+     *                  format="date-time",
+     *                  example="2024-06-08"
+     *              ),
+     *              @OA\Property(
+     *                  property="category_id",
+     *                  type="integer",
+     *                  example=3
+     *              )
+     *          )
+     *      ),
      *     @OA\Response(
      *         response=200,
      *         description="Post actualizado correctamente",
@@ -155,7 +207,8 @@ class ForumController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Post no encontrado"
-     *     )
+     *     ),
+     *     @OA\Response(response=405, description="Logueate")
      * )
      */
     public function destroy(Post $post)

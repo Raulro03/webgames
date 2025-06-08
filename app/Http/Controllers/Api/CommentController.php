@@ -116,10 +116,7 @@ class CommentController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"body"},
-     *            @OA\Property(property="user_id", type="integer", example=5, description="ID del usuario que edita el comentario"),
      *            @OA\Property(property="body", type="string", example="Este es un comentario actualizado", description="Nuevo contenido del comentario"),
-     *            @OA\Property(property="published_at", type="string", format="date", example="2025-04-29", description="Fecha de publicación"),
-     *            @OA\Property(property="post_id", type="integer", example=3, description="ID del post donde esta el comentario")
      *         )
      *     ),
      *     @OA\Response(
@@ -152,10 +149,12 @@ class CommentController extends Controller
      *         description="ID del comentario a eliminar",
      *         @OA\Schema(type="integer", example=1)
      *     ),
+     *
      *     @OA\Response(response=204, description="Comentario eliminado correctamente"),
      *     @OA\Response(response=401, description="No autenticado"),
      *     @OA\Response(response=403, description="No autorizado para eliminar este comentario"),
-     *     @OA\Response(response=404, description="Comentario no encontrado")
+     *     @OA\Response(response=404, description="Comentario no encontrado"),
+     *     @OA\Response(response=405, description="Logueate")
      * )
      */
     public function destroy(Comment $comment)
