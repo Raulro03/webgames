@@ -26,11 +26,13 @@ it('retrieves a single game', function () {
 
     $response->assertOk()
         ->assertJson([
-            'id' => $game->id,
-            'title' => $game->title,
-            'description' => $game->description,
-            'price' => $game->price,
-            'developer_id' => $game->developer_id,
+            'data' => [
+                'id' => $game->id,
+                'title' => $game->title,
+                'description' => $game->description,
+                'price' => $game->price,
+                'developer_id' => $game->developer_id,
+            ]
         ]);
 });
 
