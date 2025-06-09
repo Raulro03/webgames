@@ -71,6 +71,7 @@ class CommentController extends Controller
     public function myComments()
     {
         $comments = auth()->user()->comments()->with('post')->latest()->paginate(6);
+
         return view('comment.my-comments', compact('comments'));
     }
 }

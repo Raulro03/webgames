@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreForbiddenWordRequest;
+use App\Jobs\ScanContentForNewForbiddenWordJob;
 use App\Models\ForbiddenWord;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,15 @@ class UserDashboardController extends Controller
 
         $isAdmin = Auth::user()->hasRole('admin');
 
-        ForbiddenWord::create([
+        $word = ForbiddenWord::create([
             'word' => $request->word,
             'status' => $isAdmin ? 'accept' : 'pending',
         ]);
+
+
+        if ($word->status === 'accept') {
+            ScanContentForNewForbiddenWordJob::dispatch($word->word);
+        }
 
         return back()->with('status', $isAdmin
             ? 'Palabra añadida directamente a la lista prohibida.'

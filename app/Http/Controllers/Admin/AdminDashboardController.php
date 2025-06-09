@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Jobs\CleanTrashedPosts;
 use App\Jobs\DeleteOldArchivedPosts;
+use App\Jobs\ScanContentForNewForbiddenWordJob;
 use App\Models\ForbiddenWord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -37,6 +38,10 @@ class AdminDashboardController extends Controller
 
         $word->status = $newStatus;
         $word->save();
+
+        if ($newStatus === 'accept') {
+            ScanContentForNewForbiddenWordJob::dispatch($word->word);
+        }
 
         return back()->with('status', "Palabra {$newStatus} correctamente.");
     }
