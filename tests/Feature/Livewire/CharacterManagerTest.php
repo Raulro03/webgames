@@ -27,8 +27,14 @@ it('creates a new character with image and game appearances', function () {
         ->set('description', 'Test description')
         ->set('age', 30)
         ->set('image', $image)
+        ->set('constitution', 5)
+        ->set('strength', 6)
+        ->set('agility', 7)
+        ->set('intelligence', 8)
+        ->set('charisma', 9)
         ->set("gamesAppearance.{$game->id}", '2023-01-01')
-        ->call('store');
+        ->call('store')
+        ->assertHasNoErrors();
 
     $character = Character::first();
 
@@ -52,6 +58,11 @@ it('edits a character and updates game appearances', function () {
         ->call('edit', $character->id)
         ->set('name', 'Updated Name')
         ->set("gamesAppearance.{$game->id}", '2024-06-01')
+        ->set('constitution', 5)
+        ->set('strength', 6)
+        ->set('agility', 7)
+        ->set('intelligence', 8)
+        ->set('charisma', 9)
         ->call('update');
 
     $character->refresh();
