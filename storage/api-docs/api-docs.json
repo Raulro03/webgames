@@ -913,6 +913,10 @@
                         "type": "integer",
                         "example": 100
                     },
+                    "description": {
+                        "type": "string",
+                        "example": "El Dios de todo"
+                    },
                     "image_url": {
                         "type": "string",
                         "format": "uri",
@@ -926,11 +930,6 @@
                         "items": {
                             "$ref": "#/components/schemas/Game"
                         }
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2024-05-30T14:23:00Z"
                     }
                 },
                 "type": "object"
@@ -977,18 +976,6 @@
                         "type": "integer",
                         "example": 2,
                         "nullable": true
-                    },
-                    "created_at": {
-                        "description": "Fecha de creación del comentario",
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2025-04-29T10:30:00Z"
-                    },
-                    "updated_at": {
-                        "description": "Fecha de última actualización del comentario",
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2025-04-29T11:00:00Z"
                     }
                 },
                 "type": "object"
@@ -1036,10 +1023,15 @@
                         "type": "integer",
                         "example": 10
                     },
-                    "appearance": {
-                        "type": "string",
-                        "format": "date",
-                        "example": "2023-01-01",
+                    "pivot": {
+                        "properties": {
+                            "appearance": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2023-01-01"
+                            }
+                        },
+                        "type": "object",
                         "nullable": true
                     }
                 },

@@ -19,7 +19,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(property="price", type="number", format="float", example=59.99),
  *     @OA\Property(property="image_url", type="string", format="uri", example="https://example.com/image.png"),
  *     @OA\Property(property="developer_id", type="integer", example=10),
- *     @OA\Property(property="appearance", type="string", format="date", nullable=true, example="2023-01-01")
+ *     @OA\Property(
+ *          property="pivot",
+ *          type="object",
+ *          nullable=true,
+ *          @OA\Property(property="appearance", type="string", format="date", example="2023-01-01")
+ *      )
  * )
  */
 class GameResource extends JsonResource
@@ -38,7 +43,10 @@ class GameResource extends JsonResource
             'price' => $this->price,
             'image_url' => $this->image_url,
             'developer_id' => $this->developer_id,
-            'appearance' => $this->pivot->appearance ?? null,
+            'pivot' => $this->pivot ? [
+                'appearance' => $this->pivot->appearance,
+                // otros campos pivot si tienes
+            ] : null,
         ];
     }
 }

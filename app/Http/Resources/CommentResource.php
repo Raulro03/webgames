@@ -50,21 +50,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *         nullable=true,
  *         example=2,
  *         description="ID del comentario padre si este comentario es una respuesta"
- *     ),
- *     @OA\Property(
- *         property="created_at",
- *         type="string",
- *         format="date-time",
- *         example="2025-04-29T10:30:00Z",
- *         description="Fecha de creación del comentario"
- *     ),
- *     @OA\Property(
- *         property="updated_at",
- *         type="string",
- *         format="date-time",
- *         example="2025-04-29T11:00:00Z",
- *         description="Fecha de última actualización del comentario"
- *     ),
+ *     )
  * )
  */
 class CommentResource extends JsonResource

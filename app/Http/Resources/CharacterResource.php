@@ -14,14 +14,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(property="id", type="integer", example=1),
  *     @OA\Property(property="name", type="string", example="Geralt of Rivia"),
  *     @OA\Property(property="age", type="integer", example=100),
+ *     @OA\Property(property="description", type="string", example="El Dios de todo"),
  *     @OA\Property(property="image_url", type="string", format="uri", example="https://example.com/geralt.png"),
  *     @OA\Property(property="statistics", ref="#/components/schemas/Statistics"),
  *     @OA\Property(
  *         property="games",
  *         type="array",
  *         @OA\Items(ref="#/components/schemas/Game")
- *     ),
- *     @OA\Property(property="created_at", type="string", format="date-time", example="2024-05-30T14:23:00Z")
+ *     )
  * )
  */
 class CharacterResource extends JsonResource
@@ -37,6 +37,7 @@ class CharacterResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'age' => $this->age,
+            'description' => $this->description,
             'image_url' => $this->image_url,
             'statistics' => new StatisticsResource($this->statistics),
             'games' => GameResource::collection($this->games),
