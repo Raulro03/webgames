@@ -17,6 +17,8 @@ it('generates a token for the authenticated user and returns with message', func
 });
 
 it('adds forbidden word directly if the user is an admin', function () {
+    Bus::fake();
+
     ConfirmRolesExist();
     $user = loginAsUser();
     $user->assignRole('admin');

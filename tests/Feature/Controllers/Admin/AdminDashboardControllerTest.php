@@ -99,6 +99,7 @@ it('dispatches CleanTrashedPosts job', function () {
 });
 
 it('can accept a forbidden word', function () {
+    Bus::fake();
 
     ConfirmRolesExist();
     $user = loginAsUser();
