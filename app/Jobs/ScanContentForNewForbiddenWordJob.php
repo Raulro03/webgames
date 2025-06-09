@@ -24,12 +24,13 @@ class ScanContentForNewForbiddenWordJob implements ShouldQueue
 
     public function handle()
     {
+        $escapedWord = preg_quote($this->word, '/');
 
-        Comment::whereRaw("LOWER(body) REGEXP ?", ['[[:<:]]' . $this->word . '[[:>:]]'])
+        Comment::whereRaw("LOWER(body) REGEXP BINARY ?", ["\\b{$escapedWord}\\b"])
             ->delete();
 
         Post::where('status', '!=', 'archived')
-            ->whereRaw("LOWER(body) REGEXP ?", ['[[:<:]]' . $this->word . '[[:>:]]'])
+            ->whereRaw("LOWER(body) REGEXP BINARY ?", ["\\b{$escapedWord}\\b"])
             ->update(['status' => 'archived']);
     }
 }
