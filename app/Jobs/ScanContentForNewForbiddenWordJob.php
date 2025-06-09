@@ -25,14 +25,11 @@ class ScanContentForNewForbiddenWordJob implements ShouldQueue
     public function handle()
     {
 
-
-        Comment::whereRaw('LOWER(body) LIKE ?', ['%' . $this->word . '%'])
+        Comment::whereRaw("LOWER(body) REGEXP ?", ['[[:<:]]' . $this->word . '[[:>:]]'])
             ->delete();
 
         Post::where('status', '!=', 'archived')
-            ->whereRaw('LOWER(body) LIKE ?', ['%' . $this->word . '%'])
+            ->whereRaw("LOWER(body) REGEXP ?", ['[[:<:]]' . $this->word . '[[:>:]]'])
             ->update(['status' => 'archived']);
-
-
     }
 }
