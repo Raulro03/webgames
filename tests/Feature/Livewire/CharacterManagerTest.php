@@ -146,3 +146,26 @@ it('generates custom attribute names for validation errors', function () {
 
     expect($attributes)->toHaveKey("gamesAppearance.{$game->id}");
 });
+
+it('closes the create/edit modal and resets fields', function () {
+    Livewire::test(CharactersManager::class)
+        ->set('FormModal', true)
+        ->set('isEditMode', true)
+        ->set('name', 'Some Name')
+        ->call('closeModalCreateEdit')
+        ->assertSet('FormModal', false)
+        ->assertSet('isEditMode', false)
+        ->assertSet('name', '');
+});
+
+it('throws validation errors on invalid store', function () {
+    adminUser();
+
+    $component = Livewire::test(CharactersManager::class)
+        ->set('name', '')  // name required
+        ->set('description', '')
+        ->set('age', null);
+
+    $component->call('store')
+        ->assertHasErrors(['name']);
+});
